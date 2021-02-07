@@ -9,7 +9,7 @@ import { JwtInterceptor, ErrorInterceptor, appInitializer } from './_helpers';
 import { AccountService } from './services';
 import { AppComponent } from './app.component';
 import { SharedModule } from './components/shared/shared.module';
-import { HomeComponent } from './home';
+import { HomeComponent } from './components/layout/home';
 
 @NgModule({
     imports: [

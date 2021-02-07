@@ -1,8 +1,7 @@
-import { AccountModule } from './components/layout/account/account.module';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { HomeComponent } from './home';
+import { HomeComponent } from './components/layout/home';
 import { AuthGuard } from 'src/app/guards/auth.guard';
 import { Role } from './models';
 
