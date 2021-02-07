@@ -1,7 +1,7 @@
 export const environment = {
     production: false,
     BASE_URL: 'http://localhost:4000',
-    ACCOUNTS_ENDPOINT: 'http//localhost:4000/accounts/',
+    ACCOUNTS_ENDPOINT: 'http://localhost:4000/accounts/',
 
     ACCOUNTS: {
         REGISTER: 'register',

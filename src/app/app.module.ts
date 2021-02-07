@@ -8,7 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { JwtInterceptor, ErrorInterceptor, appInitializer } from './_helpers';
 import { AccountService } from './services';
 import { AppComponent } from './app.component';
-import { AlertComponent } from './_components';
+import { SharedModule } from './components/shared/shared.module';
 import { HomeComponent } from './home';
 
 @NgModule({
@@ -16,11 +16,11 @@ import { HomeComponent } from './home';
         BrowserModule,
         ReactiveFormsModule,
         HttpClientModule,
-        AppRoutingModule
+        AppRoutingModule,
+        SharedModule
     ],
     declarations: [
         AppComponent,
-        AlertComponent,
         HomeComponent
     ],
     providers: [
