@@ -1,10 +1,22 @@
-import { Component } from '@angular/core';
+﻿import { Component } from '@angular/core';
 
-@Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+import { AccountService } from './services';
+import { Account, Role } from './models';
+
+@Component({ 
+    selector: 'app-root',
+    templateUrl: 'app.component.html' 
 })
+
 export class AppComponent {
-  title = 'frontend';
+    Role = Role;
+    account: Account;
+
+    constructor(private accountService: AccountService) {
+        this.accountService.account.subscribe(x => this.account = x);
+    }
+
+    logout() {
+        this.accountService.logout();
+    }
 }
