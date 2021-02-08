@@ -8,12 +8,12 @@ import { NotFoundComponent } from './components/errors/not-found/not-found.compo
 
 const authModule = () => import('./components/layout/auth/auth.module').then(x => x.AuthModule);
 const adminModule = () => import('./admin/admin.module').then(x => x.AdminModule);
-const profileModule = () => import('./components/layout/auth/profile/profile.module').then(x => x.ProfileModule);
+const accountModule = () => import('./components/layout/account/account.module').then(x => x.AccountModule);
 
 const routes: Routes = [
     { path: '', component: HomeComponent, canActivate: [AuthGuard] },
     { path: 'auth', loadChildren: authModule },
-    { path: 'profile', loadChildren: profileModule, canActivate: [AuthGuard] },
+    { path: 'account', loadChildren: accountModule, canActivate: [AuthGuard] },
     { path: 'admin', loadChildren: adminModule, canActivate: [AuthGuard], data: { roles: [Role.Admin] } },
 
     { path: '**', component: NotFoundComponent }

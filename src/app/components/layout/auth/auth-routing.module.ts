@@ -6,7 +6,7 @@ import { RegisterComponent } from './register/register.component';
 import { VerifyEmailComponent } from './verify-email/verify-email.component';
 import { ForgotPasswordComponent } from './forgot-pass/forgot-password.component';
 import { ResetPasswordComponent } from './reset-pass/reset-password.component';
-import { LayoutComponent } from './profile/layout.component';
+import { LayoutComponent } from '../layout.component';
 
 const routes: Routes = [
     {
