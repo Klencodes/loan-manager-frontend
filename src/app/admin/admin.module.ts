@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common';
 import { AdminRoutingModule } from './admin-routing.module';
 import { SubNavComponent } from './subnav.component';
 import { OverviewComponent } from './overview.component';
-import { LayoutComponent } from './layout.component';
+import { AdminComponent } from './admin.component';
 
 @NgModule({
     imports: [
@@ -15,7 +15,7 @@ import { LayoutComponent } from './layout.component';
     ],
     declarations: [
         SubNavComponent,
-        LayoutComponent,
+        AdminComponent,
         OverviewComponent
     ]
 })

@@ -50,10 +50,17 @@
               "src/assets"
             ],
             "styles": [
+              "src/styles.scss",
               "src/assets/css/bootstrap.css",
-              "src/styles.scss"
+              "src/assets/css/style.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/js/jquery-3.3.1.js",
+              "src/assets/js/jquery.slimscroll.js",
+              "src/assets/js/bootstrap.js",
+              "src/assets/js/template.js",
+              "src/assets/js/screenfull.js"
+            ]
           },
           "configurations": {
             "production": {

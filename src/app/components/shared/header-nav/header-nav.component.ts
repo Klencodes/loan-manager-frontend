@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Role, Account } from 'src/app/models';
+import { AccountService } from 'src/app/services';
 
 @Component({
   selector: 'header-nav',
@@ -6,8 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderNavComponent implements OnInit {
 
-  constructor() { }
+  Role = Role;
+  account: Account;
 
+  constructor(private accountService: AccountService) {
+      this.accountService.account.subscribe(x => this.account = x);
+  }
+
+  logout() {
+      this.accountService.logout();
+  }
   ngOnInit(): void {
   }
 
