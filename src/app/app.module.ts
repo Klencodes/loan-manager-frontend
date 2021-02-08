@@ -10,6 +10,8 @@ import { AccountService } from './services';
 import { AppComponent } from './app.component';
 import { SharedModule } from './components/shared/shared.module';
 import { HomeComponent } from './components/layout/home';
+import { ErrorPagesModule } from './components/errors/errors.module';
+
 
 @NgModule({
     imports: [
@@ -17,12 +19,13 @@ import { HomeComponent } from './components/layout/home';
         ReactiveFormsModule,
         HttpClientModule,
         AppRoutingModule,
-        SharedModule
+        SharedModule,
+        ErrorPagesModule
     ],
     declarations: [
         AppComponent,
-        HomeComponent
-    ],
+        HomeComponent,
+       ],
     providers: [
         { provide: APP_INITIALIZER, useFactory: appInitializer, multi: true, deps: [AccountService] },
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
