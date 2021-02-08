@@ -1,32 +1,61 @@
-﻿<h1>Accounts</h1>
-<p>All accounts from secure (admin only) api end point:</p>
-<a routerLink="add" class="btn btn-sm btn-success mb-2">Create Account</a>
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th style="width:30%">Name</th>
-            <th style="width:30%">Email</th>
-            <th style="width:30%">Role</th>
-            <th style="width:10%"></th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let account of accounts">
-            <td>{{account.title}} {{account.firstName}} {{account.lastName}}</td>
-            <td>{{account.email}}</td>
-            <td>{{account.role}}</td>
-            <td style="white-space: nowrap">
-                <a routerLink="edit/{{account.id}}" class="btn btn-sm btn-primary mr-1">Edit</a>
-                <button (click)="deleteAccount(account.id)" class="btn btn-sm btn-danger btn-delete-account" [disabled]="account.isDeleting">
-                    <span *ngIf="account.isDeleting" class="spinner-border spinner-border-sm"></span>
-                    <span *ngIf="!account.isDeleting">Delete</span>
-                </button>
-            </td>
-        </tr>
-        <tr *ngIf="!accounts">
-            <td colspan="4" class="text-center">
-                <span class="spinner-border spinner-border-lg align-center"></span>
-            </td>
-        </tr>
-    </tbody>
-</table>
+﻿<div class="container bg-white p-4">
+    <!-- Content Header (Page header) -->
+    <div class="d-flex align-items-center bg-white">
+        <!-- Left side dashboard -->
+        <div class="mr-auto py-2">
+            <h3 class="page-title mx-2">Accounts</h3>
+        </div>
+        <div class="right-title">
+            <div class="d-flex justify-content-end mr-2">
+                <a routerLink="add" class=" mb-5"><i
+                        class="si si-plus mr-2"></i>Add</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+    <div class="col-sm-12">
+        <table id="customers" class="table mt-0 table-hover no-wrap">
+            <thead>
+                <tr role="row">
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="tr-border" *ngFor="let account of accounts; let i = index">
+                    <td>{{account.id | slice: 0:9}}</td>
+                    <td>{{account.title}}</td>
+                    <td>{{account.firstName}}</td>
+                    <td>{{account.lastName}}</td>
+                    <td>{{account.email}}</td>
+                    <td>{{account.role}}</td>
+                    <!-- <td><span class="badge badge-warning">New</span> </td> -->
+                    <td>
+                        <a routerLink="user/{{account.id}}" class="font-size-18 text-success mr-3">
+                            <i class="ti-eye"></i>
+                        </a>
+                        <a (click)="deleteAccount(account.id, i)" class="font-size-16 text-danger mr-1">
+                            <i class="ti ti-trash"></i>
+                            <span *ngIf="accounts.isDeleting" class="spinner-border spinner-border-sm"></span>
+                            <span *ngIf="!accounts.isDeleting"></span>
+                        </a>
+
+                    </td>
+                </tr>
+                <!-- Spinner isLoading -->
+                <tr *ngIf="!accounts">
+                    <td colspan="12" class="text-center">
+                        <span class="text-success spinner-border spinner-border-lg align-center"></span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    </div>
+</div>

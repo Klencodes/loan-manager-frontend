@@ -3,15 +3,15 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 import { AdminRoutingModule } from './admin-routing.module';
-import { SubNavComponent } from './subnav.component';
-import { OverviewComponent } from './overview.component';
 import { AdminComponent } from './admin.component';
+import { SubNavComponent } from './subnav.component';
+import { OverviewComponent } from './overview/overview.component';
 
 @NgModule({
     imports: [
         CommonModule,
         ReactiveFormsModule,
-        AdminRoutingModule
+        AdminRoutingModule,
     ],
     declarations: [
         SubNavComponent,

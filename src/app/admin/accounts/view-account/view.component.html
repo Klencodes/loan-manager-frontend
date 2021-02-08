@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="card mt-4">
+    <div class="card-header">
+      <h3 class="page-title">Account Detail</h3>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-md-6 invoice-col">
+        <address>
+          <strong
+            class="text-blue font-size-24 pb-2">{{accountDetails?.firstName}}&nbsp;{{accountDetails?.lastName}}</strong><br>
+          <span class="detail-text">Email: &nbsp; {{accountDetails?.email}}</span><br>
+          <span class="detail-text py-2">Role: &nbsp; {{accountDetails?.role}}</span><br>
+        </address>
+      </div>
+      <div class="col-md-6 text-right">
+        <a routerLink="/admin/accounts/edit/{{accountDetails.id}}" class="btn btn-sm btn-white mr-1">
+          <strong><i class="si si-pencil"></i>&nbsp; Edit</strong>
+        </a>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 mt-2">
+        <a routerLink="/admin" class="btn btn-primary">Back</a>
+      </div>
+    </div>
+  </div>
+</div>
