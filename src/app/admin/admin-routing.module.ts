@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { SubNavComponent } from './subnav.component';
+import { SubNavComponent } from './subnav/subnav.component';
 import { OverviewComponent } from './overview/overview.component';
 import { AdminComponent } from './admin.component';
 

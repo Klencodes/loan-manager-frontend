@@ -13,7 +13,6 @@ export class OverviewComponent implements OnInit{
             .pipe(first())
             .subscribe((data:any[]) =>{
                 this.accounts = data
-                console.log(this.accounts, 'THIS ACCOUNTS')
             });
     }
 
