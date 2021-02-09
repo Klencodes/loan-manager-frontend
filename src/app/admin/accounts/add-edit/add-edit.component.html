@@ -1,8 +1,17 @@
-﻿<div class="box">
-    <div class="ml-4 mt-2">
-        <h3 *ngIf="isAddMode">Create Account</h3>
-        <h3 *ngIf="!isAddMode">Edit Account</h3>
+﻿<!-- Content Header (Page header) -->
+<div class="d-flex align-items-center bg-white mb-2">
+    <!-- Left side dashboard -->
+    <div class="mr-auto py-2 pl-4">
+        <h4 *ngIf="isAddMode">Create Account</h4>
+        <h4 *ngIf="!isAddMode">Edit Account</h4>
     </div>
+    <!-- <div class="right-title" *ngIf="isAddMode">
+        <div class="d-flex justify-content-end mr-4">
+            <a routerLink="add" class="font-weight-600 mb-5"><i class="si si-plus mr-2"></i>Add User</a>
+        </div>
+    </div> -->
+</div>
+<div class="box">
     <div class="box-body">
         <form [formGroup]="form" (ngSubmit)="onSubmit()">
             <div class="form-row">
@@ -10,7 +19,6 @@
                     <label>Title</label>
                     <select formControlName="title" class="form-control"
                         [ngClass]="{ 'is-invalid': submitted && f.title.errors }">
-                        <option value=""></option>
                         <option value="Mr">Mr</option>
                         <option value="Mrs">Mrs</option>
                         <option value="Miss">Miss</option>

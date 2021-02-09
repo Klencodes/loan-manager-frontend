@@ -17447,7 +17447,6 @@ textarea.form-control {
   padding: 1.5rem ;
   -ms-flex: 1 1 auto;
   flex: 1 1 auto;
-  cursor: pointer;
   border-radius: 0.25rem; 
 }
   .box-body .box-title {
