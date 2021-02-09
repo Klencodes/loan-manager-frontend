@@ -8,6 +8,16 @@ export class Account {
     firstName: string;
     lastName: string;
     email: string;
+    phoneNumber: string;
+    jobTitle: string;
+    department: string;
+    dob: Date;
+    address: string;
+    city: string;
+    state: string;
+    country: string;
+    avatar: string;
     role: Role;
     jwtToken?: string;
+    isDeleting?: boolean;
 }

@@ -49,9 +49,12 @@ a {
 }
 
 a:hover, a:active, a:focus {
-  /* color: #28a745 !important;  */
+  color: #28a745 !important; 
   outline: 0;
-  text-decoration: none; }
+  text-decoration: none; 
+  /* border-bottom: 2px solid #28a745 !important; */
+
+}
 
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   font-family: inherit;
@@ -16351,22 +16354,7 @@ time {
   100% {
     -moz-transform: scale(1);
     opacity: 0.0; } }
-/* @-webkit-keyframes "mappulse" {
-  0% {
-    -webkit-transform: scale(0);
-    opacity: 0.0; }
-  25% {
-    -webkit-transform: scale(0);
-    opacity: 0.1; }
-  50% {
-    -webkit-transform: scale(0.1);
-    opacity: 0.3; }
-  75% {
-    -webkit-transform: scale(0.5);
-    opacity: 0.5; }
-  100% {
-    -webkit-transform: scale(1);
-    opacity: 0.0; } } */
+
 .dash-tx {
   position: absolute;
   width: 40%;

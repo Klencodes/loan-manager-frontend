@@ -53,6 +53,7 @@
               "src/styles.scss",
               "src/assets/css/bootstrap.css",
               "src/assets/css/style.css",
+              "src/assets/css/animate.css",
               "src/assets/icons/icons.css"
             ],
             "scripts": [

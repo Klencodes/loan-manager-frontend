@@ -11,6 +11,7 @@ import { AppComponent } from './app.component';
 import { SharedModule } from './components/shared/shared.module';
 import { HomeComponent } from './components/layout/home';
 import { ErrorPagesModule } from './components/errors/errors.module';
+import { LayoutComponent } from './components/layout/layout.component';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { ErrorPagesModule } from './components/errors/errors.module';
     declarations: [
         AppComponent,
         HomeComponent,
+        LayoutComponent
        ],
     providers: [
         { provide: APP_INITIALIZER, useFactory: appInitializer, multi: true, deps: [AccountService] },

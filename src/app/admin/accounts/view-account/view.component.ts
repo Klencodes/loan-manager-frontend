@@ -19,10 +19,7 @@ export class ViewComponent implements OnInit {
     this.id = this.route.snapshot.paramMap.get('id');
     // Display only if it is edit mode
     this.accountService.getById(this.id).subscribe(res => {
-      console.log(this.id, 'ID')
       this.accountDetails = res;
-      console.log(res, 'RES')
-      console.log(this.accountDetails, 'DETAILS')
     });
   }
 }

@@ -6,6 +6,9 @@
 a, .btn {
     cursor: pointer;
 }
+.container {
+  max-width: 1370px;
+}
 
 /* =================  DEFINED VARIABLES =================== */
 .icon-xs, .icon-sm, .icon-md, .icon-lg {
@@ -74,4 +77,17 @@ a, .btn {
 .img-lg {
   width: 250px;
   height: 250px;
+}
+
+.bg-user {
+    background-size: cover;
+    background: url('assets/img/account/user-info.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.btn-absolute-right{
+  position: absolute;
+  right: 0px;
 }

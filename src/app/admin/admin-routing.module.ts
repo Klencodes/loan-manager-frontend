@@ -5,15 +5,13 @@ import { SubNavComponent } from './subnav/subnav.component';
 import { OverviewComponent } from './overview/overview.component';
 import { AdminComponent } from './admin.component';
 
-const accountsModule = () => import('./accounts/accounts.module').then(x => x.AccountsModule);
-
 const routes: Routes = [
     { path: '', component: SubNavComponent, outlet: 'subnav' },
     {
         path: '', component: AdminComponent,
         children: [
             { path: '', component: OverviewComponent },
-            { path: 'accounts', loadChildren: accountsModule }
+            { path: 'accounts', loadChildren: () => import('./accounts/accounts.module').then(x => x.AccountsModule) }
         ]
     }
 ];

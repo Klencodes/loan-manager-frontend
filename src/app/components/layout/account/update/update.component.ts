@@ -28,6 +28,14 @@ export class UpdateComponent implements OnInit {
             firstName: [this.account.firstName, Validators.required],
             lastName: [this.account.lastName, Validators.required],
             email: [this.account.email, [Validators.required, Validators.email]],
+            phoneNumber: [this.account.phoneNumber, Validators.required],
+            jobTitle: [this.account.jobTitle, Validators.required],
+            department: [this.account.department, Validators.required],
+            dob: [this.account.dob, Validators.required],
+            address: [this.account.address, Validators.required],
+            city: [this.account.city, Validators.required],
+            state: [this.account.state, Validators.required],
+            country: [this.account.country, Validators.required],
             password: ['', [Validators.minLength(6)]],
             confirmPassword: ['']
         }, {
