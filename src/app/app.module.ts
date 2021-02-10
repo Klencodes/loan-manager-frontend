@@ -11,7 +11,9 @@ import { AppComponent } from './app.component';
 import { SharedModule } from './components/shared/shared.module';
 import { HomeComponent } from './components/layout/home';
 import { ErrorPagesModule } from './components/errors/errors.module';
-import { LayoutComponent } from './components/layout/layout.component';
+import { LayoutComponent } from './components/layout/layout.component';;
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { MaterialModule } from './components/modules/material.module';
 
 
 @NgModule({
@@ -21,7 +23,9 @@ import { LayoutComponent } from './components/layout/layout.component';
         HttpClientModule,
         AppRoutingModule,
         SharedModule,
-        ErrorPagesModule
+        ErrorPagesModule,
+        BrowserAnimationsModule,
+        MaterialModule,
     ],
     declarations: [
         AppComponent,

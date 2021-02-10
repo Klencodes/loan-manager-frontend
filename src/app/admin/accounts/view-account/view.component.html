@@ -1,18 +1,21 @@
-<div class="container">
-  <div class="card mt-4">
-    <div class="card-header">
-      <h4 class="page-title">Account Detail</h4>
+<div class="card">
+  <div class="d-flex align-items-center bg-white">
+    <!-- Left side dashboard -->
+    <div class="mr-auto">
+        <div class="page-title mx-3 py-4">Accounts</div>
+    </div>
+    <div class="right-title">
+        <div class="d-flex justify-content-end mr-4">
+          <a routerLink="/admin/accounts/edit/{{accountDetails.id}}" class="btn btn-sm btn btn-link mr-1">
+            <strong><i class="si si-pencil"></i>&nbsp; Edit</strong>
+          </a>
+        </div>
     </div>
   </div>
-
   <div class="card-body">
     <div class="row">
       <div class="col-12">
-        <span class="btn-absolute-right">
-          <a routerLink="/admin/accounts/edit/{{accountDetails?.id}}" class="btn btn-sm btn-info mr-1">
-            <strong><i class="si si-pencil"></i>&nbsp; Edit</strong>
-          </a>
-        </span>
+
         <strong class="text-blue font-size-24 pb-4">{{accountDetails?.firstName}}&nbsp;{{accountDetails?.lastName}}
         </strong>
         <div>
@@ -29,12 +32,11 @@
             width="100%" height="100" frameborder="0" style="border:0" allowfullscreen></iframe>
         </div>
       </div>
-
     </div>
     <div class="row">
       <div class="col-12 mt-2">
-        <a routerLink="/admin" class="btn btn-primary">Back</a>
+        <a mat-button routerLink routerLink="/admin" class="">Back</a>
       </div>
     </div>
   </div>
-</div>
+</div>  

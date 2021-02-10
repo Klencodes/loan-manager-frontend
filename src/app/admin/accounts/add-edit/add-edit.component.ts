@@ -1,10 +1,11 @@
 ﻿import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 
-import { AccountService, AlertService } from 'src/app/services';
+import { AccountService, AlertService, UtilityService } from 'src/app/services';
 import { MustMatch } from 'src/app/validators';
+import { Role } from 'src/app/models';
 
 @Component({ templateUrl: 'add-edit.component.html' })
 export class AddEditComponent implements OnInit {
@@ -13,13 +14,17 @@ export class AddEditComponent implements OnInit {
     isAddMode: boolean;
     loading = false;
     submitted = false;
+    roles: Role[]
+    country = new FormControl;
+    states: string[] | undefined;
 
     constructor(
         private formBuilder: FormBuilder,
         private route: ActivatedRoute,
         private router: Router,
         private accountService: AccountService,
-        private alertService: AlertService
+        private alertService: AlertService,
+        private utilityService: UtilityService
     ) {}
 
     ngOnInit() {
@@ -28,8 +33,8 @@ export class AddEditComponent implements OnInit {
 
         this.form = this.formBuilder.group({
             title: ['', Validators.required],
-            firstName: ['', Validators.required],
-            lastName: ['', Validators.required],
+            firstName: ['', [Validators.required, Validators.minLength(3)]],
+            lastName: ['', [Validators.required, Validators.minLength(2)]],
             email: ['', [Validators.required, Validators.email]],
             phoneNumber: ['', Validators.required],
             jobTitle: ['', Validators.required],
@@ -51,8 +56,16 @@ export class AddEditComponent implements OnInit {
                 .pipe(first())
                 .subscribe(x => this.form.patchValue(x));
         }
-    }
 
+        // this.country.valueChanges.subscribe(country => {
+        //     if (country === 'Ghana') {
+        //       this.states['state'] = this.utilityService.getGhanaRegions;
+        //     } else if (country === 'Nigeria') {
+        //       this.states['state'] = this.utilityService.getNigeriaStates;
+        //     }
+        //   });
+    }
+  
     // convenience getter for easy access to form fields
     get f() { return this.form.controls; }
 

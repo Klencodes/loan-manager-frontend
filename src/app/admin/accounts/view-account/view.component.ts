@@ -17,7 +17,6 @@ export class ViewComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id');
-    // Display only if it is edit mode
     this.accountService.getById(this.id).subscribe(res => {
       this.accountDetails = res;
     });

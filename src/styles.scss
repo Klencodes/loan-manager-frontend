@@ -1,8 +1,4 @@
-/* You can add global styles to this file, and also import other style files */
-// IMPOTED CSS ICONS
-// @import './assets/css/style.css';
-// @import './assets/icons/icons.css';
-
+@import "~@angular/material/prebuilt-themes/indigo-pink.css"; 
 a, .btn {
     cursor: pointer;
 }
@@ -90,4 +86,32 @@ a, .btn {
 .btn-absolute-right{
   position: absolute;
   right: 0px;
+}
+html, body { height: 100%;
+
+}
+body { 
+  margin: 0; 
+  font-family: Montserrat, "Montserrat-regular", sans-serif;
+  font-size: 1rem;overflow-x: hidden;
+  overflow-y: auto;
+  color: #555555;
+  background-color: #f2f2f2 !important;
+
+}
+mat-form-field{
+  width: 100%;
+  appearance: "standard"
+}
+.mat-error {
+  font-size: 12px !important;
+  color: red;
+}
+.page-title{
+  font-size: 20px !important;
+  padding: 10px !important;
+}
+.text-link{
+  color: #0c8807;
+  font-weight: 600;
 }

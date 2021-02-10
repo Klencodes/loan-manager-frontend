@@ -1,79 +1,179 @@
-﻿<div class="container">
-    <div class="box">
-        <div class="ml-4 mt-2">
-            <h4>Update Profile</h4>
-        </div>
-        <div class="box-body">
-            <form [formGroup]="form" (ngSubmit)="onSubmit()">
-                <div class="form-row">
-                    <div class="form-group col">
-                        <label>Title</label>
-                        <select formControlName="title" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.title.errors }">
-                            <option value=""></option>
-                            <option value="Mr">Mr</option>
-                            <option value="Mrs">Mrs</option>
-                            <option value="Miss">Miss</option>
-                            <option value="Ms">Ms</option>
-                        </select>
-                        <div *ngIf="submitted && f.title.errors" class="invalid-feedback">
+﻿<div class="mr-auto my-4 bg-white">
+    <h4 class="page-title mx-3 py-4">Update Profile</h4>
+</div>
+<div class="box">
+    <div class="box-body">
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <div class="row">
+                <div class="col-md-2">
+                    <mat-form-field>
+                        <mat-label>Title</mat-label>
+                        <input matInput formControlName="title" readonly
+                            [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }">
+                        <mat-error *ngIf="submitted && f.title.errors">
                             <div *ngIf="f.title.errors.required">Title is required</div>
-                        </div>
-                    </div>
-                    <div class="form-group col-5">
-                        <label>First Name</label>
-                        <input type="text" formControlName="firstName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
-                        <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-5">
+                    <mat-form-field>
+                        <mat-label>First Name</mat-label>
+                        <input matInput formControlName="firstName"
+                            [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }">
+                        <mat-error *ngIf="submitted && f.firstName.errors">
                             <div *ngIf="f.firstName.errors.required">First Name is required</div>
-                        </div>
-                    </div>
-                    <div class="form-group col-5">
-                        <label>Last Name</label>
-                        <input type="text" formControlName="lastName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" />
-                        <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+                            <div *ngIf="f.firstName.errors.minlength">First Name must be at least 3 characters
+                            </div>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-5">
+                    <mat-form-field>
+                        <mat-label>Last Name</mat-label>
+                        <input matInput formControlName="lastName"
+                            [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }">
+                        <mat-error *ngIf="submitted && f.lastName.errors">
                             <div *ngIf="f.lastName.errors.required">Last Name is required</div>
-                        </div>
+                            <div *ngIf="f.lastName.errors.minlength">Last Name must be at least 3 characters
+                            </div>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <mat-form-field>
+                        <mat-label>Email</mat-label>
+                        <input matInput formControlName="email" readonly  [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                    <mat-form-field>
+                        <mat-label>Phone Number</mat-label>
+                        <input matInput formControlName="phoneNumber"
+                            [ngClass]="{ 'is-invalid': submitted && f.phoneNumber.errors }">
+                        <mat-error *ngIf="submitted && f.phoneNumber.errors">
+                            <div *ngIf="f.phoneNumber.errors.required">Phone Number is required</div>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <mat-form-field>
+                        <mat-label>Job Title</mat-label>
+                        <input matInput formControlName="jobTitle"
+                            [ngClass]="{ 'is-invalid': submitted && f.jobTitle.errors }">
+                        <mat-error *ngIf="submitted && f.jobTitle.errors">
+                            <div *ngIf="f.jobTitle.errors.required">Job Title is required</div>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                    <mat-form-field>
+                        <mat-label>Department</mat-label>
+                        <input matInput formControlName="department"
+                            [ngClass]="{ 'is-invalid': submitted && f.department.errors }">
+                        <mat-error *ngIf="submitted && f.department.errors">
+                            <div *ngIf="f.department.errors.required">Department is required</div>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                    <mat-form-field>
+                        <mat-label>Date of Birth</mat-label>
+                        <input matInput formControlName="dob" [ngClass]="{ 'is-invalid': submitted && f.dob.errors }">
+                        <mat-error *ngIf="submitted && f.dob.errors">
+                            <div *ngIf="f.dob.errors.required">Date of Birth is required</div>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <mat-form-field>
+                        <mat-label>Address</mat-label>
+                        <input matInput formControlName="address"
+                            [ngClass]="{ 'is-invalid': submitted && f.address.errors }">
+                        <mat-error *ngIf="submitted && f.address.errors">
+                            <div *ngIf="f.address.errors.required">Address is required</div>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <mat-form-field>
+                        <mat-label>City</mat-label>
+                        <input matInput formControlName="city" [ngClass]="{ 'is-invalid': submitted && f.city.errors }">
+                        <mat-error *ngIf="submitted && f.city.errors">
+                            <div *ngIf="f.city.errors.required">City is required</div>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                    <mat-form-field>
+                        <mat-label>State</mat-label>
+                        <input matInput formControlName="state"
+                            [ngClass]="{ 'is-invalid': submitted && f.state.errors }">
+                        <mat-error *ngIf="submitted && f.state.errors">
+                            <div *ngIf="f.state.errors.required">State is required</div>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                    <mat-form-field>
+                        <mat-label>Country</mat-label>
+                        <input matInput formControlName="country"
+                            [ngClass]="{ 'is-invalid': submitted && f.country.errors }">
+                        <mat-error *ngIf="submitted && f.country.errors">
+                            <div *ngIf="f.country.errors.required">Date of Birth is required</div>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div>
+                        <h4 class="pt-3">Change Password</h4>
+                        <p>Leave blank to keep the same password</p>
                     </div>
                 </div>
-                <div class="form-group">
-                    <label>Email</label>
-                    <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" readonly/>
-                    <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
-                        <div *ngIf="f.email.errors.required">Email is required</div>
-                        <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
-                    </div>
-                </div>
-                <h4 class="pt-3">Change Password</h4>
-                <p>Leave blank to keep the same password</p>
-                <div class="form-row">
-                    <div class="form-group col">
-                        <label>Password</label>
-                        <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
-                        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                <div class="col-md-6">
+                    <mat-form-field>
+                        <mat-label>Password</mat-label>
+                        <input matInput formControlName="password"
+                            [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
+                        <mat-error *ngIf="submitted && f.password.errors">
                             <div *ngIf="f.password.errors.required">Password is required</div>
-                            <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
-                        </div>
-                    </div>
-                    <div class="form-group col">
-                        <label>Confirm Password</label>
-                        <input type="password" formControlName="confirmPassword" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }" />
-                        <div *ngIf="submitted && f.confirmPassword.errors" class="invalid-feedback">
+                            <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters
+                            </div>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                    <mat-form-field>
+                        <mat-label>Confirm Password</mat-label>
+                        <input matInput formControlName="confirmPassword"
+                            [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }">
+                        <mat-error *ngIf="submitted && f.confirmPassword.errors">
                             <div *ngIf="f.confirmPassword.errors.required">Confirm Password is required</div>
                             <div *ngIf="f.confirmPassword.errors.mustMatch">Passwords must match</div>
-                        </div>
-                    </div>
+                        </mat-error>
+                    </mat-form-field>
                 </div>
-                <div class="form-group">
-                    <button type="submit" [disabled]="loading" class="btn btn-primary mr-2">
-                        <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
-                        Update
-                    </button>
-                    <button type="button" (click)="onDelete()" [disabled]="deleting" class="btn btn-danger">
-                        <span *ngIf="deleting" class="spinner-border spinner-border-sm mr-1"></span>
-                        Delete
-                    </button>
-                    <a routerLink="../" href="" class="btn btn-link">Cancel</a>
-                </div>
-            </form>
-        </div>
+            </div>
+            <div class="form-group">
+                <button type="submit" [disabled]="loading" class="btn btn-primary mr-2">
+                    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                    Update
+                </button>
+                <button type="button" (click)="onDelete()" [disabled]="deleting" class="btn btn-danger">
+                    <span *ngIf="deleting" class="spinner-border spinner-border-sm mr-1"></span>
+                    Delete
+                </button>
+                <a routerLink="../" href="" class="btn btn-link">Cancel</a>
+            </div>
+        </form>
     </div>
 </div>
