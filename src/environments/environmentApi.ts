@@ -4,6 +4,7 @@ export const environment = {
     ACCOUNTS_ENDPOINT: 'http://localhost:4000/accounts/',
 
     ACCOUNTS: {
+        USERS_ONLY: 'users',
         REGISTER: 'register',
         VERIFY_EMAIL: 'verify-email',
         LOGIN: 'login',

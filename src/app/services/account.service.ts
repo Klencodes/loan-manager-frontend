@@ -82,6 +82,10 @@ export class AccountService {
     getAll() {
         return this.http.get<Account[]>(ACCOUNTS_ENDPOINT);
     }
+    getUsersOnly() {
+        let url = ACCOUNTS_ENDPOINT+ environment.ACCOUNTS.USERS_ONLY
+        return this.http.get<Account[]>(url);
+    }
 
     getById(id: string) {
         return this.http.get<Account>(`${ACCOUNTS_ENDPOINT}/${id}`);
