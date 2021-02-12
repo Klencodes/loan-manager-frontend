@@ -45,55 +45,15 @@ import {MatTreeModule} from '@angular/material/tree';
 import {OverlayModule} from '@angular/cdk/overlay';
 import { MatFormFieldModule } from '@angular/material/form-field';
 
-const mat= [
-  CommonModule,
-  A11yModule,
-  ClipboardModule,
-  CdkStepperModule,
-  CdkTableModule,
-  CdkTreeModule,
-  DragDropModule,
-  MatAutocompleteModule,
-  MatBadgeModule,
-  MatBottomSheetModule,
-  MatButtonModule,
-  MatButtonToggleModule,
-  MatCardModule,
-  MatCheckboxModule,
-  MatChipsModule,
-  MatStepperModule,
-  MatDatepickerModule,
-  MatDialogModule,
-  MatDividerModule,
-  MatExpansionModule,
-  MatFormFieldModule,
-  MatGridListModule,
-  MatIconModule,
-  MatInputModule,
-  MatListModule,
-  MatMenuModule,
-  MatNativeDateModule,
-  MatPaginatorModule,
-  MatProgressBarModule,
-  MatProgressSpinnerModule,
-  MatRadioModule,
-  MatRippleModule,
-  MatSelectModule,
-  MatSidenavModule,
-  MatSliderModule,
-  MatSlideToggleModule,
-  MatSnackBarModule,
-  MatSortModule,
-  MatTableModule,
-  MatTabsModule,
-  MatToolbarModule,
-  MatTooltipModule,
-  MatTreeModule,
-  OverlayModule,
-  PortalModule,
-  ScrollingModule
-
-];
+const mat= [ CommonModule, A11yModule, ClipboardModule, CdkStepperModule, CdkTableModule, CdkTreeModule,
+             DragDropModule, MatAutocompleteModule, MatBadgeModule, MatBottomSheetModule, MatButtonModule,
+             MatButtonToggleModule, MatCardModule, MatCheckboxModule, MatChipsModule, MatStepperModule,
+             MatDatepickerModule, MatDialogModule, MatDividerModule, MatExpansionModule, MatFormFieldModule,
+             MatGridListModule, MatIconModule, MatInputModule, MatListModule, MatMenuModule, MatNativeDateModule,
+             MatPaginatorModule, MatProgressBarModule, MatProgressSpinnerModule, MatRadioModule, MatRippleModule,
+             MatSelectModule, MatSidenavModule, MatSliderModule, MatSlideToggleModule, MatSnackBarModule, MatSortModule,
+             MatTableModule, MatTabsModule, MatToolbarModule, MatTooltipModule, MatTreeModule, OverlayModule, PortalModule, ScrollingModule
+            ];
 
 
 @NgModule({

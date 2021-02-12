@@ -35,7 +35,8 @@ export class RegisterComponent implements OnInit {
             state: ['', Validators.required],
             country: ['', Validators.required],
             password: ['', [Validators.minLength(6),  Validators.required ]],
-            confirmPassword: ['']
+            confirmPassword: [''],
+            acceptTerms: ['', Validators.required],
         }, {
             validator: MustMatch('password', 'confirmPassword')
         });
@@ -54,7 +55,9 @@ export class RegisterComponent implements OnInit {
         if (this.form.invalid) {
             return;
         }
-
+        this.register();
+    }
+    register(){
         this.loading = true;
         this.accountService.register(this.form.value)
             .pipe(first())

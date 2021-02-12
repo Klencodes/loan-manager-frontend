@@ -8,7 +8,7 @@ import { RegisterComponent } from './register/register.component';
 import { VerifyEmailComponent } from './verify-email/verify-email.component';
 import { ForgotPasswordComponent } from './forgot-pass/forgot-password.component';
 import { ResetPasswordComponent } from './reset-pass/reset-password.component';
-import { MaterialModule } from '../../modules/material.module';
+import { MaterialModule } from 'src/app/components/modules';
 
 @NgModule({
     declarations: [
