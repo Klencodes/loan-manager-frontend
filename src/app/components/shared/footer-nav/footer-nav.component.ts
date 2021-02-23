@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterNavComponent implements OnInit {
 
-  dateCopyRight = new Date();
+  dateCopyright = new Date().getFullYear();
 
   constructor() { }
 

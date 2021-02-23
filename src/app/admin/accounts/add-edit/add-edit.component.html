@@ -1,195 +1,192 @@
 ﻿<!-- Content Header (Page header) -->
-<div class="d-flex align-items-center bg-white mb-2">
+<div class="d-flex align-items-center bg-white">
     <!-- Left side dashboard -->
     <div class="mr-auto">
         <div class="page-title mx-3 py-4" *ngIf="isAddMode">Create Account</div>
         <div class="page-title mx-3 py-4" *ngIf="!isAddMode">Edit Account</div>
     </div>
-    <!-- <div class="right-title" *ngIf="isAddMode">
-        <div class="d-flex justify-content-end mr-4">
-            <a routerLink="add" class="font-weight-600 mb-5"><i class="si si-plus mr-2"></i>Add User</a>
-        </div>
-    </div> -->
 </div>
-<div class="box">
-    <div class="box-body">
-        <form [formGroup]="form" (ngSubmit)="onSubmit()">
-            <div class="row">
-                <div class="col-md-2">
-                    <mat-form-field>
-                        <mat-label>Title</mat-label>
-                        <mat-select formControlName="title"
-                            [ngClass]="{ 'is-invalid': submitted && f.title.errors }">
-                            <mat-option value="Mr">Mr</mat-option>
-                            <mat-option value="Mrs">Mrs</mat-option>
-                            <mat-option value="Miss">Miss</mat-option>
-                            <mat-option value="Ms">Ms</mat-option>
-                        </mat-select>
-                        <mat-error *ngIf="submitted && f.title.errors">
-                            <div *ngIf="f.title.errors.required">Title is required</div>
-                        </mat-error>    
-                    </mat-form-field>
-                </div>
-                <div class="col-md-5">
-                    <mat-form-field>
-                        <mat-label>First Name</mat-label>
-                        <input matInput formControlName="firstName" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }">
-                        <mat-error *ngIf="submitted && f.firstName.errors">
-                            <div *ngIf="f.firstName.errors.required">First Name is required</div>
-                            <div *ngIf="f.firstName.errors.minlength">First Name must be at least 3 characters</div>
-                        </mat-error>
-                    </mat-form-field>
-                </div>
-                <div class="col-md-5">
-                    <mat-form-field >
-                        <mat-label>Last Name</mat-label>
-                        <input matInput formControlName="lastName" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }">
-                        <mat-error *ngIf="submitted && f.lastName.errors">
-                            <div *ngIf="f.lastName.errors.required">Last Name is required</div>
-                            <div *ngIf="f.lastName.errors.minlength">Last Name must be at least 3 characters</div>
-                        </mat-error>
-                    </mat-form-field>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <mat-form-field>
-                        <mat-label>Email</mat-label>
-                        <input matInput formControlName="email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
-                        <mat-error *ngIf="submitted && f.email.errors">
-                            <div *ngIf="f.email.errors.required">Email is required</div>
-                            <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
-                        </mat-error>
-                    </mat-form-field>
-                </div>
-                <div class="col-md-6">
-                    <mat-form-field >
-                        <mat-label>Phone Number</mat-label>
-                        <input matInput formControlName="phoneNumber" [ngClass]="{ 'is-invalid': submitted && f.phoneNumber.errors }">
-                        <mat-error *ngIf="submitted && f.phoneNumber.errors">
-                            <div *ngIf="f.phoneNumber.errors.required">Phone Number is required</div>
-                        </mat-error>
-                    </mat-form-field>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <mat-form-field>
-                        <mat-label>Role</mat-label>
-                        <mat-select formControlName="role" [ngClass]="{ 'is-invalid': submitted && f.role.errors }">
-                            <mat-option value="Admin">Admin</mat-option>
-                            <mat-option value="User">User</mat-option>
-                        </mat-select>
-                        <mat-error *ngIf="submitted && f.role.errors">
-                            <div *ngIf="f.role.errors.required">Role is required</div>
-                        </mat-error>
-                    </mat-form-field>
-                </div>
-                <div class="col-md-6">
-                    <mat-form-field >
-                        <mat-label>Job Title</mat-label>
-                        <input matInput formControlName="jobTitle" [ngClass]="{ 'is-invalid': submitted && f.jobTitle.errors }">
-                        <mat-error *ngIf="submitted && f.jobTitle.errors">
-                            <div *ngIf="f.jobTitle.errors.required">Job Title is required</div>
-                        </mat-error>
-                    </mat-form-field>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <mat-form-field>
-                        <mat-label>Department</mat-label>
-                        <input matInput formControlName="department" [ngClass]="{ 'is-invalid': submitted && f.department.errors }">
-                        <mat-error *ngIf="submitted && f.department.errors">
-                            <div *ngIf="f.department.errors.required">Department is required</div>
-                        </mat-error>
-                    </mat-form-field>
-                </div>
-                <div class="col-md-6">
-                    <mat-form-field >
-                        <mat-label>Date of Birth</mat-label>
-                        <input matInput formControlName="dob" [ngClass]="{ 'is-invalid': submitted && f.dob.errors }">
-                        <mat-error *ngIf="submitted && f.dob.errors">
-                            <div *ngIf="f.dob.errors.required">Date of Birth is required</div>
-                        </mat-error>
-                    </mat-form-field>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <mat-form-field>
-                        <mat-label>Address</mat-label>
-                        <input matInput formControlName="address" [ngClass]="{ 'is-invalid': submitted && f.address.errors }">
-                        <mat-error *ngIf="submitted && f.address.errors">
-                            <div *ngIf="f.address.errors.required">Address is required</div>
-                        </mat-error>
-                    </mat-form-field>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-4">
-                    <mat-form-field >
-                        <mat-label>City</mat-label>
-                        <input matInput formControlName="city" [ngClass]="{ 'is-invalid': submitted && f.city.errors }">
-                        <mat-error *ngIf="submitted && f.city.errors">
-                            <div *ngIf="f.city.errors.required">City is required</div>
-                        </mat-error>
-                    </mat-form-field>
-                </div>
-                <div class="col-md-4">
-                    <mat-form-field >
-                        <mat-label>State</mat-label>
-                        <input matInput formControlName="state" [ngClass]="{ 'is-invalid': submitted && f.state.errors }">
-                        <mat-error *ngIf="submitted && f.state.errors">
-                            <div *ngIf="f.state.errors.required">State is required</div>
-                        </mat-error>
-                    </mat-form-field>
-                </div>
-                <div class="col-md-4">
-                    <mat-form-field >
-                        <mat-label>Country</mat-label>
-                        <input matInput formControlName="country" [ngClass]="{ 'is-invalid': submitted && f.country.errors }">
-                        <mat-error *ngIf="submitted && f.country.errors">
-                            <div *ngIf="f.country.errors.required">Date of Birth is required</div>
-                        </mat-error>
-                    </mat-form-field>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <div *ngIf="!isAddMode">
-                        <h4 class="pt-3">Change Password</h4>
-                        <p>Leave blank to keep the same password</p>
+<section class="content">
+    <div class="box">
+        <div class="box-body">
+            <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                <div class="row">
+                    <div class="col-md-2">
+                        <mat-form-field>
+                            <mat-label>Title</mat-label>
+                            <mat-select formControlName="title"
+                                [ngClass]="{ 'is-invalid': submitted && f.title.errors }">
+                                <mat-option value="Mr">Mr</mat-option>
+                                <mat-option value="Mrs">Mrs</mat-option>
+                                <mat-option value="Miss">Miss</mat-option>
+                                <mat-option value="Ms">Ms</mat-option>
+                            </mat-select>
+                            <mat-error *ngIf="submitted && f.title.errors">
+                                <div *ngIf="f.title.errors.required">Title is required</div>
+                            </mat-error>    
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-5">
+                        <mat-form-field>
+                            <mat-label>First Name</mat-label>
+                            <input matInput formControlName="firstName" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }">
+                            <mat-error *ngIf="submitted && f.firstName.errors">
+                                <div *ngIf="f.firstName.errors.required">First Name is required</div>
+                                <div *ngIf="f.firstName.errors.minlength">First Name must be at least 3 characters</div>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-5">
+                        <mat-form-field >
+                            <mat-label>Last Name</mat-label>
+                            <input matInput formControlName="lastName" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }">
+                            <mat-error *ngIf="submitted && f.lastName.errors">
+                                <div *ngIf="f.lastName.errors.required">Last Name is required</div>
+                                <div *ngIf="f.lastName.errors.minlength">Last Name must be at least 3 characters</div>
+                            </mat-error>
+                        </mat-form-field>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <mat-form-field>
-                        <mat-label>Password</mat-label>
-                        <input type="password" matInput formControlName="password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
-                        <mat-error *ngIf="submitted && f.password.errors">
-                            <div *ngIf="f.password.errors.required">Password is required</div>
-                            <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
-                        </mat-error>
-                    </mat-form-field>
+                <div class="row">
+                    <div class="col-md-6">
+                        <mat-form-field>
+                            <mat-label>Email</mat-label>
+                            <input matInput formControlName="email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+                            <mat-error *ngIf="submitted && f.email.errors">
+                                <div *ngIf="f.email.errors.required">Email is required</div>
+                                <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-6">
+                        <mat-form-field >
+                            <mat-label>Phone Number</mat-label>
+                            <input matInput formControlName="phoneNumber" [ngClass]="{ 'is-invalid': submitted && f.phoneNumber.errors }">
+                            <mat-error *ngIf="submitted && f.phoneNumber.errors">
+                                <div *ngIf="f.phoneNumber.errors.required">Phone Number is required</div>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
                 </div>
-                <div class="col-md-6">
-                    <mat-form-field >
-                        <mat-label>Confirm Password</mat-label>
-                        <input type="password" matInput formControlName="confirmPassword" [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }">
-                        <mat-error *ngIf="submitted && f.confirmPassword.errors">
-                            <div *ngIf="f.confirmPassword.errors.required">Confirm Password is required</div>
-                            <div *ngIf="f.confirmPassword.errors.mustMatch">Passwords must match</div>
-                        </mat-error>
-                    </mat-form-field>
+                <div class="row">
+                    <div class="col-md-6">
+                        <mat-form-field>
+                            <mat-label>Role</mat-label>
+                            <mat-select formControlName="role" [ngClass]="{ 'is-invalid': submitted && f.role.errors }">
+                                <mat-option value="Admin">Admin</mat-option>
+                                <mat-option value="User">User</mat-option>
+                            </mat-select>
+                            <mat-error *ngIf="submitted && f.role.errors">
+                                <div *ngIf="f.role.errors.required">Role is required</div>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-6">
+                        <mat-form-field >
+                            <mat-label>Job Title</mat-label>
+                            <input matInput formControlName="jobTitle" [ngClass]="{ 'is-invalid': submitted && f.jobTitle.errors }">
+                            <mat-error *ngIf="submitted && f.jobTitle.errors">
+                                <div *ngIf="f.jobTitle.errors.required">Job Title is required</div>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
                 </div>
-            </div>
-            <div class="form-group mt-3">
-                <button [disabled]="loading" class="btn btn-primary">
-                    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
-                    Save
-                </button>
-                <a routerLink="/admin/accounts" class="ml-3 btn btn-link">Cancel</a>
-            </div>
-        </form>
+                <div class="row">
+                    <div class="col-md-6">
+                        <mat-form-field>
+                            <mat-label>Department</mat-label>
+                            <input matInput formControlName="department" [ngClass]="{ 'is-invalid': submitted && f.department.errors }">
+                            <mat-error *ngIf="submitted && f.department.errors">
+                                <div *ngIf="f.department.errors.required">Department is required</div>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-6">
+                        <mat-form-field >
+                            <mat-label>Date of Birth</mat-label>
+                            <input matInput formControlName="dob" [ngClass]="{ 'is-invalid': submitted && f.dob.errors }">
+                            <mat-error *ngIf="submitted && f.dob.errors">
+                                <div *ngIf="f.dob.errors.required">Date of Birth is required</div>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <mat-form-field>
+                            <mat-label>Address</mat-label>
+                            <input matInput formControlName="address" [ngClass]="{ 'is-invalid': submitted && f.address.errors }">
+                            <mat-error *ngIf="submitted && f.address.errors">
+                                <div *ngIf="f.address.errors.required">Address is required</div>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <mat-form-field >
+                            <mat-label>City</mat-label>
+                            <input matInput formControlName="city" [ngClass]="{ 'is-invalid': submitted && f.city.errors }">
+                            <mat-error *ngIf="submitted && f.city.errors">
+                                <div *ngIf="f.city.errors.required">City is required</div>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-4">
+                        <mat-form-field >
+                            <mat-label>State</mat-label>
+                            <input matInput formControlName="state" [ngClass]="{ 'is-invalid': submitted && f.state.errors }">
+                            <mat-error *ngIf="submitted && f.state.errors">
+                                <div *ngIf="f.state.errors.required">State is required</div>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-4">
+                        <mat-form-field >
+                            <mat-label>Country</mat-label>
+                            <input matInput formControlName="country" [ngClass]="{ 'is-invalid': submitted && f.country.errors }">
+                            <mat-error *ngIf="submitted && f.country.errors">
+                                <div *ngIf="f.country.errors.required">Date of Birth is required</div>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div *ngIf="!isAddMode">
+                            <h4 class="pt-3">Change Password</h4>
+                            <p>Leave blank to keep the same password</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <mat-form-field>
+                            <mat-label>Password</mat-label>
+                            <input type="password" matInput formControlName="password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
+                            <mat-error *ngIf="submitted && f.password.errors">
+                                <div *ngIf="f.password.errors.required">Password is required</div>
+                                <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-6">
+                        <mat-form-field >
+                            <mat-label>Confirm Password</mat-label>
+                            <input type="password" matInput formControlName="confirmPassword" [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }">
+                            <mat-error *ngIf="submitted && f.confirmPassword.errors">
+                                <div *ngIf="f.confirmPassword.errors.required">Confirm Password is required</div>
+                                <div *ngIf="f.confirmPassword.errors.mustMatch">Passwords must match</div>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="form-group mt-3">
+                    <button [disabled]="loading" class="btn btn-primary">
+                        <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                        Save
+                    </button>
+                    <a routerLink="/admin/accounts" class="ml-3 btn btn-link">Cancel</a>
+                </div>
+            </form>
+        </div>
     </div>
-</div>
+</section>

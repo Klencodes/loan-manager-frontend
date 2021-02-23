@@ -11336,7 +11336,7 @@ Height property
 
 .content {
   min-height: 250px;
-  padding: 30px 0px;
+  padding: 20px 0px;
   margin-right: auto;
   margin-left: auto; 
 }
@@ -20179,7 +20179,7 @@ td .label {
 }
   .content {
     min-height: 250px;
-    padding: 30px 0px;
+    padding: 20px 0px;
     margin-right: auto;
     margin-left: auto;
 }
