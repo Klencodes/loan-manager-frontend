@@ -56,9 +56,12 @@
                                         <td>{{account.role}}</td>
                                         <!-- <td><span class="badge badge-warning">New</span> </td> -->
                                         <td>
-                                            <a routerLink="user/{{account.id}}" class="font-size-18 text-success mr-3">
+                                            <a routerLink="user/{{account.id}}" class="font-size-18 text-success mr-2">
                                                 <i class="ti-eye"></i>
                                             </a>
+                                            <a routerLink="edit/{{account.id}}" class="font-size-16 text-info mr-2">
+                                                <strong><i class="si si-pencil"></i></strong>
+                                              </a>
                                             <a (click)="deleteAccount(account.id, i)"
                                                 class="font-size-16 text-danger mr-1">
                                                 <i class="ti ti-trash"></i>

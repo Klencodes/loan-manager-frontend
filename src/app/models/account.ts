@@ -16,7 +16,7 @@ export class Account {
     city: string;
     state: string;
     country: string;
-    avatar: string;
+    acceptTerms: Boolean;
     role: Role;
     jwtToken?: string;
     isDeleting?: boolean;

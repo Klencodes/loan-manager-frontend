@@ -9,7 +9,7 @@ File: scss
 @import url("https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i|Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&amp;display=swap");
 /*Social Media Colors*/
 /*Theme Colors*/
-/*---reset---*/
+/*=============================== reset===============================*/
 /*Body*/
 
 html {
@@ -31,7 +31,7 @@ body {
  
 
 
-/*---basic---*/
+/*=============================== basic===============================*/
 a {
   color: #222222; 
   cursor: pointer;
@@ -280,7 +280,7 @@ hr {
 #image-popups img {
   border-radius: 0.25rem; }
 
-/*---border radius---*/
+/*=============================== border radius===============================*/
 .rounded0 {
   border-radius: 0px; }
 
@@ -362,7 +362,7 @@ hr {
 .overflow-yv {
   overflow-y: visible; }
 
-/*---border---*/
+/*=============================== border===============================*/
 .b-0 {
   border: 0px solid #f0f0f0 !important; }
 
@@ -622,7 +622,7 @@ hr {
 .bar-0 {
   border-radius: 0 !important; }
 
-/*---vertical-align---*/
+/*=============================== vertical-align===============================*/
 .vertical-align {
   font-size: 0; }
 
@@ -11256,7 +11256,7 @@ Height property
 
   .max-h-lg-auto {
     max-height: auto !important; } }
-/*---Layout---*/
+/*=============================== Layout===============================*/
 .fixed .wrapper, .main-header .logo, .user-panel {
   overflow: hidden; }
 
@@ -11341,7 +11341,7 @@ Height property
   margin-left: auto; 
 }
 
-/*---art shape---*/
+/*=============================== art shape===============================*/
 .art-bg {
   top: 0;
   left: 0;
@@ -11411,7 +11411,7 @@ Height property
 .dask .fc-toolbar .fc-center {
   float: left; }
 
-/*---Header---*/
+/*=============================== Header===============================*/
 .page-header {
   margin: 10px 0 20px;
   padding-bottom: 9px;
@@ -12061,7 +12061,7 @@ body .main-header .navbar .nav > li.search-box > a:hover, body .main-header .nav
 @media (max-width: 1024px) {
   .app-menu .dropdown-mega-menu {
     width: 40rem; } }
-/*sidebar*/
+/*============================= sidebar ===============================*/
 .main-sidebar {
   position: absolute;
   top: 0;
@@ -12670,7 +12670,7 @@ body .main-header .navbar .nav > li.search-box > a:hover, body .main-header .nav
     font-weight: 300;
     font-size: 12px; }
 
-/*treeview*/
+/*================================ treeview =============================*/
 .treeview-menu {
   display: none;
   list-style: none;
@@ -12707,8 +12707,8 @@ body .main-header .navbar .nav > li.search-box > a:hover, body .main-header .nav
 .sidebar-menu .treeview-menu > li > a:hover i.ti-more:before {
   content: "\e628"; }
 
-/*---Pages Layout---*/
-/*---Page Content Header & Breadcrumb ---*/
+/*=============================== Pages Layout===============================*/
+/*=============================== Page Content Header & Breadcrumb ===============================*/
 .content-header {
   position: relative;
   padding: 15px 15px 0px; }
@@ -12894,7 +12894,7 @@ body .main-header .navbar .nav > li.search-box > a:hover, body .main-header .nav
 .scrollable {
   position: relative; }
 
-/*progress*/
+/*=============================== progress====================================*/
 .progress {
   margin-bottom: 20px;
   border-radius: 5px;
@@ -12972,7 +12972,7 @@ body .main-header .navbar .nav > li.search-box > a:hover, body .main-header .nav
 .progress-bar-default {
   background-color: #0e1319; }
 
-/*hidden*/
+/*=============================== hidden ===========================*/
 .hidden-xs-up {
   display: none !important; }
 
@@ -13013,7 +13013,7 @@ body .main-header .navbar .nav > li.search-box > a:hover, body .main-header .nav
   .chart-legend > li {
     float: left;
     margin-right: 10px; } }
-/*tab*/
+/*====================== tab =====================*/
 .tabcontent-border {
   border: 1px solid #bfbfbf;
   border-top: 0px; }
@@ -13023,7 +13023,7 @@ body .main-header .navbar .nav > li.search-box > a:hover, body .main-header .nav
   padding: 0.5rem 0.75rem;
   color: #737373; }
 
-/*Vertical tabs*/
+/*========================= Vertical tabs =============================*/
 .vtabs {
   display: table; }
   .vtabs .tabs-vertical {
@@ -13046,7 +13046,7 @@ body .main-header .navbar .nav > li.search-box > a:hover, body .main-header .nav
   border: 0px;
   color: #ffffff; }
 
-/*Custom vertical tab*/
+/*===================================== Custom vertical tab =============================*/
 .customvtab .tabs-vertical li .nav-link:hover, .customvtab .tabs-vertical li .nav-link:active, .customvtab .tabs-vertical li .nav-link:focus, .customvtab .tabs-vertical li .nav-link.active {
   background: transparent !important;
   border: 0px;
@@ -13062,7 +13062,7 @@ body .main-header .navbar .nav > li.search-box > a:hover, body .main-header .nav
 @media (max-width: 767px) {
   .vtabs .tabs-vertical {
     width: auto; } }
-/*google map Page*/
+/*=============================== google map Page ==============================*/
 .gmaps {
   height: 300px;
   background: #f0f0f0;
@@ -13100,7 +13100,7 @@ body .main-header .navbar .nav > li.search-box > a:hover, body .main-header .nav
     border-right: 16px solid transparent;
     border-bottom: 16px solid #843cf7; }
 
-/*wizard*/
+/*=============================== wizard===============================*/
 .wizard-content .wizard {
   width: 100%;
   overflow: hidden; }
@@ -13318,7 +13318,7 @@ body .main-header .navbar .nav > li.search-box > a:hover, body .main-header .nav
       float: left;
       width: 100%;
       margin: 5px 0px; } }
-/*weather*/
+/*================================ weather ===========================*/
 .weather-location input {
   background-color: rgba(0, 0, 0, 0.5);
   border: 1px solid rgba(255, 255, 255, 0.5); }
@@ -13334,7 +13334,7 @@ body .main-header .navbar .nav > li.search-box > a:hover, body .main-header .nav
   width: 90px;
   height: 90px; }
 
-/*---panel---*/
+/*=============================== panel===============================*/
 .panel {
   position: relative;
   background-color: #ffffff;
@@ -14127,7 +14127,7 @@ ul.panel-actions > li {
   padding-right: 0;
   padding-top: 10px; }
 
-/*---Notification---*/
+/*=============================== Notification===============================*/
 .myadmin-alert {
   border-radius: 0;
   color: #ffffff;
@@ -14273,7 +14273,7 @@ ul.panel-actions > li {
 .alert-info a.closed:hover {
   color: inherit; }
 
-/*---Advanced Medias---*/
+/*=============================== Advanced Medias===============================*/
 .media-body > * {
   margin-bottom: 5px;
   margin-top: 0; }
@@ -14307,7 +14307,7 @@ ul.panel-actions > li {
   .media.flex-column > * {
     margin: 0; }
 
-/*---avatar---*/
+/*=============================== avatar===============================*/
 .avatar {
   position: relative;
   display: inline-block;
@@ -14541,7 +14541,7 @@ ul.panel-actions > li {
 [data-provide~="more-avatar"] ~ .avatar {
   display: none; }
 
-/*---switch---*/
+/*=============================== switch===============================*/
 .switch {
   font-weight: 300;
   letter-spacing: 0;
@@ -14588,7 +14588,7 @@ ul.panel-actions > li {
     -webkit-box-shadow: 0px 0px 3px #57769c;
     box-shadow: 0px 0px 3px #57769c; }
 
-/*---fullscreen---*/
+/*=============================== fullscreen===============================*/
 [data-provide~="boxfull"].is-fullscreen .fullscreen-default, [data-provide~="fullscreen"].is-fullscreen .fullscreen-default {
   display: none; }
 
@@ -14609,7 +14609,7 @@ ul.panel-actions > li {
     white-space: nowrap; }
   .dl-horizontal dd {
     margin-left: 180px; } }
-/*products-list*/
+/*========================== products-list==========================*/
 .products-list {
   list-style: none;
   margin: 0;
@@ -14644,7 +14644,7 @@ ul.panel-actions > li {
   .product-list-in-box > .item:last-of-type {
     border-bottom-width: 0; }
 
-/*data table*/
+/*============================ data table =============================*/
 @media (max-width: 767px) {
   .table > tbody > tr > td, .table > tbody > tr > th {
     white-space: nowrap; }
@@ -14813,7 +14813,7 @@ tfoot input {
       color: #ffffff;
       border-radius: 4px; }
 
-/*direct-chat*/
+/*========================= direct-chat =============================*/
 .direct-chat .box-body {
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
@@ -14996,7 +14996,7 @@ time {
   font-size: 0.8571rem;
   color: #57769c; }
 
-/*---users-list---*/
+/*=============================== users-list===============================*/
 .users-list > li {
   width: 25%;
   float: left;
@@ -15022,7 +15022,7 @@ time {
   color: #737373;
   font-size: 0.8571rem; }
 
-/*---carousel-control---*/
+/*=============================== carousel-control===============================*/
 .carousel-control.left, .carousel-control.right {
   background-image: none; }
 .carousel-control > i {
@@ -15033,7 +15033,7 @@ time {
   display: inline-block;
   margin-top: -20px; }
 
-/*---widget---*/
+/*=============================== widget===============================*/
 .widget-user .widget-user-username, .widget-user-2 .widget-user-username, .widget-user-3 .widget-user-username, .widget-user-4 .widget-user-username {
   margin-bottom: 5px;
   font-size: 1.714rem; }
@@ -15123,7 +15123,7 @@ time {
   .box.widget-user-4 .overlay.overlay-none {
     background: rgba(0, 0, 0, 0); }
 
-/*mailbox*/
+/*=============================== mailbox ============================*/
 .mailbox-messages > .table {
   margin: 0; }
 .mailbox-messages .mailbox-date {
@@ -15189,7 +15189,7 @@ time {
       max-width: 100%;
       height: auto; }
 
-/*Extra Pages*/
+/*============================ Extra Pages ===========================*/
 .lockscreen-box-body {
   -webkit-box-shadow: 0 2px 2px 0 rgba(128, 128, 128, 0.14), 0 3px 1px -2px rgba(128, 128, 128, 0.2), 0 1px 5px 0 rgba(128, 128, 128, 0.12);
   box-shadow: 0 2px 2px 0 rgba(128, 128, 128, 0.14), 0 3px 1px -2px rgba(128, 128, 128, 0.2), 0 1px 5px 0 rgba(128, 128, 128, 0.12); }
@@ -15302,7 +15302,7 @@ time {
 .error-page > .error-content, .login-box .fog-pwd, .mailbox-attachment-icon, .mailbox-attachment-info, .mailbox-attachment-size {
   display: block; }
 
-/*lable floting*/
+/*============================== lable floting ===============================*/
 .has-warning .bar:before, .has-warning .bar:after {
   background: #f7cc05; }
 .has-warning .form-control:focus ~ label, .has-warning .form-control:valid ~ label {
@@ -15336,7 +15336,7 @@ time {
   .form-group.issue .help-block ul li {
     list-style: none; }
 
-/*invoice*/
+/*============================= invoice =============================*/
 .invoice {
   position: relative;
   background: #ffffff;
@@ -15393,7 +15393,7 @@ time {
 
   .table-responsive > .table tr td, .table-responsive > .table tr th {
     white-space: normal; } }
-/*profile*/
+/*============================== profile =============================*/
 .activitytimeline {
   position: relative;
   margin-left: 50px;
@@ -15438,7 +15438,7 @@ time {
 .img-sm + .img-push, .user-block.user-block-sm .comment, .user-block.user-block-sm .description, .user-block.user-block-sm .username {
   margin-left: 40px; }
 
-/*calendar*/
+/*=========================== calendar =============================*/
 .box .datepicker-inline, .box .datepicker-inline .datepicker-days, .box .datepicker-inline .datepicker-days > table, .box .datepicker-inline > table, .fc-grid {
   width: 100%; }
 
@@ -15642,7 +15642,7 @@ time {
 .list-header, .text-bold, .text-bold.table td, .text-bold.table th {
   font-weight: 700; }
 
-/*---Extra---*/
+/*=============================== Extra===============================*/
 .jqstooltip {
   padding: 5px !important;
   width: auto !important;
@@ -15705,7 +15705,7 @@ time {
   .chart canvas, .chart svg {
     width: 100% !important; }
 
-/*---icon & divider---*/
+/*=============================== icon & divider===============================*/
 @media (min-width: 768px) {
   .material-icon-list-demo .icons div {
     width: 33%;
@@ -15825,7 +15825,7 @@ time {
 .divider-lg {
   margin: 3rem auto; }
 
-/*---box group---*/
+/*=============================== box group===============================*/
 .box-img-top {
   width: 100%;
   border-top-left-radius: calc(.25rem - 1px);
@@ -15885,7 +15885,7 @@ time {
 .box-columns .box {
   margin-bottom: 20px; }
 
-/*---grid-stack---*/
+/*=============================== grid-stack===============================*/
 .grid-stack > .grid-stack-item > .grid-stack-item-content {
   border: 1px solid rgba(51, 51, 51, 0.13); }
 
@@ -15904,7 +15904,7 @@ time {
     display: block;
     margin: 20px 0 10px; }
 
-/* date-paginator */
+/*============================= date-paginator ============================*/
 .dp-selected[style] {
   background-color: #45b6c6 !important; }
 
@@ -15912,7 +15912,7 @@ time {
   position: relative;
   line-height: 1.42857143; }
 
-/**********Nestable**********/
+/*=============================== Nestable ============================*/
 .myadmin-dd .dd-list .dd-item .dd-handle {
   background: #ffffff;
   border: 1px solid rgba(51, 69, 90, 0.13);
@@ -15948,7 +15948,7 @@ time {
   font-size: 1.143rem;
   font-weight: 600; }
 
-/* ribbon */
+/*=========================== ribbon ===============================*/
 .ribbon-box {
   position: relative; }
   .ribbon-box .ribbon {
@@ -16026,7 +16026,7 @@ time {
       border-left: 3px solid black;
       border-top: 3px solid black; }
 
-/*---gallery---*/
+/*=============================== gallery===============================*/
 #gallery-header-center-center {
   line-height: 35px;
   margin-bottom: 0px;
@@ -16040,7 +16040,7 @@ time {
 #gallery-header-center {
   text-align: right; }
 
-/*---subheader__daterange---*/
+/*=============================== subheader__daterange===============================*/
 .subheader_daterange {
   display: inline-block;
   -webkit-border-radius: 5px;
@@ -16055,7 +16055,7 @@ time {
   .subheader_daterange .subheader_daterange-label {
     padding: .5rem 0.25rem; }
 
-/*---ecommerece pages---*/
+/*=============================== ecommerece pages===============================*/
 .product-img {
   text-align: center;
   position: relative;
@@ -16156,7 +16156,7 @@ time {
       color: #ffffff;
       line-height: 30px; }
 
-/*Font Icon demo style*/
+/*========================== Font Icon demo style ==========================*/
 .fontawesome-icon-list .fa-hover {
   cursor: pointer;
   line-height: 50px;
@@ -16240,7 +16240,7 @@ time {
 @media (max-width: 767px) {
   .bs-glyphicons li {
     width: 50%; } }
-/*---web tickers---*/
+/*=============================== web tickers===============================*/
 .tickers-block .tickercontainer .cc {
   font-size: 1.429rem;
   margin: 0; }
@@ -16259,7 +16259,7 @@ time {
   z-index: 1;
   background: transparent !important; }
 
-/*-- timer --*/
+/*===============================  timer ============================== */
 .timer {
   font-size: 3.2rem;
   display: inline-block;
@@ -16273,7 +16273,7 @@ time {
   letter-spacing: 4px;
   font-weight: 400; }
 
-/*-- light on-off --*/
+/*===============================  light on-off ============================== */
 .light-skin .switch-on {
   display: block;
   color: #f7cc05; }
@@ -16286,7 +16286,7 @@ time {
   display: block;
   color: #8c8c8c; }
 
-/*---dash world map---*/
+/*=============================== dash world map===============================*/
 .map-marker {
   /* adjusting for the marker dimensions
   so that it is centered on coordinates */
@@ -16349,7 +16349,7 @@ time {
   width: 40%;
   left: 40px; }
 
-/* ps-scrollbar */
+/*============================= ps-scrollbar =================================*/
 .ps-container {
   -ms-touch-action: auto;
   touch-action: auto;
@@ -16489,7 +16489,7 @@ time {
   -moz-transition: background-color .2s linear, opacity .2s linear;
   transition: background-color .2s linear, opacity .2s linear; }
 
-/*form-element*/
+/*========================= form-element ================================*/
 .form-element .input-group .input-group-addon {
   border: none;
   -webkit-background-clip: padding-box;
@@ -16570,8 +16570,7 @@ time {
   margin-bottom: 10px;
   display: inline-block; }
 
-/* Radio Buttons
-   ========================================================================== */
+/*================================ Radio Buttons ============================ */
 [type="radio"]:not(:checked),
 [type="radio"]:checked {
   position: absolute;
@@ -17063,7 +17062,7 @@ textarea.form-control {
 .btn.bootstrap-touchspin-down {
   border-radius: 5px; }
 
-/*---form-group---*/
+/*=============================== form-group===============================*/
 .input-group-append .btn, .input-group-prepend .btn {
   border-radius: 5px; }
 
@@ -17662,7 +17661,7 @@ textarea.form-control {
     -o-transition: all .4s ease-in-out;
     transition: all .4s ease-in-out; }
 
-/*---card---*/
+/*=============================== card===============================*/
 .card {
   border-radius: 0.25rem;
   box-shadow: 0 10px 15px -5px rgba(0, 0, 0, 0.07);
@@ -17737,7 +17736,7 @@ textarea.form-control {
   .card-inverse h1, .card-inverse h2, .card-inverse h3, .card-inverse h4, .card-inverse h5, .card-inverse h6, .card-inverse .card-title, .card-inverse small, .card-inverse .card-controls li > a {
     color: #ffffff !important; }
 
-/*---box-comments---*/
+/*=============================== box-comments===============================*/
 .box-comments {
   background-color: #f0f0f0; }
   .box-comments .box-comment {
@@ -17765,7 +17764,7 @@ textarea.form-control {
     font-weight: 300;
     font-size: 0.8571rem; }
 
-/*---info-box---*/
+/*=============================== info-box===============================*/
 .box-input {
   max-width: 200px; }
 
@@ -17828,7 +17827,7 @@ textarea.form-control {
 .progress-description {
   margin: 0; }
 
-/*---badges---*/
+/*=============================== badges===============================*/
 .badge {
   border-radius: 3px;
   font-weight: 300;
@@ -17954,7 +17953,7 @@ textarea.form-control {
 .list-group .badge-pill {
   margin-top: 3px; }
 
-/*---modal---*/
+/*=============================== modal===============================*/
 .modal-left .modal-content {
   height: 100%;
   display: -webkit-box;
@@ -18097,7 +18096,7 @@ textarea.form-control {
 .model_img {
   cursor: pointer; }
 
-/*---mask Formatter---*/
+/*=============================== mask Formatter===============================*/
 .sidetitle {
   font-style: italic;
   margin-left: 0.5rem; }
@@ -18109,7 +18108,7 @@ textarea.form-control {
   margin-top: 8px;
   margin-bottom: 5px; }
 
-/*---flexbox---*/
+/*=============================== flexbox===============================*/
 .flexbox {
   display: -webkit-box;
   display: flex;
@@ -18145,7 +18144,7 @@ ul.flexbox {
   padding-left: 0;
   margin-bottom: 0; }
 
-/*---dropdown---*/
+/*=============================== dropdown===============================*/
 .dropdown-toggle {
   cursor: pointer;
   -webkit-transition: .2s linear;
@@ -18282,7 +18281,7 @@ ul.flexbox {
   margin-right: 6px;
   font-size: 0.875rem; }
 
-/*---Statistic widgets---*/
+/*=============================== Statistic widgets===============================*/
 .percent {
   display: inline-block;
   line-height: 110px;
@@ -18314,7 +18313,7 @@ ul.flexbox {
     top: 0;
     left: 0; }
 
-/*---media---*/
+/*=============================== media===============================*/
 .box .media,
 .box .box-body .media,
 .box .box-header .media,
@@ -18632,7 +18631,7 @@ ul.flexbox {
 .media-grid-hover .media:hover {
   background-color: #f0f0f0; }
 
-/*---blog and other widgets ---*/
+/*=============================== blog and other widgets ===============================*/
 [class*="img-hov-"] {
   overflow: hidden; }
   [class*="img-hov-"] img {
@@ -18833,7 +18832,7 @@ ul.flexbox {
   .gap-y.gap-items-5 > * {
     margin: 16px; }
 
-/*---background and overlay ---*/
+/*=============================== background and overlay ===============================*/
 .bg-img {
   position: relative;
   border-bottom: none;
@@ -18996,7 +18995,7 @@ ul.flexbox {
 [data-scrim-bottom="9"]::before {
   opacity: 0.9; }
 
-/*---blockquote ---*/
+/*=============================== blockquote ===============================*/
 .blockquote {
   font-style: italic;
   margin-left: 2rem;
@@ -19030,7 +19029,7 @@ ul.flexbox {
   border-right: 0.25rem solid #f0f0f0;
   border-left: 0; }
 
-/*---nav-dot ---*/
+/*=============================== nav-dot ===============================*/
 .nav-dot-separated .nav-item::after, .nav-dot-separated > .nav-link::after {
   content: '/';
   vertical-align: middle;
@@ -19050,7 +19049,7 @@ ul.flexbox {
 .nav.no-gutters > .nav-link:first-child, .nav.no-gutters .nav-item:first-child .nav-link {
   padding-left: 0; }
 
-/*---rating ---*/
+/*=============================== rating ===============================*/
 .rating {
   display: -webkit-inline-box;
   display: inline-flex;
@@ -19115,7 +19114,7 @@ ul.flexbox {
 .rating-dark .active, .rating-dark :checked ~ label, .rating-dark label:hover, .rating-dark label:hover ~ label {
   color: #0e1319; }
 
-/*---toggler ---*/
+/*=============================== toggler ===============================*/
 .toggler {
   color: #f0f0f0;
   cursor: pointer;
@@ -19139,7 +19138,7 @@ ul.flexbox {
 .toggler-secondary input:checked + i {
   color: #4e6a8b; }
 
-/*---box nav-tab---*/
+/*=============================== box nav-tab===============================*/
 .nav-tabs .nav-link {
   position: relative;
   color: #33455a;
@@ -19240,7 +19239,7 @@ ul.flexbox {
     order: 1;
     padding-right: 20px; }
 
-/*---lookup---*/
+/*=============================== lookup===============================*/
 .lookup {
   position: relative;
   display: -webkit-block;
@@ -19479,7 +19478,7 @@ ul.flexbox {
     .lookup-fullscreen .lookup-results.scrollable .row [class*="col-"] {
       padding-left: 0;
       padding-right: 0; } }
-/*---publisher---*/
+/*=============================== publisher===============================*/
 .publisher {
   position: relative;
   display: -webkit-box;
@@ -19537,7 +19536,7 @@ ul.flexbox {
     left: -14.5px;
     top: auto; }
 
-/*---price---*/
+/*=============================== price===============================*/
 .price {
   font-weight: bold;
   font-size: 5.4285714286rem;
@@ -19567,7 +19566,7 @@ ul.flexbox {
   margin-bottom: 14px;
   color: #33455a; }
 
-/*---todo-list---*/
+/*=============================== todo-list===============================*/
 .todo-list {
   margin: 0;
   padding: 0;
@@ -19697,7 +19696,7 @@ td .label {
   padding-left: 5px;
   padding-right: 5px; }
 
-/*---chat---*/
+/*=============================== chat===============================*/
 .chat {
   padding: 5px 20px 5px 10px; }
   .chat .item {
@@ -19744,7 +19743,7 @@ td .label {
         content: " ";
         display: table; }
 
-/*---timeline---*/
+/*=============================== timeline===============================*/
 .timeline {
   width: 100%;
   position: relative;
@@ -21562,7 +21561,7 @@ button.btn.dropdown-toggle:after {
   .btn-flat circle {
     fill: rgba(255, 255, 255, 0.3); }
 
-/*---social media background---*/
+/*=============================== social media background===============================*/
 .bg-bitbucket {
   background-color: #205081; }
 
@@ -22043,7 +22042,7 @@ button.btn.dropdown-toggle:after {
           padding: 6px;
           box-shadow: 0px 0px 5px 0.25px #eff1f7; } }
 
-/*---project table---*/
+/*=============================== project table ===============================*/
 .dataTable tbody .details-control:before {
   font-family: FontAwesome;
   content: "\f055";

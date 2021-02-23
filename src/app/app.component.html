@@ -11,17 +11,15 @@
     </nav> -->
     <leftside-nav *ngIf="account"></leftside-nav>
     <div class="content-wrapper">
-       <div class="container">
+        <div class="container">
             <!-- subnav router outlet -->
-        <router-outlet name="subnav"></router-outlet>
-
-        <!-- global alert -->
-        <alert></alert>
-
-        <!-- main router outlet -->
-        <router-outlet></router-outlet>
-       </div>
+            <router-outlet name="subnav"></router-outlet>
+            <!-- global alert -->
+            <alert></alert>
+            <!-- main router outlet -->
+            <router-outlet></router-outlet>
+        </div>
     </div>
-
 </div>
-<rightside-nav *ngIf="account" class="control-sidebar"></rightside-nav>
+<footer-nav *ngIf="account"></footer-nav>
+<rightside-nav class="control-sidebar"></rightside-nav>

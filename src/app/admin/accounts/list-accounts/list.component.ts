@@ -20,7 +20,7 @@ export class ListComponent implements OnInit {
          .subscribe((result:Account[]) =>{
              this.accounts = result['accounts'];
              this.count = result['count']
-             // console.log(result, 'Result Object')
+            //  console.log(result, 'Result Object')
          });
     }
 
