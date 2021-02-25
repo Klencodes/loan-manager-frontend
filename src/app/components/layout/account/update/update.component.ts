@@ -3,7 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 
-import { AccountService, AlertService } from 'src/app/services';
+import { AccountService, AlertService } from 'src/app/services/_index';
 import { MustMatch } from 'src/app/validators';
 
 @Component({ templateUrl: 'update.component.html' })

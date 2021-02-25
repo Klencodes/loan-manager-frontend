@@ -1,6 +1,6 @@
 ﻿import { Component, OnInit } from '@angular/core';
 
-import { AccountService } from 'src/app/services';
+import { AccountService } from 'src/app/services/_index';
 
 @Component({ templateUrl: 'details.component.html' })
 export class DetailsComponent implements OnInit{

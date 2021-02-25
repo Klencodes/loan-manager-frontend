@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Account } from 'src/app/models';
-import { AccountService } from 'src/app/services';
+import { AccountService } from 'src/app/services/_index';
 
 @Component({
   templateUrl: './view.component.html',

@@ -1,4 +1,4 @@
-import { AccountService } from 'src/app/services';
+import { AccountService } from 'src/app/services/_index';
 
 export function appInitializer(accountService: AccountService) {
     return () => new Promise(resolve => {

@@ -3,7 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 
-import { AccountService, AlertService, UtilityService } from 'src/app/services';
+import { AccountService, AlertService } from 'src/app/services/_index';
 import { MustMatch } from 'src/app/validators';
 import { Role } from 'src/app/models';
 
@@ -24,7 +24,6 @@ export class AddEditComponent implements OnInit {
         private router: Router,
         private accountService: AccountService,
         private alertService: AlertService,
-        private utilityService: UtilityService
     ) {}
 
     ngOnInit() {

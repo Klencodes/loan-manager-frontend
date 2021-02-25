@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Role, Account } from 'src/app/models';
-import { AccountService } from 'src/app/services';
+import { AccountService } from 'src/app/services/_index';
 
 @Component({
   selector: 'header-nav',

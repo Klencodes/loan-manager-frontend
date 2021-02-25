@@ -2,7 +2,7 @@
 import { Router, ActivatedRoute } from '@angular/router';
 import { first } from 'rxjs/operators';
 
-import { AccountService, AlertService } from 'src/app/services';
+import { AccountService, AlertService } from 'src/app/services/_index';
 
 enum EmailStatus {
     Verifying,

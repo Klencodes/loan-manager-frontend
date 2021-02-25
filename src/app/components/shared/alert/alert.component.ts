@@ -3,7 +3,7 @@ import { Router, NavigationStart } from '@angular/router';
 import { Subscription } from 'rxjs';
 
 import { Alert, AlertType } from 'src/app/models';
-import { AlertService } from 'src/app/services';
+import { AlertService } from 'src/app/services/_index';
 
 @Component({ 
 selector: 'alert', 

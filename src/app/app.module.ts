@@ -6,7 +6,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { JwtInterceptor, ErrorInterceptor, appInitializer } from './_helpers';
-import { AccountService } from './services';
+import { AccountService } from './services/_index';
 import { AppComponent } from './app.component';
 import { SharedModule } from './components/shared/shared.module';
 import { HomeComponent, LayoutComponent } from './components/layout/home';
