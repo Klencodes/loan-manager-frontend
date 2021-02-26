@@ -1,0 +1,204 @@
+﻿<!-- Contentcontent-header Header (Page header) -->
+<div class="d-flex align-items-center bg-white">
+    <!-- Left side dashboard -->
+    <div class="mr-auto">
+        <div class="page-title mx-3 py-4">Overview</div>
+    </div>
+    <div class="right-title">
+        <div class="d-flex justify-content-end mr-4">
+            <a routerLink="accounts" class="font-size-16 mb-5"><i class="mdi mdi-account-key"></i> Manage Accounts</a>
+        </div>
+    </div>
+</div>
+<!-- Main content -->
+<section class="content">
+    <!-- overview card -->
+    <div class="row">
+        <div class="col-md-6 col-lg-4 col-12">
+            <div class="box" routerLink="accounts">
+                <div class="box-body p-40">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h2 class="my-0 font-weight-700">{{countAccounts}}/{{countUsers}}</h2>
+                            <p class="text-fade mb-0">Total Users </p>
+                        </div>
+                        <div class="icon">
+                            <i class="fa fa-users bg-info mr-0"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-4 col-12">
+            <div class="box" routerLink="loans">
+                <div class="box-body p-40">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h2 class="my-0 font-weight-700">{{totalLoans}}</h2>
+                            <p class="text-fade mb-0">Total Loans </p>
+                        </div>
+                        <div class="icon">
+                            <i class="fa fa-truck bg-warning mr-0"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-4 col-12">
+            <div class="box">
+                <div class="box-body p-40">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h2 class="my-0 font-weight-700">462</h2>
+                            <p class="text-fade mb-0">Approved Loans </p>
+                        </div>
+                        <div class="icon">
+                            <i class="fa fa-dollar bg-primary mr-0"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-4 col-12">
+            <div class="box">
+                <div class="box-body p-40">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h2 class="my-0 font-weight-700">562</h2>
+                            <p class="text-fade mb-0">Total Payments </p>
+                        </div>
+                        <div class="icon">
+                            <i class="fa fa-truck bg-secondary mr-0"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-4 col-12">
+            <div class="box">
+                <div class="box-body p-40">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h2 class="my-0 font-weight-700">4.562</h2>
+                            <p class="text-fade mb-0">Risk Loans </p>
+                        </div>
+                        <div class="icon">
+                            <i class="fa fa-truck bg-danger mr-0"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-4 col-12">
+            <div class="box">
+                <div class="box-body p-40">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h2 class="my-0 font-weight-700">4.562</h2>
+                            <p class="text-fade mb-0">Recovered Loans </p>
+                        </div>
+                        <div class="icon">
+                            <i class="fa fa-truck bg-success mr-0"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Table list view -->
+    <div class="box">
+        <div class="box-header with-border table-bg">
+            <h4 class="box-title">Accounts</h4>
+            <h6 class="box-subtitle">List of Account</h6>
+        </div>
+        <div class="box-body p-15">
+            <div class="table-responsive">
+                <div id="tickets_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4 no-footer">
+                    <!-- Filters Panel -->
+                    <div class="">
+                        <h4 class="box-title">FILTER TYPES <b>DATEPICKER</b></h4>
+                        <!-- Filter Right Side -->
+                        <div class="box-controls pull-right">
+                            <div class="lookup lookup-circle lookup-right">
+                                <input type="text" placeholder="Find Account">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <table id="customers" class="table mt-0 table-hover no-wrap">
+                                <thead>
+                                    <tr role="row">
+                                        <th>First Name</th>
+                                        <th>Last Name</th>
+                                        <th>Email</th>
+                                        <th>Role</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    <tr class="tr-border" *ngFor="let account of accounts; let i = index">
+                                        <td>{{account.firstName}}</td>
+                                        <td>{{account.lastName}}</td>
+                                        <td>{{account.email}}</td>
+                                        <td>{{account.role}}</td>
+                                        <!-- <td><span class="badge badge-warning">New</span> </td> -->
+                                        <td>
+                                            <a routerLink="accounts/user/{{account.id}}"
+                                                class="font-size-18 text-success mr-3">
+                                                <i class="ti-eye"></i>
+                                            </a>
+                                            <a (click)="deleteAccount(account.id, i)"
+                                                class="font-size-16 text-danger mr-1">
+                                                <i class="ti ti-trash"></i>
+                                                <span *ngIf="accounts.isDeleting"
+                                                    class="spinner-border spinner-border-sm"></span>
+                                                <span *ngIf="!accounts.isDeleting"></span>
+                                            </a>
+
+                                        </td>
+                                    </tr>
+                                    <!-- Spinner isLoading -->
+                                    <tr *ngIf="!accounts">
+                                        <td colspan="12" class="text-center">
+                                            <span
+                                                class="text-success spinner-border spinner-border-lg align-center"></span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- Paginqtion area -->
+                    <div class="row">
+                        <div class="col-sm-12 col-md-5">
+                            <div class="dataTables_info" id="tickets_info" role="status" aria-live="polite">
+                                Showing 1 to 10 of 20 entries</div>
+                        </div>
+                        <div class="col-sm-12 col-md-7">
+                            <div class="dataTables_paginate paging_simple_numbers" id="tickets_paginate">
+                                <ul class="pagination">
+                                    <li class="paginate_button page-item previous disabled" id="tickets_previous"><a
+                                            href="#" aria-controls="tickets" data-dt-idx="0" tabindex="0"
+                                            class="page-link">Previous</a>
+                                    </li>
+                                    <li class="paginate_button page-item active"><a href="#" aria-controls="tickets"
+                                            data-dt-idx="1" tabindex="0" class="page-link">1</a></li>
+                                    <li class="paginate_button page-item "><a href="#" aria-controls="tickets"
+                                            data-dt-idx="2" tabindex="0" class="page-link">2</a></li>
+                                    <li class="paginate_button page-item next" id="tickets_next"><a href="#"
+                                            aria-controls="tickets" data-dt-idx="3" tabindex="0"
+                                            class="page-link">Next</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.row -->
+
+</section>

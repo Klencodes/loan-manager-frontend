@@ -8,6 +8,7 @@ import { MustMatch } from 'src/app/validators';
 import { Role } from 'src/app/models';
 
 @Component({ templateUrl: 'add-edit.component.html' })
+
 export class AddEditComponent implements OnInit {
     form: FormGroup;
     id: string;
@@ -15,8 +16,6 @@ export class AddEditComponent implements OnInit {
     loading = false;
     submitted = false;
     roles: Role[]
-    country = new FormControl;
-    states: string[] | undefined;
 
     constructor(
         private formBuilder: FormBuilder,
@@ -55,14 +54,6 @@ export class AddEditComponent implements OnInit {
                 .pipe(first())
                 .subscribe(x => this.form.patchValue(x));
         }
-
-        // this.country.valueChanges.subscribe(country => {
-        //     if (country === 'Ghana') {
-        //       this.states['state'] = this.utilityService.getGhanaRegions;
-        //     } else if (country === 'Nigeria') {
-        //       this.states['state'] = this.utilityService.getNigeriaStates;
-        //     }
-        //   });
     }
   
     // convenience getter for easy access to form fields
