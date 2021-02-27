@@ -2,7 +2,7 @@ export const environment = {
     production: false,
     BASE_URL: 'http://localhost:4000',
     ACCOUNTS_ENDPOINT: 'http://localhost:4000/accounts/',
-    LOANS_ENDPOINT: 'http://localhost:4000/loans/',
+    LOANS_ENDPOINT: 'loans/',
 
     ACCOUNTS: {
         USERS_ONLY: 'users',
@@ -19,7 +19,8 @@ export const environment = {
 
     LOANS: { 
         GET_ALL_LOANS: 'all-loans',
-        LOAN_DOCUMENT: 'documents',
+        ADMIN_GET_LOANBYID: 'find',
+        LOAN_DOCUMENTS: 'documents',
         REQUEST_LOAN: 'request'
     }
   };

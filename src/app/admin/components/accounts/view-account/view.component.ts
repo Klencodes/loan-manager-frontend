@@ -16,6 +16,10 @@ export class ViewComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.accountById()
+  }
+
+  accountById(){
     this.id = this.route.snapshot.paramMap.get('id');
     this.accountService.getById(this.id).subscribe(res => {
       this.accountDetails = res;
