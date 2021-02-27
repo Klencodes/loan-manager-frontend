@@ -15,8 +15,8 @@ export class ViewComponent implements OnInit {
 
   constructor(
     private route?: ActivatedRoute,
-    private loanService?: LoanService,
-  ) {  }
+    private loanService?: LoanService
+  ) {}
 
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id');
@@ -24,24 +24,17 @@ export class ViewComponent implements OnInit {
   }
 
   //This contains All information available on a particular user
-  getGeneralUserInfo(){
-    this.loanService.getById(this.id).subscribe((res:Loan[]) => {
+  getGeneralUserInfo() {
+    this.loanService.getById(this.id).subscribe((res: Loan[]) => {
       this.loanDetails = res['loans'];
-      console.log(res, 'LOAN DETAILS')
-      //this is all documents submitted with a loan by User
-      this.getDocumentsByLoanId();
-      //this is all User basic details
-      
+      if (this.id) {
+        //this is all documents submitted with a loan by User
+        this.loanService.getAllDocuments(this.id).subscribe((doc: any) => {
+          this.docs = doc['documents'];
+        });
+      } else {
+        this.id === undefined;
+      }
     });
-
   }
-
-  getDocumentsByLoanId(){
-    this.loanService.getAllDocuments(this.id).subscribe((doc:any) => {
-      this.docs = doc['documents'] 
-      console.log(this.docs, 'DOCUMENT DETAILS')
-
-    })
-  }
-
 }

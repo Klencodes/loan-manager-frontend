@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { LoanService, AlertService } from 'src/app/services/_index';
 
 @Component({
+  selector: 'requst-loan',
   templateUrl: './request.component.html',
 })
 export class RequestComponent implements OnInit {
@@ -36,12 +37,10 @@ export class RequestComponent implements OnInit {
 
   requestLoan() {
     this.loanService.requestLoan(this.requestForm.value).subscribe((res) => {
-      console.log(res)
-      console.log(this.requestForm.value)
-      this.alertService.success(res['message'], {
-        keepAfterRouteChange: true,
+      this.alertService.success(res['message'], {});
+      this.router.navigate(['/']).then(() =>{
+        this.router.navigate(['/loans']);
       });
-      this.router.navigate(['../'], { relativeTo: this.route });
     });
   }
 

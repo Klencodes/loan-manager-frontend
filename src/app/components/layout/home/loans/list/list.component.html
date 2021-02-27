@@ -6,7 +6,7 @@
   </div>
   <div class="right-title">
       <div class="d-flex justify-content-end mr-4">
-          <a routerLink="request" class="font-weight-600 mb-5"><i class="si si-plus mr-2"></i>Request Loan</a>
+          <a type="button" class="btn btn-rounded btn-info" data-toggle="modal" data-target="#modal-center" class="font-weight-600 mb-5"><i class="si si-plus mr-2"></i>Request Loan</a>
       </div>
   </div>
 </div>
@@ -64,8 +64,7 @@
                                       </td>
                                       <td>{{loan.statusDate | date: 'dd/MM/yyyy' }}</td>
                                       <td>
-                                          <a class="btn btn-sm btn-rounded btn-info font-size-18 text-success mr-2" data-toggle="modal"
-                                          data-target="#modal-center">
+                                          <a class="btn btn-sm btn-rounded btn-info font-size-18 mr-2">
                                               <i class="text-white ti-eye"></i>
                                           </a>
                                       </td>
@@ -113,7 +112,7 @@
 
 
 <!-- Modal -->
-<div class="modal center-modal fade" id="modal-center" tabindex="-1">
+<div class="modal center-modal" id="modal-center">
   <div class="modal-dialog">
       <div class="modal-content">
           <div class="modal-header">
@@ -123,8 +122,8 @@
               </button>
           </div>
           <div class="modal-body">
-              
-            
+              <requst-loan></requst-loan>
+
           </div>
           <div class="modal-footer modal-footer-uniform">
               <button type="button" class="btn btn-rounded btn-info float-right" data-dismiss="modal">Close</button>

@@ -8,7 +8,7 @@ import { LoanService, AlertService } from 'src/app/services/_index';
 })
 export class ListComponent implements OnInit {
   
-  modalTitle = 'Loan Details'
+  modalTitle = 'Request New Loan'
   $loansObj: any;
   loans: Loan[];
   isDeleting: Boolean;
