@@ -1,13 +1,14 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Doc, Loan } from 'src/app/models';
-import { AccountService, LoanService } from 'src/app/services/_index';
+import { Loan } from 'src/app/models';
+import { LoanService } from 'src/app/services/_index';
 
 @Component({
-  selector: 'view',
-  templateUrl: './view.component.html',
+  selector: 'view-loan',
+  templateUrl: './view-loan.component.html'
 })
-export class ViewComponent implements OnInit {
+export class ViewLoanComponent implements OnInit {
+
   loans: Loan[];
   docs: any;
   id: string = '';
@@ -15,7 +16,7 @@ export class ViewComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private loanService?: LoanService
+    private loanService: LoanService
   ) {}
 
   ngOnInit(): void {

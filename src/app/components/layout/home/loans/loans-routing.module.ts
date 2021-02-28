@@ -1,11 +1,16 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ListComponent } from './list/list.component';
-import { RequestComponent } from './request/request.component';
+import { AddEditDocComponent } from './add-edit-doc/add-edit-doc.component';
+import { ListLoansComponent } from './list-loans/list-loans.component';
+import { RequestLoanComponent } from './request-loan/request-loan.component';
+import { ViewLoanComponent } from './view-loan/view-loan.component';
 
 const routes: Routes = [
-  { path: '', component: ListComponent },
-  { path: 'request', component: RequestComponent }
+  { path: '', component: ListLoansComponent },
+  { path: 'request', component: RequestLoanComponent },
+  { path: 'view/:id', component: ViewLoanComponent },
+  { path: ':id/document', component: AddEditDocComponent },
+  { path: ':id/document/:docId', component: AddEditDocComponent },
 ];
 
 @NgModule({

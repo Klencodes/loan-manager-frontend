@@ -7,7 +7,6 @@
             </span>
         </div>
         <div class="box-body">
-
             <div class="container">
                 <div id="accordion">
                     <div class="">
@@ -54,11 +53,11 @@
                                 </div>
                                 <td>
                                     <table class="table-responsive" cellpadding="5" cellspacing="0" border="0" style="width: 100%;">
-                                        <div class="" *ngFor="let document of docs">
+                                      
                                             <tr class="text-bold">Document Details
                                             </tr>
                                             <hr style="margin: 5px 0px 1rem;">
-                                            <tbody >
+                                            <tbody *ngFor="let document of docs">
                                                 <div class="mb-3">
                                                     <tr>
                                                         <td>Doc ID:</td>
@@ -77,16 +76,12 @@
                                                         <td>{{document.created | date: 'dd/MM/yy - hh:mm:ss'}}</td>
                                                     </tr>
                                                     <tr>
-                                                        <td>Action:</td>
-                                                        <td><button class="btn btn-xs btn-danger pull-right ml-1">Delete Record</button>
-                                                            <button class="btn btn-xs btn-success pull-right">Save Changes</button>
-                                                        </td>
                                                     </tr>
                                                 </div>
                                                 <hr><hr>
                                                 
                                             </tbody>
-                                        </div>
+                                       
                                     </table>
                                 </td>
                             </div>

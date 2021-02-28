@@ -13,7 +13,7 @@ export class ConstantService {
     return this.httpClient.get(`${this.BASE_URL}/${url}`)
   }
 
-  getById(url: string){
+  get(url: string){
     return this.httpClient.get(`${this.BASE_URL}/${url}`)
   }
 

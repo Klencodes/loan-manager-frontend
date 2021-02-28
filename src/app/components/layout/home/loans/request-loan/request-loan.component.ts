@@ -4,16 +4,12 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { LoanService, AlertService } from 'src/app/services/_index';
 
 @Component({
-  selector: 'requst-loan',
-  templateUrl: './request.component.html',
+  selector: 'request-loan',
+  templateUrl: './request-loan.component.html'
 })
-export class RequestComponent implements OnInit {
-  loanTypes = [
-    'Personal Loan',
-    'Agriculture Loan',
-    'Business Loan',
-    'Property Loan',
-  ];
+export class RequestLoanComponent implements OnInit {
+
+  loanTypes = ['Personal Loan', 'Agriculture Loan', 'Business Loan', 'Property Loan', ];
   submitted: Boolean = false;
   isAddMode: Boolean;
   requestForm: FormGroup;
@@ -37,10 +33,9 @@ export class RequestComponent implements OnInit {
 
   requestLoan() {
     this.loanService.requestLoan(this.requestForm.value).subscribe((res) => {
+      this.id = res['LoanDoc'].id
       this.alertService.success(res['message'], {});
-      this.router.navigate(['/']).then(() =>{
-        this.router.navigate(['/loans']);
-      });
+      this.router.navigate(['/loans', this.id, 'document']);
     });
   }
 

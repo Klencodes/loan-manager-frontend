@@ -6,11 +6,11 @@
     </div>
     <div class="right-title">
         <div class="d-flex justify-content-end mr-4">
-            <a routerLink="add" class="font-weight-600 mb-5"><i class="si si-plus mr-2"></i>Add Loan</a>
+            <a type="button" class="btn btn-rounded btn-info" data-toggle="modal" data-target="#modal-center" class="font-weight-600 mb-5"><i class="si si-plus mr-2"></i>Request Loan</a>
         </div>
     </div>
-</div>
-<section class="content">
+  </div>
+  <section class="content">
     <!-- Table list view -->
     <div class="box">
         <div class="box-header with-border table-bg">
@@ -30,7 +30,7 @@
                             </div>
                         </div>
                     </div>
-
+  
                     <div class="row">
                         <div class="col-sm-12">
                             <table id="customers" class="table mt-0 table-hover no-wrap">
@@ -38,7 +38,6 @@
                                     <tr role="row">
                                         <th>Loan ID</th>
                                         <th>Loan Type</th>
-                                        <th>Account Name</th>
                                         <th>Amount</th>
                                         <th>Request Dated</th>
                                         <th>Status</th>
@@ -47,11 +46,10 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-
+  
                                     <tr class="tr-border" *ngFor="let loan of loans; let i = index">
-                                        <td>{{loan.id | uppercase | slice: 0:9}}</td>
+                                        <td>{{loan.id | slice: 0:10 | uppercase}}</td>
                                         <td>{{loan.loanType}}</td>
-                                        <td>{{loan.accountId.firstName}} {{loan.accountId.lastName}}</td>
                                         <td>{{loan.loanAmount | currency: 'GHS '}}</td>
                                         <td>{{loan.created | date: 'dd/MM/yyyy - hh:mm'}}</td>
                                         <!-- <td><span class="badge badge-warning">{{loan.loanStatus}}</span> </td> -->
@@ -64,21 +62,11 @@
                                         <td *ngIf="loan.loanStatus === 'Canceled'"> <span class="badge badge-danger">{{
                                                 loan.loanStatus }}</span>
                                         </td>
-                                        <td>{{loan.statusDate | date: 'dd/MM/yyyy'}}</td>
+                                        <td>{{loan.statusDate | date: 'dd/MM/yyyy' }}</td>
                                         <td>
-                                            <a [routerLink]="['view', loan.id]" class="font-size-18 text-success mr-2">
-                                                <i class="ti-eye"></i>
+                                            <a [routerLink]="['view', loan.id]" class="btn btn-sm btn-rounded btn-info font-size-18 mr-2">
+                                                <i class="text-white ti-eye"></i>
                                             </a>
-                                            <a routerLink="edit/{{loan.id}}" class="font-size-16 text-info mr-2">
-                                                <strong><i class="si si-pencil"></i></strong>
-                                            </a>
-                                            <a (click)="deleteLoan(loan.id, i)" class="font-size-16 text-danger mr-1">
-                                                <i class="ti ti-trash"></i>
-                                                <span *ngIf="loans.isDeleting"
-                                                    class="spinner-border spinner-border-sm"></span>
-                                                <span *ngIf="!loans.isDeleting"></span>
-                                            </a>
-
                                         </td>
                                     </tr>
                                     <!-- Spinner isLoading -->
@@ -120,4 +108,27 @@
             </div>
         </div>
     </div>
-</section>
+  </section>
+  
+  
+  <!-- Modal -->
+  <div class="modal center-modal" id="modal-center">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="page-title">{{modalTitle}}</div>
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <request-loan></request-loan>
+  
+            </div>
+            <div class="modal-footer modal-footer-uniform">
+                <button type="button" class="btn btn-rounded btn-info float-right" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+  </div>
+  <!-- /.modal -->
