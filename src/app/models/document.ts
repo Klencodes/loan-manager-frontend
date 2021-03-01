@@ -4,4 +4,7 @@ export class Doc {
     idNumber: string;
     created: Date;
     updated?: Date;
+    isDeleting?: boolean;
+    message: string;
+    
 }

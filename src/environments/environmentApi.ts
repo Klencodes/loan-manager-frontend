@@ -18,8 +18,11 @@ export const environment = {
   },
 
   LOANS: {
-    GET_ALL_LOANS: 'all-loans',
-    ADMIN_GET_LOANBYID: 'find',
+    GET_ALL_LOANS: 'find-all',
+    ADMIN_GET_LOAN: 'find',
+    ADMIN_ADD_DOCUMENT: 'add-document',
+    ADMIN_GET_DOCUMENT: 'get-document',
+    ADMIN_UPDATE_DOCUMENT: 'update-document',
     LOAN_DOCUMENTS: 'documents',
     REQUEST_LOAN: 'request',
   },

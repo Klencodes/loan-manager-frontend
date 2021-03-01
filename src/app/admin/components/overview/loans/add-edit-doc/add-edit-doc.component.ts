@@ -2,13 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router, Params } from '@angular/router';
 import { first } from 'rxjs/operators';
-import { Account, Doc, Loan } from 'src/app/models';
+import { Doc, Loan } from 'src/app/models';
 import { LoanService, AlertService } from 'src/app/services/_index';
 
-@Component({
-  templateUrl: './add-edit-doc.component.html',
-})
+@Component({ templateUrl: './add-edit-doc.component.html'})
 export class AddEditDocComponent implements OnInit {
+
   loading: Boolean;
   submitted: Boolean = false;
   isAddMode: Boolean;
@@ -31,19 +30,20 @@ export class AddEditDocComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => {
-      this.loanId = params.loanId;
-      this.docId = params.docId;
-      if (!this.isAddMode) {
-        this.loanService.getDocument(this.loanId, this.docId).subscribe((res) => {
+        this.loanId = params.loanId;
+        this.docId = params.docId;
+        if (!this.isAddMode) {
+          this.loanService.getDoc(this.loanId, this.docId).subscribe((res) => {
             console.log(res);
-            this.documentRes = res['getDoc'];
+            this.documentRes = res['getDoc']
             this.documentForm.patchValue({
               idCard: this.documentRes.idCard,
-              idNumber: this.documentRes.idNumber,
-            });
-          });
+              idNumber: this.documentRes.idNumber
+            })
+          })
+        }
       }
-    });
+    );
 
     this.isAddMode = !this.docId;
     this.documentForm = this.formBuilder.group({
@@ -51,28 +51,27 @@ export class AddEditDocComponent implements OnInit {
       idNumber: ['', [Validators.required]],
     });
 
-    this.getLoan();
-
+    this.getLoanById();
   }
 
-  getLoan(){
-    this.loanService.getLoan(this.loanId).subscribe((res: Loan[]) => {
+  getLoanById() {
+    this.loanService.getById(this.loanId).subscribe((res: Loan[]) => {
       this.loanDetails = res['loans'];
     });
   }
 
-  createDocument() {
-    this.loanService.createDocument(this.loanId, this.documentForm.value).subscribe((res: Doc) => {
+  addDocument() {
+    this.loanService.addDoc(this.loanId, this.documentForm.value).subscribe((res: Doc) => {
       this.message = res.message
-      this.router.navigate(['/loans/view', this.loanId]);
+      this.router.navigate(['/admin/loans/view', this.loanId]);
       this.alertService.success(this.message)
     })
   }
    
   updateDocument() {
-    this.loanService.updateDocument(this.loanId, this.documentForm.value, this.docId).subscribe((res: Doc) => {
+    this.loanService.updateDoc(this.loanId, this.documentForm.value, this.docId).subscribe((res: Doc) => {
       this.message = res.message
-      this.router.navigate(['/loans/view', this.loanId]);
+      this.router.navigate(['/admin/loans/view', this.loanId]);
       console.log(this.message)
       this.alertService.success(this.message)
     })
@@ -87,7 +86,7 @@ export class AddEditDocComponent implements OnInit {
       return;
     };
     if(this.isAddMode){
-      this.createDocument();
+      this.addDocument();
     }else{
       this.updateDocument()
     }
@@ -97,4 +96,5 @@ export class AddEditDocComponent implements OnInit {
   get f() {
     return this.documentForm.controls;
   }
+  
 }

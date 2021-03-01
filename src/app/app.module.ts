@@ -13,6 +13,7 @@ import { HomeComponent, LayoutComponent } from './components/layout/home';
 import { ErrorPagesModule } from './components/errors/errors.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './components/modules/material.module';
+import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { MaterialModule } from './components/modules/material.module';
         ErrorPagesModule,
         BrowserAnimationsModule,
         MaterialModule,
+        ToastrModule.forRoot()
     ],
     declarations: [
         AppComponent,

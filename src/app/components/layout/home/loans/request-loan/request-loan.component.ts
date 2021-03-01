@@ -13,7 +13,7 @@ export class RequestLoanComponent implements OnInit {
   submitted: Boolean = false;
   isAddMode: Boolean;
   requestForm: FormGroup;
-  id: string;
+  loanId: string;
   loading: Boolean;
 
   constructor(
@@ -33,9 +33,11 @@ export class RequestLoanComponent implements OnInit {
 
   requestLoan() {
     this.loanService.requestLoan(this.requestForm.value).subscribe((res) => {
-      this.id = res['LoanDoc'].id
+      this.loanId = res['LoanDoc'].id
+      console.log(this.loanId)
+      console.log(res)
       this.alertService.success(res['message'], {});
-      this.router.navigate(['/loans', this.id, 'document']);
+      this.router.navigate(['/loans', this.loanId, 'document']);
     });
   }
 

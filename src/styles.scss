@@ -100,7 +100,7 @@ body {
 
 }
 mat-form-field{
-  width: 100%;
+  width: 100% !important;
   appearance: "standard"
 }
 .mat-error {
@@ -359,4 +359,13 @@ mat-form-field{
   font-size: 1.2rem;
   font-weight: 500;
   padding: 20px 10px 0px
+}
+.border-right-solid2 {
+  border-right: 2px solid lightgray !important;
+}
+
+.border-left-solid2 {
+
+  border-left: 2px solid lightgray !important;
+  padding-left: 10px !important;
 }

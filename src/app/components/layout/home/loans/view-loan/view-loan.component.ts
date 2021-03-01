@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 import { Loan } from 'src/app/models';
 import { LoanService } from 'src/app/services/_index';
 
@@ -11,7 +11,7 @@ export class ViewLoanComponent implements OnInit {
 
   loans: Loan[];
   docs: any;
-  id: string = '';
+  loanId: string = '';
   loanDetails: any;
 
   constructor(
@@ -20,21 +20,25 @@ export class ViewLoanComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.id = this.route.snapshot.paramMap.get('id');
+    this.route.params.subscribe((params:Params)=>{
+      this.loanId = params.id
+      console.log(params)
+
+    });
     this.getLoanInfo();
   }
 
   //This contains All information available on a particular user
   getLoanInfo() {
-    this.loanService.getLoan(this.id).subscribe((res: Loan[]) => {
+    this.loanService.getLoan(this.loanId).subscribe((res: Loan[]) => {
       this.loanDetails = res['loans'];
-      if (this.id) {
+      if (this.loanId) {
         //this is all documents submitted with a loan by User
-        this.loanService.getAllDocuments(this.id).subscribe((doc: any) => {
+        this.loanService.getAllDocuments(this.loanId).subscribe((doc: any) => {
           this.docs = doc['documents'];
         });
       } else {
-        this.id = undefined;
+        this.loanId = undefined;
       }
     });
   }

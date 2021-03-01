@@ -7,99 +7,100 @@
             </span>
         </div>
         <div class="box-body">
+
             <div class="container">
                 <div id="accordion">
                     <div class="">
-                        <div class="" id="headingOne">
+                        <div class="table-responsive" cellpadding="5" cellspacing="2" border="0">
                             <div class="mb-0 d-inline">
                                 <span class="text-bold">Loan ID: {{loanDetails?.id | uppercase}}</span>
                                 <div class="mt-3">
                                     <tr role="row" class="odd shown">
-                                        <td class="text-bold"><span>Loan Type: {{loanDetails?.loanType}}</span>  &nbsp;&nbsp;&nbsp;
-                                            <span>Loan Status:
-                                                <td *ngIf="loanDetails?.loanStatus === 'Pending'">
-                                                    <span class="badge badge-warning">{{
-                                                        loanDetails?.loanStatus }}</span>
-                                                <td *ngIf="loanDetails?.loanStatus === 'Approved'"> <span
-                                                        class="badge badge-success">{{
-                                                        loanDetails?.loanStatus }}</span>
-                                                <td *ngIf="loanDetails?.loanStatus === 'Recovered'"> <span
-                                                        class="badge badge-info">{{
-                                                        loanDetails?.loanStatus }}</span>
-                                                <td *ngIf="loanDetails?.loanStatus === 'Canceled'"> <span
-                                                        class="badge badge-danger">{{
-                                                        loanDetails?.loanStatus }}</span>
-                                                </td>
-                                            </span>
-                                        </td>&nbsp;&nbsp;&nbsp;
-                                        <td class="text-bold">Requested Date: {{loanDetails?.created | date: 'dd/MM/yyyy'}}</td> &nbsp;&nbsp;&nbsp;
-                                       
-                                        <span>
-                                            <td class="text-bold">Date Approved: {{loanDetails?.statusDate | date: 'dd/MM/yyyy'}} 
-                                                </td>
-                                        </span>
-    
+                                        <td class="text-bold">Loan Type: </td>
+                                        <td>{{loanDetails?.loanType}}</td>
                                     </tr>
+                                    <tr role="row" class="odd shown">
+                                        <td class="text-bold">Loan Amount: </td>
+                                        <td>{{loanDetails?.loanAmount | currency: 'GHS '}}</td>
+                                    </tr>
+                                    <tr role="row" class="odd shown">
+                                        <td class="text-bold">Date Requested: </td>
+                                        <td> {{loanDetails?.created | date:'dd/MM/yyyy - hh:mm:ss'}}</td>
+                                    </tr>
+                                    <td class="text-bold">Loan Status:</td>
+                                        <td *ngIf="loanDetails?.loanStatus === 'Pending'">
+                                            <span class="badge badge-warning">{{
+                                                loanDetails?.loanStatus }}</span>
+                                        <td *ngIf="loanDetails?.loanStatus === 'Approved'"> <span
+                                                class="badge badge-success">{{
+                                                loanDetails?.loanStatus }}</span>
+                                        <td *ngIf="loanDetails?.loanStatus === 'Recovered'"> <span
+                                                class="badge badge-info">{{
+                                                loanDetails?.loanStatus }}</span>
+                                        <td *ngIf="loanDetails?.loanStatus === 'Canceled'"> <span
+                                                class="badge badge-danger">{{
+                                                loanDetails?.loanStatus }}</span>
+                                        </td>    
+                                    <tr role="row" class="odd shown">
+                                        <td class="text-bold">Date Approved: </td>
+                                        <td>{{loanDetails?.statusDate | date:'dd/MM/yyyy - hh:mm:ss'}}</td>
+                                    </tr>                               
+                                </div>                            
+                            </div> 
+                        </div>
+                        <div class="table-responsive">
+                        <div class="mt-3">
+                            <div class="mb-3" *ngIf= "docs?.length === 0">
+                                <div class="text-center empty-record">
+                                    No Documents Attached yet !.
                                 </div>
                             </div>
-                        </div>
-                        <div class="table-responsive" id="collapseOne" class="collapse show" aria-labelledby="headingOne"
-                            data-parent="#accordion">
-                            <div class="mt-3">
-                                <div class="mb-3" *ngIf= "docs?.length === 0">
-                                    <div class="text-center empty-record">
-                                        No Documents Attached yet !.
-                                    </div>
-                                </div>
-                                <td>
-                                    <table class="table-responsive" cellpadding="5" cellspacing="0" border="0" style="width: 100%;">
-                                        <hr style="margin: 5px 0px 1rem;">
-                                        <tbody *ngFor="let document of docs">
-                                            <tr class="text-bold">Document Details
+                            <td>
+                                <table class="table-responsive" cellpadding="5" cellspacing="0" border="0" style="width: 100%;">
+                                    <div class="text-bold">Document Details</div>
+                                    <hr style="margin: 5px 0px 1rem;">
+                                    <tbody *ngFor="let document of docs">
+                                        <div class="mb-3">
+                                            <tr>
+                                                <td>Doc ID:</td>
+                                                <td><strong>{{document.id | uppercase}}</strong></td>
                                             </tr>
-                                            <div class="mb-3">
-                                                <tr>
-                                                    <td>Doc ID:</td>
-                                                    <td><strong>{{document.id | uppercase}}</strong></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>ID Card:</td>
-                                                    <td>{{document.idCard}}</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>ID Number:</td>
-                                                    <td>{{document.idNumber}}</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Date Created:</td>
-                                                    <td>{{document.created | date: 'dd/MM/yy - hh:mm:ss'}}</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Date Updated:</td>
-                                                    <td>{{document.updated | date: 'dd/MM/yy - hh:mm:ss'}}</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Action</td>
-                                                    <td><a class="badge badge-warning mr-1" routerLink="/loans/{{loanDetails?.id}}/document/{{document.id}}">
-                                                            <i class="ti ti-pencil"></i> Edit Document
-                                                        </a>
-                                                        <a class="badge badge-success" routerLink="/loans/{{loanDetails?.id}}/document/{{document?.id}}">
-                                                            <i class="ti ti-plus"></i>Add Document
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                            </div>
-                                            <hr><hr>
-                                        </tbody>
-                                        <div *ngIf="docs?.length ===0" >
-                                            <a class="badge badge-succes" routerLink="/loans/{{loanDetails?.id}}/document/{{document?.id}}">
-                                                <i class="ti ti-plus"></i>Add Document
-                                            </a>
-                                        </div>   
-                                    </table>
-                                </td>
-                            </div>
+                                            <tr>
+                                                <td>ID Card:</td>
+                                                <td>{{document.idCard}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>ID Number:</td>
+                                                <td>{{document.idNumber}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Date Created:</td>
+                                                <td>{{document.created | date: 'dd/MM/yy - hh:mm:ss'}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Date Updated:</td>
+                                                <td>{{document.updated | date: 'dd/MM/yy - hh:mm:ss'}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Action:</td>
+                                                <td>
+                                                    <a class="badge badge-warning mr-1" routerLink="/loans/{{loanDetails?.id}}/document/{{document.id}}">
+                                                        <i class="ti ti-pencil"></i> Edit Document
+                                                    </a>
+                                                </td>            
+                                            </tr>
+                                        </div>
+                                        <hr><hr>
+                                    </tbody>
+                                    <div  >
+                                        <a class="btn btn-sm btn-success" routerLink="/loans/{{loanDetails?.id}}/document">
+                                            <i class="ti ti-plus"></i>Add New Document
+                                        </a>
+                                    </div>   
+                                </table>
+                            </td>
                         </div>
+                    </div>
                     </div>
                 </div>
             </div>

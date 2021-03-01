@@ -10,7 +10,6 @@ import { AlertService, LoanService } from 'src/app/services/_index';
 })
 export class ListComponent implements OnInit {
   id: string = '';
-  user: any;
   $loansObj: any;
   loans: Loan[];
   docs: Document[];
@@ -34,16 +33,5 @@ export class ListComponent implements OnInit {
     });
   }
 
-  deleteLoan(id: string) {
-    const loan = this.loans.find((x) => x.id === id);
-    loan.isDeleting = true;
-    this.loanService.deleteLoan(id).pipe(first())
-      .subscribe((res) => {
-        this.alertService.success(res['message'], {
-          keepAfterRouteChange: true,
-        });
-        this.loans = this.loans.filter((x) => x.id !== id);
-      });
-  }
 }
  

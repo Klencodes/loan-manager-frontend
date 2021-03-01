@@ -9,8 +9,8 @@ const routes: Routes = [
   { path: '', component: ListLoansComponent },
   { path: 'request', component: RequestLoanComponent },
   { path: 'view/:id', component: ViewLoanComponent },
-  { path: ':id/document', component: AddEditDocComponent },
-  { path: ':id/document/:docId', component: AddEditDocComponent },
+  { path: ':loanId/document', component: AddEditDocComponent },
+  { path: ':loanId/document/:docId', component: AddEditDocComponent },
 ];
 
 @NgModule({

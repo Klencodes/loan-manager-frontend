@@ -1,0 +1,155 @@
+<div class="card">
+    <div class="card-body">
+        <div class="text-center">
+            <!-- Left side dashboard -->
+            <div class="page-title py-4" *ngIf="isAddMode">Create Loan</div>
+            <div class="page-title py-4" *ngIf="!isAddMode">Approve Loan</div>
+        </div>
+    
+        <section class="content">
+            <form style="min-width: 320px;" [formGroup]="requestForm" (ngSubmit)="onSubmit()">
+                <div class="row">
+                    <div class="col-md-12">
+                        <mat-form-field>
+                            <mat-label>Loan Type</mat-label>
+                            <mat-select formControlName="loanType" [ngClass]="{ 'is-invalid': submitted && f.loanType.errors }">
+                                <mat-option *ngFor="let loanType of loanTypes" [value]="loanType">{{loanType}}</mat-option>
+                            </mat-select>
+                            <mat-error *ngIf="submitted && f.loanType.errors">
+                                <div *ngIf="f.loanType.errors.required">Loan Type is required</div>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <mat-form-field>
+                            <mat-label>Loan Amount</mat-label>
+                            <input matInput formControlName="loanAmount"
+                                [ngClass]="{ 'is-invalid': submitted && f.loanAmount.errors }">
+                            <mat-error *ngIf="submitted && f.loanAmount.errors">
+                                <div *ngIf="f.loanAmount.errors.required">Loan Amount is required</div>
+                                <div *ngIf="f.loanAmount.errors.max">Maximum Loan is GHC 50,000</div>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="row" *ngIf="!isAddMode">
+                    <div class="col-md-12">
+                        <mat-form-field>
+                            <mat-label>Status</mat-label>
+                            <mat-select formControlName="loanStatus"
+                                [ngClass]="{ 'is-invalid': submitted && f.loanStatus.errors }">
+                                <mat-option *ngFor="let loanStatus of allStatus" [value]="loanStatus">{{loanStatus}}
+                                </mat-option>
+                            </mat-select>
+                            <mat-error *ngIf="submitted && f.loanStatus.errors">
+                                <div *ngIf="f.loanStatus.errors.required">Loan Status is required</div>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+        
+                </div>
+        
+                <div class="form-group mt-3">
+                    <button [disabled]="loading" class="btn btn-primary">
+                        <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                        Approve
+                    </button>
+                    <a routerLink="/admin/loans" class="ml-3 btn btn-link">Cancel</a>
+                </div>
+            </form>
+        </section>
+        <section class="content">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="document-details">
+                        <table class="table-responsive" cellpadding="5" cellspacing="0" border="0" style="width: 100%;">
+                            <div class="sub-page-title">Account Infomation</div>
+                            <hr style="margin: 5px 0px 1rem;">
+                            <tbody>
+                                <div class="mb-3">
+                                    <tr>
+                                        <td>Account ID:</td>
+                                        <td><strong>{{user?._id | uppercase}}</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Full Name:</td>
+                                        <td>{{user?.firstName}} {{user?.lastName}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Occupation:</td>
+                                        <td>{{user?.jobTitle}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Email:</td>
+                                        <td>{{user?.email}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Phone Number:</td>
+                                        <td>{{user?.phoneNumber}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Address:</td>
+                                        <td>{{user?.address}}, {{user?.state}}, {{user?.coumtry}}</td>
+                                    </tr>
+                                </div>
+                            </tbody>
+                        </table> 
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="document-detail">
+                        <table class="table-responsive  border-left-solid2" cellpadding="5" cellspacing="0" border="0" style="width: 100%;">
+                            <div class="sub-page-title">Document Details</div>
+                            <hr style="margin: 5px 0px 1rem;">
+                            <div class="mb-3" *ngIf="documents?.length === 0">
+                                <div class="text-center empty-record">
+                                    No Documents Attached yet !.
+                                </div>
+                            </div>
+                            <tbody *ngFor="let document of documents">
+                                <div class="mb-3">
+                                    
+                                    <tr>
+                                        <td>Doc ID:</td>
+                                        <td><strong>{{document.id | uppercase}}</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td>ID Card:</td>
+                                        <td>{{document.idCard}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>ID Number:</td>
+                                        <td>{{document.idNumber}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Date Created:</td>
+                                        <td>{{document.created | date: 'dd/MM/yy - hh:mm:ss'}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Date Updated:</td>
+                                        <td>{{document.updated | date: 'dd/MM/yy - hh:mm:ss'}}</td>
+                                    </tr>
+                                </div>
+                                <hr>
+                            </tbody>
+                        </table>            
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-3">
+                <div class="col-12 text-center">
+                    <button (click)="onDeleteLoan()" class="btn btn-md btn-danger">
+                        <i class="ti ti-trash font-size-16"></i> 
+                        <span class="text-white pr-1">
+                            Remove Loan
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+<!-- Content Header (Page header) -->

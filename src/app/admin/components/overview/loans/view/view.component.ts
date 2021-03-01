@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Doc, Loan } from 'src/app/models';
-import { AccountService, LoanService } from 'src/app/services/_index';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+import { Account, Doc, Loan } from 'src/app/models';
+import { AlertService, LoanService } from 'src/app/services/_index';
 
 @Component({
   selector: 'view',
@@ -9,32 +9,50 @@ import { AccountService, LoanService } from 'src/app/services/_index';
 })
 export class ViewComponent implements OnInit {
   loans: Loan[];
-  docs: any;
-  id: string = '';
+  documents: Doc[]
+  loanId: string;
+  docId: string;
   loanDetails: any;
+  userDetails: Account
+  isDeleting?: Boolean;
+
 
   constructor(
     private route: ActivatedRoute,
-    private loanService?: LoanService
+    private loanService: LoanService,
+    private spinner: Ng,
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
-    this.id = this.route.snapshot.paramMap.get('id');
+    this.route.params.subscribe((params: Params) => {
+      this.loanId = params.id;
+    });
     this.getLoanInfo();
   }
 
-  //This contains All information available on a particular user
+  //This contains All information available on a particular loan
   getLoanInfo() {
-    this.loanService.getById(this.id).subscribe((res: Loan[]) => {
+    this.loanService.getById(this.loanId).subscribe((res: Loan[]) => {
       this.loanDetails = res['loans'];
-      if (this.id) {
+      this.userDetails = res['loans'].accountId;
+      if (this.loanId) {
         //this is all documents submitted with a loan by User
-        this.loanService.getAllDocuments(this.id).subscribe((doc: any) => {
-          this.docs = doc['documents'];
+        this.loanService.getAllDocuments(this.loanId).subscribe((res: Doc[]) => {
+          this.documents = res['documents'];
         });
       } else {
-        this.id = undefined;
+        this.loanId = undefined;
       }
     });
   }
+
+  onDeleteDocument(docId: string) {
+    this.loanService.deleteDoc(this.loanId, docId).subscribe((res: any) => {
+      this.documents = this.documents.filter(val => val.id !== this.docId);
+      console.log(res);
+    })
+  }
+
 }
+ 

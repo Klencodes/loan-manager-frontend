@@ -14,22 +14,52 @@ export class LoanService {
     private constantService: ConstantService
     ) { }
 
-  //Admin only
+  //Admin gets all loan in the database
   getAllLoans(){
     return this.constantService.getAll(`${this.LOANS_ENDPOINT}/${environment.LOANS.GET_ALL_LOANS}`)
   }
 
-  //Only authorized user
+  //Admin can get any user loan 
+  getById(loanId){
+    return this.constantService.get(`${this.LOANS_ENDPOINT}/${environment.LOANS.ADMIN_GET_LOAN}/${loanId}`)
+  }
+
+  //Admin can approve/update loan 
+  approveLoan(loanId: string, payload: Loan){
+    return this.constantService.patch(`${this.LOANS_ENDPOINT}/${loanId}`, payload)
+  }
+  
+  //Admin can delete a loan 
+  deleteLoan(loanId){
+    return this.constantService.delete(`${this.LOANS_ENDPOINT}/${loanId}`)
+  }
+
+  //Admin can add a document to a loan 
+  addDoc(loanId:string, payload:string){
+    return this.constantService.post(`${this.LOANS_ENDPOINT}/${loanId}/${environment.LOANS.ADMIN_ADD_DOCUMENT}`, payload)
+  }
+
+  //Admin can get a document from a loan 
+  getDoc(id: string, docId: string){
+    return this.constantService.get(`${this.LOANS_ENDPOINT}/${id}/${environment.LOANS.ADMIN_GET_DOCUMENT}/${docId}`)
+  }
+
+  //Admin can update a document in a loan
+  updateDoc(loanId:string, payload:string, docId: string){
+    return this.constantService.patch(`${this.LOANS_ENDPOINT}/${loanId}/${environment.LOANS.ADMIN_UPDATE_DOCUMENT}/${docId}`, payload)
+  }
+
+  //Admin can delete a document from a loan
+  deleteDoc(loanId:string, docId: string){
+    return this.constantService.delete(`${this.LOANS_ENDPOINT}/${loanId}/${environment.LOANS.LOAN_DOCUMENTS}/${docId}`)
+  }
+
+
+  
   getLoans(){
     return this.constantService.getAll(this.LOANS_ENDPOINT)
   }
 
-  //Admin only
-  getById(id){
-    return this.constantService.get(`${this.LOANS_ENDPOINT}/${environment.LOANS.ADMIN_GET_LOANBYID}/${id}`)
-  }
-  
-  //Only authorized user
   getLoan(id){
     let url = this.LOANS_ENDPOINT
     return this.constantService.get(`${url}/${id}`)
@@ -37,14 +67,6 @@ export class LoanService {
   
   requestLoan(payload: Loan){
     return this.constantService.post(`${this.LOANS_ENDPOINT}/${environment.LOANS.REQUEST_LOAN}`, payload)
-  }
-
-  approveLoan(id: string, payload: Loan){
-    return this.constantService.patch(`${this.LOANS_ENDPOINT}/${id}`, payload)
-  }
-
-  deleteLoan(id){
-    return this.constantService.delete(`${this.LOANS_ENDPOINT}/${id}`)
   }
 
   getAllDocuments(id: string){
@@ -63,8 +85,5 @@ export class LoanService {
     return this.constantService.patch(`${this.LOANS_ENDPOINT}/${loanId}/${environment.LOANS.LOAN_DOCUMENTS}/${docId}`, payload)
   }
 
-  deleteDocument(loanId:string, docId: string){
-    return this.constantService.delete(`${this.LOANS_ENDPOINT}/${loanId}/${environment.LOANS.LOAN_DOCUMENTS}/${docId}`)
-  }
-
 }
+

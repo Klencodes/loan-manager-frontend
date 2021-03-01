@@ -1,0 +1,82 @@
+<div class="bg-white">
+    <!-- Content Header (Page header) -->
+    <div class="d-flex align-items-center bg-white">
+        <!-- Left side dashboard -->
+        <div class="mr-auto">
+            <div class="page-title mx-3 py-4" *ngIf="isAddMode">Add Document Details</div>
+            <div class="page-title mx-3 py-4" *ngIf="!isAddMode">Edit Document Details</div>
+        </div>
+    </div>
+    <div class="box-body">
+        <table class="table-responsive"  cellpadding="2">
+            <div class="">
+                <tr class="text-bold">Loan Details
+                </tr>
+                <hr style="margin: 5px 0px 1rem;">
+                <tbody>
+                    <tr>
+                        <td>Loan ID:</td>
+                        <td></td>
+                        <td><strong>{{loanDetails?.id | uppercase}}</strong></td>
+                    </tr>
+                    <tr>
+                        <td>Loan Type:</td>
+                        <td></td>
+                        <td>{{loanDetails?.loanType}}</td>
+                    </tr>
+                    <tr>
+                        <td>Requested Amount:</td>
+                        <td></td>
+                        <td>{{loanDetails?.loanAmount | currency: 'GHS '}}</td>
+                    </tr>
+                    <tr>
+                        <td>Date Requested:</td>
+                        <td></td>
+                        <td>{{loanDetails?.created | date: 'dd/MM/yy - hh:mm:ss'}}</td>
+                    </tr>
+                </tbody>
+            </div>
+        </table>
+    </div>
+    <hr style="margin: 5px 0px 1rem;">
+
+    <div class="content" style="margin-top: -32px;">
+        <div class="box-body">
+            <div class="sub-page-title" *ngIf="isAddMode">Document Details includes ( ID Card, Bank Statement, etc.
+            </div>
+            <form [formGroup]="documentForm" (ngSubmit)="onSubmit()">
+                <div class="row">
+                    <div class="col-md-6">
+                        <mat-form-field>
+                            <mat-label>Card Type</mat-label>
+                            <mat-select formControlName="idCard"
+                                [ngClass]="{ 'is-invalid': submitted && f.idCard.errors }">
+                                <mat-option *ngFor="let idCard of idCards" [value]="idCard">{{idCard}}</mat-option>
+                            </mat-select>
+                            <mat-error *ngIf="submitted && f.idCard.errors">
+                                <div *ngIf="f.idCard.errors.required">Card Type is required</div>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-6">
+                        <mat-form-field>
+                            <mat-label>Card Number</mat-label>
+                            <input matInput formControlName="idNumber"
+                                [ngClass]="{ 'is-invalid': submitted && f.idNumber.errors }">
+                            <mat-error *ngIf="submitted && f.idNumber.errors">
+                                <div *ngIf="f.idNumber.errors.required">Card Number is required</div>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="form-group mt-3 pull-right">
+                    <button [disabled]="loading" class="btn btn-primary">
+                        <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                        Save
+                    </button>
+                    <a *ngIf="!isAddMode" routerLink="../../../" href="" class="btn btn-link">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
