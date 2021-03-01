@@ -15,6 +15,7 @@ export class AddEditComponent implements OnInit {
     isAddMode: boolean;
     loading = false;
     submitted = false;
+    hidePassword = true;
     roles: Role[]
 
     constructor(

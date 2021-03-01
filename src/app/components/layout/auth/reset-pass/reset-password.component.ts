@@ -20,6 +20,7 @@ export class ResetPasswordComponent implements OnInit {
     form: FormGroup;
     loading = false;
     submitted = false;
+    hidePassword = true;
 
     constructor(
         private formBuilder: FormBuilder,

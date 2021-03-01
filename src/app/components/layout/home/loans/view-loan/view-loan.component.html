@@ -53,35 +53,49 @@
                                 </div>
                                 <td>
                                     <table class="table-responsive" cellpadding="5" cellspacing="0" border="0" style="width: 100%;">
-                                      
+                                        <hr style="margin: 5px 0px 1rem;">
+                                        <tbody *ngFor="let document of docs">
                                             <tr class="text-bold">Document Details
                                             </tr>
-                                            <hr style="margin: 5px 0px 1rem;">
-                                            <tbody *ngFor="let document of docs">
-                                                <div class="mb-3">
-                                                    <tr>
-                                                        <td>Doc ID:</td>
-                                                        <td><strong>{{document.id | uppercase}}</strong></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>ID Card:</td>
-                                                        <td>{{document.idCard}}</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>ID Number:</td>
-                                                        <td>{{document.idNumber}}</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Date Uploaded:</td>
-                                                        <td>{{document.created | date: 'dd/MM/yy - hh:mm:ss'}}</td>
-                                                    </tr>
-                                                    <tr>
-                                                    </tr>
-                                                </div>
-                                                <hr><hr>
-                                                
-                                            </tbody>
-                                       
+                                            <div class="mb-3">
+                                                <tr>
+                                                    <td>Doc ID:</td>
+                                                    <td><strong>{{document.id | uppercase}}</strong></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>ID Card:</td>
+                                                    <td>{{document.idCard}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>ID Number:</td>
+                                                    <td>{{document.idNumber}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Date Created:</td>
+                                                    <td>{{document.created | date: 'dd/MM/yy - hh:mm:ss'}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Date Updated:</td>
+                                                    <td>{{document.updated | date: 'dd/MM/yy - hh:mm:ss'}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Action</td>
+                                                    <td><a class="badge badge-warning mr-1" routerLink="/loans/{{loanDetails?.id}}/document/{{document.id}}">
+                                                            <i class="ti ti-pencil"></i> Edit Document
+                                                        </a>
+                                                        <a class="badge badge-success" routerLink="/loans/{{loanDetails?.id}}/document/{{document?.id}}">
+                                                            <i class="ti ti-plus"></i>Add Document
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                            </div>
+                                            <hr><hr>
+                                        </tbody>
+                                        <div *ngIf="docs?.length ===0" >
+                                            <a class="badge badge-succes" routerLink="/loans/{{loanDetails?.id}}/document/{{document?.id}}">
+                                                <i class="ti ti-plus"></i>Add Document
+                                            </a>
+                                        </div>   
                                     </table>
                                 </td>
                             </div>

@@ -143,8 +143,10 @@
                 <div class="col-md-6">
                     <mat-form-field>
                         <mat-label>Password</mat-label>
-                        <input type="password" matInput formControlName="password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
-                        <mat-error *ngIf="submitted && f.password.errors">
+                        <input [type]="hidePassword? 'password' : 'text'" matInput formControlName="password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
+                        <mat-icon matSuffix (click)="hidePassword = !hidePassword"><i class="pnt"
+                            aria-hidden="true">{{hidePassword ? 'visibility_off' : 'visibility'}}</i>
+                        </mat-icon>                        <mat-error *ngIf="submitted && f.password.errors">
                             <div *ngIf="f.password.errors.required">Password is required</div>
                             <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
                         </mat-error>
@@ -153,8 +155,10 @@
                 <div class="col-md-6">
                     <mat-form-field >
                         <mat-label>Confirm Password</mat-label>
-                        <input type="password" matInput formControlName="confirmPassword" [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }">
-                        <mat-error *ngIf="submitted && f.confirmPassword.errors">
+                        <input [type]="hidePassword? 'password' : 'text'" matInput formControlName="password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
+                        <mat-icon matSuffix (click)="hidePassword = !hidePassword"><i class="pnt"
+                            aria-hidden="true">{{hidePassword ? 'visibility_off' : 'visibility'}}</i>
+                        </mat-icon>                        <mat-error *ngIf="submitted && f.confirmPassword.errors">
                             <div *ngIf="f.confirmPassword.errors.required">Confirm Password is required</div>
                             <div *ngIf="f.confirmPassword.errors.mustMatch">Passwords must match</div>
                         </mat-error>

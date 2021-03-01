@@ -109,7 +109,6 @@
     <div class="box">
         <div class="box-header with-border table-bg">
             <h4 class="box-title">Accounts</h4>
-            <h6 class="box-subtitle">List of Account</h6>
         </div>
         <div class="box-body p-15">
             <div class="table-responsive">
@@ -130,21 +129,22 @@
                             <table id="customers" class="table mt-0 table-hover no-wrap">
                                 <thead>
                                     <tr role="row">
-                                        <th>First Name</th>
-                                        <th>Last Name</th>
+                                        <th>Full Name</th>
                                         <th>Email</th>
+                                        <th>Phone Number</th>
                                         <th>Role</th>
+                                        <th>Date Created</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
 
                                     <tr class="tr-border" *ngFor="let account of accounts; let i = index">
-                                        <td>{{account.firstName}}</td>
-                                        <td>{{account.lastName}}</td>
+                                        <td>{{account.firstName}} {{account.firstName}}</td>
                                         <td>{{account.email}}</td>
+                                        <td>{{account.phoneNumber}}</td>
                                         <td>{{account.role}}</td>
-                                        <!-- <td><span class="badge badge-warning">New</span> </td> -->
+                                        <td>{{account.created | date: 'dd/MM/yyyy - hh:mm:ss'}}</td>
                                         <td>
                                             <a routerLink="accounts/user/{{account.id}}"
                                                 class="font-size-18 text-success mr-3">

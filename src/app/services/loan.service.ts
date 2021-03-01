@@ -1,8 +1,6 @@
-import { HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map, shareReplay, tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environmentApi';
-import { Doc, Loan } from '../models';
+import { Loan } from '../models';
 import { ConstantService } from './constant.service';
 
 @Injectable({
@@ -54,19 +52,19 @@ export class LoanService {
   }
 
   getDocument(id: string, docId: string){
-    this.constantService.get(`${this.LOANS_ENDPOINT}/${id}/${environment.LOANS.LOAN_DOCUMENTS}/${docId}`)
+    return this.constantService.get(`${this.LOANS_ENDPOINT}/${id}/${environment.LOANS.LOAN_DOCUMENTS}/${docId}`)
   }
 
   createDocument(loanId:string, payload:string){
-    this.constantService.post(`${this.LOANS_ENDPOINT}/${loanId}/${environment.LOANS.LOAN_DOCUMENTS}`, payload)
+    return this.constantService.post(`${this.LOANS_ENDPOINT}/${loanId}/${environment.LOANS.LOAN_DOCUMENTS}`, payload)
   }
 
   updateDocument(loanId:string, payload:string, docId: string){
-    this.constantService.patch(`${this.LOANS_ENDPOINT}/${loanId}/${environment.LOANS.LOAN_DOCUMENTS}/${docId}`, payload)
+    return this.constantService.patch(`${this.LOANS_ENDPOINT}/${loanId}/${environment.LOANS.LOAN_DOCUMENTS}/${docId}`, payload)
   }
 
   deleteDocument(loanId:string, docId: string){
-    this.constantService.delete(`${this.LOANS_ENDPOINT}/${loanId}/${environment.LOANS.LOAN_DOCUMENTS}/${docId}`)
+    return this.constantService.delete(`${this.LOANS_ENDPOINT}/${loanId}/${environment.LOANS.LOAN_DOCUMENTS}/${docId}`)
   }
 
 }

@@ -4,7 +4,7 @@
         <!-- Left side dashboard -->
         <div class="mr-auto">
             <div class="page-title mx-3 py-4" *ngIf="isAddMode">Add Document Details</div>
-            <div class="page-title mx-3 py-4" *ngIf="!isAddMode">Edit Document</div>
+            <div class="page-title mx-3 py-4" *ngIf="!isAddMode">Edit Document Details</div>
         </div>
     </div>
     <div class="box-body">
@@ -74,6 +74,7 @@
                         <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
                         Save
                     </button>
+                    <a *ngIf="!isAddMode" routerLink="../../../" href="" class="btn btn-link">Cancel</a>
                 </div>
             </form>
         </div>

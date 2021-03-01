@@ -21,19 +21,16 @@ export class AddEditDocComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private loanService: LoanService,
     private router: Router,
+    private loanService: LoanService,
     private alertService: AlertService,
     private formBuilder: FormBuilder
   ) {}
 
   ngOnInit(): void {
-    this.route.params.subscribe(
-      (params: Params) => {
+    this.route.params.subscribe((params: Params) => {
         this.id = params.id;
         this.docId = params.docId;
-        console.log(this.id, 'Loan Id');
-        console.log(this.docId, 'Doc Id');
       }
     );
 
@@ -56,6 +53,7 @@ export class AddEditDocComponent implements OnInit {
       this.loanDetails = res['loans'];
     });
   }
+
   createDocument() {
     this.loanService.createDocument(this.id, this.documentForm.value)
       .pipe(first()).subscribe({
@@ -69,22 +67,19 @@ export class AddEditDocComponent implements OnInit {
         }
       });
   }
-  
-  
+   
   updateDocument() {
-    //TODO MAP AND PIPE DOCUMENT LOAN
-    this.loanService.updateDocument(this.id, this.docId, this.documentForm.value)
-    // .pipe(first()).subscribe({
-    //     next: () => {
-    //       this.alertService.success('Document Updated successful', { keepAfterRouteChange: true });
-    //       this.router.navigate(['../../'], { relativeTo: this.route });
-    //     },
-    //     error: error => {
-    //       this.alertService.error(error);
-    //       this.loading = false;
-    //     }
-    // });
-}
+    this.loanService.updateDocument(this.id, this.documentForm.value, this.docId).pipe(first()).subscribe({
+        next: () => {
+          this.alertService.success('Document updated successfully', { keepAfterRouteChange: true });
+          this.router.navigate(['../../../'], { relativeTo: this.route });
+        },
+        error: error => {
+          this.alertService.error(error);
+          this.loading = false;
+        }
+      });
+  }
 
   onSubmit() {
     this.submitted = true;

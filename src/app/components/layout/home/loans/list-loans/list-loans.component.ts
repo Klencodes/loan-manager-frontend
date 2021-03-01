@@ -9,7 +9,7 @@ import { LoanService, AlertService } from 'src/app/services/_index';
 export class ListLoansComponent implements OnInit {
   
     modalTitle = 'Request New Loan'
-    $loansObj: any;
+    loanObj: any;
     loans: Loan[];
     isDeleting: Boolean;
   
@@ -24,12 +24,10 @@ export class ListLoansComponent implements OnInit {
   
     getLoans(){
       this.loanService.getLoans().subscribe((res) => {
-        this.$loansObj = res;
-        this.loans =this.$loansObj.loans
+        this.loanObj = res;
+        this.loans =this.loanObj.loans;
         this.alertService.success(res['message'], {
-          keepAfterRouteChange: true,
         });
-        console.log(this.$loansObj)
       })
     }
   

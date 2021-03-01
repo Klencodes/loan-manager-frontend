@@ -26,7 +26,7 @@ export class ViewLoanComponent implements OnInit {
 
   //This contains All information available on a particular user
   getLoanInfo() {
-    this.loanService.getById(this.id).subscribe((res: Loan[]) => {
+    this.loanService.getLoan(this.id).subscribe((res: Loan[]) => {
       this.loanDetails = res['loans'];
       if (this.id) {
         //this is all documents submitted with a loan by User

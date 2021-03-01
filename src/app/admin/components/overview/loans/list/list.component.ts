@@ -5,6 +5,7 @@ import { Account, Loan } from 'src/app/models';
 import { AlertService, LoanService } from 'src/app/services/_index';
 
 @Component({
+  selector: 'list',
   templateUrl: './list.component.html',
 })
 export class ListComponent implements OnInit {
@@ -22,19 +23,11 @@ export class ListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.id = this.route.snapshot.paramMap.get('id');
-    // this.route.params.subscribe(
-    //   (params: Params) => {
-    //   console.log(params)});
-
-    this.loanService.getAllDocuments(this.id).subscribe((doc: Document[]) => {
-      console.log(doc);
-    });
-    this.getAllDbLoans();
+    this.getAllLoans();
   }
 
   //Get all loans from Db
-  getAllDbLoans() {
+  getAllLoans() {
     this.loanService.getAllLoans().subscribe((res) => {
       this.$loansObj = res;
       this.loans = this.$loansObj.loans;
