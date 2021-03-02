@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Loan } from 'src/app/models';
-import { AlertService, LoanService } from 'src/app/services/_index';
+import { LoanService } from 'src/app/services/_index';
+import { ToastrService } from 'ngx-toastr'
 
 @Component({
   templateUrl: './overview.component.html'
@@ -14,7 +15,7 @@ export class OverviewComponent implements OnInit {
 
   constructor(
     private loanService: LoanService,
-    private alertService: AlertService,
+    private toastr: ToastrService,
   ) { }
 
   ngOnInit(): void {
@@ -24,9 +25,10 @@ export class OverviewComponent implements OnInit {
   getLoans(){
     this.loanService.getLoans().subscribe((res) => {
       this.loanObj = res;
+      console.log(this.loanObj, 'OBJ LOAN')
       this.loans =this.loanObj.loans;
-      this.alertService.success(res['message'], {
-      });
+      console.log(this.loans, 'LOANS')
+      this.toastr.success('Overview returned successfully', 'Successful');
     })
   }
 

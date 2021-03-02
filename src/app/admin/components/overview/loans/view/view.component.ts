@@ -1,7 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Account, Doc, Loan } from 'src/app/models';
-import { AlertService, LoanService } from 'src/app/services/_index';
+import { LoanService } from 'src/app/services/_index';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'view',
@@ -15,13 +16,13 @@ export class ViewComponent implements OnInit {
   loanDetails: any;
   userDetails: Account
   isDeleting?: Boolean;
+  message: string;
 
 
   constructor(
     private route: ActivatedRoute,
     private loanService: LoanService,
-    private spinner: Ng,
-    private router: Router,
+    private toastr: ToastrService,    
   ) {}
 
   ngOnInit(): void {
@@ -40,6 +41,9 @@ export class ViewComponent implements OnInit {
         //this is all documents submitted with a loan by User
         this.loanService.getAllDocuments(this.loanId).subscribe((res: Doc[]) => {
           this.documents = res['documents'];
+          console.log(res)
+          this.message = res['message']
+          this.toastr.success('Loan Infomation returned successfully', 'Successful');
         });
       } else {
         this.loanId = undefined;
@@ -49,8 +53,9 @@ export class ViewComponent implements OnInit {
 
   onDeleteDocument(docId: string) {
     this.loanService.deleteDoc(this.loanId, docId).subscribe((res: any) => {
+      this.message = res.message
       this.documents = this.documents.filter(val => val.id !== this.docId);
-      console.log(res);
+      this.toastr.warning(this.message, 'Success')
     })
   }
 

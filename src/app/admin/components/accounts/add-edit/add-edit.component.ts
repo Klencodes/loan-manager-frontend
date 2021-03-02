@@ -1,11 +1,12 @@
 ﻿import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
-
 import { AccountService, AlertService } from 'src/app/services/_index';
 import { MustMatch } from 'src/app/validators';
 import { Role } from 'src/app/models';
+import { ToastrService } from 'ngx-toastr';
+
 
 @Component({ templateUrl: 'add-edit.component.html' })
 
@@ -24,6 +25,7 @@ export class AddEditComponent implements OnInit {
         private router: Router,
         private accountService: AccountService,
         private alertService: AlertService,
+        private toastr: ToastrService
     ) {}
 
     ngOnInit() {
@@ -64,7 +66,7 @@ export class AddEditComponent implements OnInit {
         this.submitted = true;
 
         // reset alerts on submit
-        this.alertService.clear();
+        this.toastr.clear();
 
         // stop here if form is invalid
         if (this.form.invalid) {
@@ -84,7 +86,7 @@ export class AddEditComponent implements OnInit {
             .pipe(first())
             .subscribe({
                 next: () => {
-                    this.alertService.success('Account created successfully', { keepAfterRouteChange: true });
+                    this.toastr.success('Account created successfully', 'Successful'), { keepAfterRouteChange: true };
                     this.router.navigate(['../'], { relativeTo: this.route });
                 },
                 error: error => {
@@ -99,7 +101,7 @@ export class AddEditComponent implements OnInit {
             .pipe(first())
             .subscribe({
                 next: () => {
-                    this.alertService.success('Update successful', { keepAfterRouteChange: true });
+                    this.toastr.success('Account created successfully', 'Successful'), { keepAfterRouteChange: true };
                     this.router.navigate(['../../'], { relativeTo: this.route });
                 },
                 error: error => {

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Loan } from 'src/app/models';
-import { LoanService, AlertService } from 'src/app/services/_index';
+import { LoanService } from 'src/app/services/_index';
+import { ToastrService } from 'ngx-toastr'
 
 @Component({
   selector: 'list-loans',
@@ -13,14 +13,14 @@ export class ListLoansComponent implements OnInit {
 
   constructor(
     private loanService: LoanService,
-    private alertService: AlertService
+    private toastr: ToastrService
   ) {}
 
   ngOnInit(): void {
     this.loanService.getLoans().subscribe((res) => {
       this.loanObj = res;
       this.loans = this.loanObj.loans;
-      this.alertService.success(res['message']);
+      this.toastr.success(res['message'], 'Successful');
     });
   }
   

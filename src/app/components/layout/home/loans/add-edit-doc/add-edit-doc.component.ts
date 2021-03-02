@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router, Params } from '@angular/router';
-import { first } from 'rxjs/operators';
-import { Account, Doc, Loan } from 'src/app/models';
+import { Doc, Loan } from 'src/app/models';
 import { LoanService, AlertService } from 'src/app/services/_index';
+import { ToastrService } from 'ngx-toastr';
+
 
 @Component({
   templateUrl: './add-edit-doc.component.html',
@@ -25,8 +26,8 @@ export class AddEditDocComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private loanService: LoanService,
-    private alertService: AlertService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private toastr: ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -65,7 +66,7 @@ export class AddEditDocComponent implements OnInit {
     this.loanService.createDocument(this.loanId, this.documentForm.value).subscribe((res: Doc) => {
       this.message = res.message
       this.router.navigate(['/loans/view', this.loanId]);
-      this.alertService.success(this.message)
+      this.toastr.success(this.message, 'Sucessful')
     })
   }
    
@@ -74,14 +75,14 @@ export class AddEditDocComponent implements OnInit {
       this.message = res.message
       this.router.navigate(['/loans/view', this.loanId]);
       console.log(this.message)
-      this.alertService.success(this.message)
+      this.toastr.success(this.message, 'Sucessful')
     })
   }
 
   onSubmit() {
     this.submitted = true;
     //reset alert service on submit
-    this.alertService.clear();
+    this.toastr.clear();
     // stop here if form is invalid
     if (this.documentForm.invalid) {
       return;

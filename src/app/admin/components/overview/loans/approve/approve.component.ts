@@ -4,6 +4,8 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 import { first } from 'rxjs/operators';
 import { Doc } from 'src/app/models';
 import { LoanService, AlertService } from 'src/app/services/_index';
+import { ToastrService } from 'ngx-toastr';
+
 
 @Component({ templateUrl: './approve.component.html' })
 export class ApproveComponent implements OnInit {
@@ -22,13 +24,15 @@ export class ApproveComponent implements OnInit {
   loanRes: any;
   user: any;
   documents: Doc[];
+  message: string;
 
   constructor(
     private loanService: LoanService,
     private formBuilder: FormBuilder,
     private alertService: AlertService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private toastr: ToastrService,
   ) {}
 
   ngOnInit(): void {
@@ -61,28 +65,28 @@ export class ApproveComponent implements OnInit {
 
   requestLoan() {
     this.loanService.requestLoan(this.requestForm.value).subscribe((res) => {
-      this.alertService.success('Loan Approved successfully', {
-        keepAfterRouteChange: true,
-      });
+      this.message = res['message']
       this.router.navigate(['../'], { relativeTo: this.route });
+      this.toastr.success(this.message , 'Success')
+
     });
   }
 
   approveLoan() {
-    this.loanService
-      .approveLoan(this.loanId, this.requestForm.value).subscribe((res) => {
+    this.loanService.approveLoan(this.loanId, this.requestForm.value).subscribe((res) => {
         this.loanRes = res;
-        this.alertService.success('Loan Approved successfully', {
-          keepAfterRouteChange: true,
-        });
+        this.message = res['message']
+        console.log(this.message)
+
         this.router.navigate(['../../'], { relativeTo: this.route });
-      });
+        this.toastr.success(this.message , 'Success')
+      })
   }
 
   onSubmit() {
     this.submitted = true;
     // reset alerts on submit
-    this.alertService.clear();
+    this.toastr.clear();
     // stop here if form is invalid
     if (this.requestForm.invalid) {
       return;
@@ -102,9 +106,10 @@ export class ApproveComponent implements OnInit {
 
   onDeleteLoan() {
     this.loanService.deleteLoan(this.loanId).subscribe((res: any) => {
+      this.message = res.message
+      console.log(this.message)
       this.router.navigate(['../../'], { relativeTo: this.route });
-      this.alertService.success(res['message']);
-      this.getDocumentsByLoanId()
+      this.toastr.warning(this.message , 'Success')
     });
   }
   

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Loan } from 'src/app/models';
 import { LoanService } from 'src/app/services/_index';
+import { ToastrService } from 'ngx-toastr';
+
 
 @Component({
   selector: 'view-loan',
@@ -16,7 +18,8 @@ export class ViewLoanComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private loanService: LoanService
+    private loanService: LoanService,
+    private toastr: ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -36,6 +39,7 @@ export class ViewLoanComponent implements OnInit {
         //this is all documents submitted with a loan by User
         this.loanService.getAllDocuments(this.loanId).subscribe((doc: any) => {
           this.docs = doc['documents'];
+          this.toastr.success('Loan Infomation returned successfully', 'Successful');
         });
       } else {
         this.loanId = undefined;

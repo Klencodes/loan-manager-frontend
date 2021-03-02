@@ -1,9 +1,8 @@
-﻿import { Loan } from './../../../models/loan';
-import { AccountService } from 'src/app/services/account.service';
+﻿import { AccountService } from 'src/app/services/account.service';
 import { Component, OnInit } from '@angular/core';
 import { first } from 'rxjs/operators';
-import { Account, Role } from 'src/app/models';
 import { LoanService } from 'src/app/services/_index';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({ templateUrl: 'overview.component.html' })
 export class OverviewComponent implements OnInit{
@@ -17,7 +16,8 @@ export class OverviewComponent implements OnInit{
 
     constructor(
         private accountService: AccountService,
-        private loanService: LoanService
+        private loanService: LoanService,
+        private toastr: ToastrService
         ) {}
 
     ngOnInit() {
@@ -40,6 +40,7 @@ export class OverviewComponent implements OnInit{
     getAllDbLoans(){
         this.loanService.getAllLoans().subscribe((res) => {
           this.$loansObj = res;
+          this.toastr.success('Overview returned successfully', 'Success')
           this.totalLoans =this.$loansObj.totalLoans
           console.log(this.totalLoans)
         })
@@ -55,10 +56,10 @@ export class OverviewComponent implements OnInit{
     deleteAccount(id: string) {
         const account = this.accounts.find(x => x.id === id);
         account.isDeleting = true;
-        this.accountService.delete(id)
-            .pipe(first())
+        this.accountService.delete(id).pipe(first())
             .subscribe(() => {
                 this.accounts = this.accounts.filter(x => x.id !== id) 
+                this.toastr.success('Account Deleted Successfully' , 'Success')
             });
     }
  }

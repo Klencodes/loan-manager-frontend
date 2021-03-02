@@ -26,7 +26,12 @@ import { ToastrModule } from 'ngx-toastr';
         ErrorPagesModule,
         BrowserAnimationsModule,
         MaterialModule,
-        ToastrModule.forRoot()
+        ToastrModule.forRoot( 
+            ({  timeOut: 4000,
+                positionClass: 'toast-top-right',
+                preventDuplicates: true,
+            })
+        )
     ],
     declarations: [
         AppComponent,

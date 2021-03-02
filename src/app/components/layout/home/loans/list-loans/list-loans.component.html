@@ -46,7 +46,12 @@
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody style="width: 100%;">
+                                    <div class="mb-3" *ngIf="loans?.length === 0">
+                                        <div class="text-center empty-record">
+                                            No Records Found!.
+                                        </div>
+                                    </div>
                                     <tr class="tr-border" *ngFor="let loan of loans; let i = index">
                                         <td>{{loan.id | slice: 0:10 | uppercase}}</td>
                                         <td>{{loan.loanType}}</td>

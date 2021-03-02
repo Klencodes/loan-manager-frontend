@@ -2,6 +2,8 @@
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
+import { ToastrService } from 'ngx-toastr';
+
 
 import { AccountService, AlertService } from 'src/app/services/_index';
 
@@ -10,14 +12,15 @@ export class LoginComponent implements OnInit {
     form: FormGroup;
     loading = false;
     submitted = false;
+    hidePassword =  true;
 
     constructor(
         private formBuilder: FormBuilder,
         private route: ActivatedRoute,
         private router: Router,
         private accountService: AccountService,
-        private alertService: AlertService
-    ) { }
+        private toastr: ToastrService
+        ) { }
 
     ngOnInit() {
         this.form = this.formBuilder.group({
@@ -33,7 +36,7 @@ export class LoginComponent implements OnInit {
         this.submitted = true;
 
         // reset alerts on submit
-        this.alertService.clear();
+        this.toastr.clear();
 
         // stop here if form is invalid
         if (this.form.invalid) {
@@ -41,16 +44,16 @@ export class LoginComponent implements OnInit {
         }
 
         this.loading = true;
-        this.accountService.login(this.f.email.value, this.f.password.value)
-            .pipe(first())
+        this.accountService.login(this.f.email.value, this.f.password.value).pipe(first())
             .subscribe({
                 next: () => {
                     // get return url from query parameters or default to home page
                     const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
                     this.router.navigateByUrl(returnUrl);
+                    this.toastr.warning('You have to login!', 'Not Successful')
                 },
                 error: error => {
-                    this.alertService.error(error);
+                    this.toastr.error(error);
                     this.loading = false;
                 }
             });

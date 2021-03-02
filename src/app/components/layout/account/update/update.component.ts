@@ -2,9 +2,10 @@
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
-
 import { AccountService, AlertService } from 'src/app/services/_index';
 import { MustMatch } from 'src/app/validators';
+import { ToastrService } from 'ngx-toastr';
+
 
 @Component({ templateUrl: 'update.component.html' })
 export class UpdateComponent implements OnInit {
@@ -19,7 +20,8 @@ export class UpdateComponent implements OnInit {
         private route: ActivatedRoute,
         private router: Router,
         private accountService: AccountService,
-        private alertService: AlertService
+        private alertService: AlertService,
+        private toastr: ToastrService
     ) { }
 
     ngOnInit() {
@@ -61,18 +63,16 @@ export class UpdateComponent implements OnInit {
 
     updateProfile(){
         this.loading = true;
-        this.accountService
-          .update(this.account.id, this.form.value)
-          .pipe(first())
-          .subscribe({
+        this.accountService.update(this.account.id, this.form.value)
+          .pipe(first()).subscribe({
             next: () => {
-              this.alertService.success('Update successful', {
+                this.toastr.success('Profile update successful', 'Succssful'), {
                 keepAfterRouteChange: true,
-              });
+              };
               this.router.navigate(['../'], { relativeTo: this.route });
             },
             error: (error) => {
-              this.alertService.error(error);
+                this.toastr.error(error);
               this.loading = false;
             },
           });
@@ -82,9 +82,8 @@ export class UpdateComponent implements OnInit {
         if (confirm('Are you sure?')) {
             this.deleting = true;
             this.accountService.delete(this.account.id)
-                .pipe(first())
-                .subscribe(() => {
-                    this.alertService.success('Account deleted successfully', { keepAfterRouteChange: true });
+                .pipe(first()).subscribe(() => {
+                    this.toastr.success('Account deleted successfully','Succssful'), { keepAfterRouteChange: true };
                 });
         }
     }

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params, Router } from '@angular/router';
-import { first } from 'rxjs/operators';
-import { Account, Loan } from 'src/app/models';
-import { AlertService, LoanService } from 'src/app/services/_index';
+import { Loan } from 'src/app/models';
+import { LoanService } from 'src/app/services/_index';
+import { ToastrService } from 'ngx-toastr';
+
 
 @Component({
   selector: 'list',
@@ -14,11 +14,11 @@ export class ListComponent implements OnInit {
   loans: Loan[];
   docs: Document[];
   isDeleting: Boolean;
+  message: string;
 
   constructor(
     private loanService: LoanService,
-    private route: ActivatedRoute,
-    private alertService: AlertService
+    private toastr: ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -29,7 +29,10 @@ export class ListComponent implements OnInit {
   getAllLoans() {
     this.loanService.getAllLoans().subscribe((res) => {
       this.$loansObj = res;
+      this.message = res['message']
       this.loans = this.$loansObj.loans;
+      this.toastr.success(this.message , 'Success')
+
     });
   }
 

@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
-import { LoanService, AlertService } from 'src/app/services/_index';
+import { LoanService} from 'src/app/services/_index';
+import { ToastrService } from 'ngx-toastr';
+
 
 @Component({
   selector: 'request-loan',
@@ -19,9 +21,9 @@ export class RequestLoanComponent implements OnInit {
   constructor(
     private loanService: LoanService,
     private formBuilder: FormBuilder,
-    private alertService: AlertService,
+    private toastr: ToastrService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
   ) {}
 
   ngOnInit(): void {
@@ -36,7 +38,7 @@ export class RequestLoanComponent implements OnInit {
       this.loanId = res['LoanDoc'].id
       console.log(this.loanId)
       console.log(res)
-      this.alertService.success(res['message'], {});
+      this.toastr.success(res['message'], 'Successful');
       this.router.navigate(['/loans', this.loanId, 'document']);
     });
   }
@@ -44,7 +46,7 @@ export class RequestLoanComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
     // reset alerts on submit
-    this.alertService.clear();
+    this.toastr.clear();
     // stop here if form is invalid
     if (this.requestForm.invalid) {
       return;

@@ -9,7 +9,9 @@ export class ListComponent implements OnInit {
     accounts: Account[];
     count: number;
     isDeleting: Boolean = false;
-    constructor(private accountService: AccountService) {}
+    constructor(
+        private accountService: AccountService
+        ) {}
 
     ngOnInit() {
         this.getAllUsers();
