@@ -36,8 +36,6 @@ export class RequestLoanComponent implements OnInit {
   requestLoan() {
     this.loanService.requestLoan(this.requestForm.value).subscribe((res) => {
       this.loanId = res['LoanDoc'].id
-      console.log(this.loanId)
-      console.log(res)
       this.toastr.success(res['message'], 'Successful');
       this.router.navigate(['/loans', this.loanId, 'document']);
     });

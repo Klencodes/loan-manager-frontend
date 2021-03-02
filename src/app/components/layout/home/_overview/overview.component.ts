@@ -25,9 +25,7 @@ export class OverviewComponent implements OnInit {
   getLoans(){
     this.loanService.getLoans().subscribe((res) => {
       this.loanObj = res;
-      console.log(this.loanObj, 'OBJ LOAN')
       this.loans =this.loanObj.loans;
-      console.log(this.loans, 'LOANS')
       this.toastr.success('Overview returned successfully', 'Successful');
     })
   }

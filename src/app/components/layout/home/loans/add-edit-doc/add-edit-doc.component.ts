@@ -36,7 +36,6 @@ export class AddEditDocComponent implements OnInit {
       this.docId = params.docId;
       if (!this.isAddMode) {
         this.loanService.getDocument(this.loanId, this.docId).subscribe((res) => {
-            console.log(res);
             this.documentRes = res['getDoc'];
             this.documentForm.patchValue({
               idCard: this.documentRes.idCard,
@@ -74,7 +73,6 @@ export class AddEditDocComponent implements OnInit {
     this.loanService.updateDocument(this.loanId, this.documentForm.value, this.docId).subscribe((res: Doc) => {
       this.message = res.message
       this.router.navigate(['/loans/view', this.loanId]);
-      console.log(this.message)
       this.toastr.success(this.message, 'Sucessful')
     })
   }

@@ -41,7 +41,6 @@ export class ViewComponent implements OnInit {
         //this is all documents submitted with a loan by User
         this.loanService.getAllDocuments(this.loanId).subscribe((res: Doc[]) => {
           this.documents = res['documents'];
-          console.log(res)
           this.message = res['message']
           this.toastr.success('Loan Infomation returned successfully', 'Successful');
         });

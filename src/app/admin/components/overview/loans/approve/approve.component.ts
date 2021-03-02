@@ -76,8 +76,6 @@ export class ApproveComponent implements OnInit {
     this.loanService.approveLoan(this.loanId, this.requestForm.value).subscribe((res) => {
         this.loanRes = res;
         this.message = res['message']
-        console.log(this.message)
-
         this.router.navigate(['../../'], { relativeTo: this.route });
         this.toastr.success(this.message , 'Success')
       })
@@ -107,7 +105,6 @@ export class ApproveComponent implements OnInit {
   onDeleteLoan() {
     this.loanService.deleteLoan(this.loanId).subscribe((res: any) => {
       this.message = res.message
-      console.log(this.message)
       this.router.navigate(['../../'], { relativeTo: this.route });
       this.toastr.warning(this.message , 'Success')
     });

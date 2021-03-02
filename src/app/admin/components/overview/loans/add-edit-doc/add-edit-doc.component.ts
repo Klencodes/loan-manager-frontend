@@ -36,7 +36,6 @@ export class AddEditDocComponent implements OnInit {
         this.docId = params.docId;
         if (!this.isAddMode) {
           this.loanService.getDoc(this.loanId, this.docId).subscribe((res) => {
-            console.log(res);
             this.documentRes = res['getDoc']
             this.documentForm.patchValue({
               idCard: this.documentRes.idCard,

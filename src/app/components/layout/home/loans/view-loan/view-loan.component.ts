@@ -25,8 +25,6 @@ export class ViewLoanComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe((params:Params)=>{
       this.loanId = params.id
-      console.log(params)
-
     });
     this.getLoanInfo();
   }
