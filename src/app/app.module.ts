@@ -14,6 +14,7 @@ import { ErrorPagesModule } from './components/errors/errors.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './components/modules/material.module';
 import { ToastrModule } from 'ngx-toastr';
+import { HomeModule } from './components/layout/home/home.module';
 
 
 @NgModule({
@@ -26,6 +27,8 @@ import { ToastrModule } from 'ngx-toastr';
         ErrorPagesModule,
         BrowserAnimationsModule,
         MaterialModule,
+        HomeModule,
+
         ToastrModule.forRoot( 
             ({  timeOut: 4000,
                 positionClass: 'toast-top-right',
@@ -35,8 +38,7 @@ import { ToastrModule } from 'ngx-toastr';
     ],
     declarations: [
         AppComponent,
-        HomeComponent,
-        LayoutComponent 
+         
     ],
     providers: [
         { provide: APP_INITIALIZER, useFactory: AppInitializer, multi: true, deps: [AccountService] },
