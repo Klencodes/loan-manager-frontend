@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class ConstantService {
- readonly BASE_URL = 'http://localhost:4000';
+ readonly BASE_URL = 'https://loan-backend-api.herokuapp.com';
 
   constructor( private httpClient: HttpClient) { this.BASE_URL }
 

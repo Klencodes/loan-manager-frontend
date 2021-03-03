@@ -16,9 +16,9 @@ export class AddEditDocComponent implements OnInit {
   idCards = [ 'Ghana Card', 'Voter Card', 'Ecowas Card', 'Health Insurance','Visa Card', 'Passport Card', ];
   loanId: string;
   docId: string;
-  loanDetails: any;
+  loanDetails: Loan;
   documentForm: FormGroup;
-  docs: any;
+  docs: Doc[];
   documentRes: Doc;
   message: string;
 
@@ -57,7 +57,7 @@ export class AddEditDocComponent implements OnInit {
 
   getLoan(){
     this.loanService.getLoan(this.loanId).subscribe((res: Loan[]) => {
-      this.loanDetails = res['loans'];
+      this.loanDetails = res['loan'];
     });
   }
 

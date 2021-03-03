@@ -1,0 +1,146 @@
+<div class="bg-white">
+    <!-- Content Header (Page header) -->
+    <div class="d-flex align-items-center bg-white">
+        <!-- Left side dashboard -->
+        <div class="mr-auto">
+            <div class="page-title mx-3 py-4">Make Loan Payment</div>
+        </div>
+    </div>
+    <div class="box-body">
+        <table class="table-responsive" cellpadding="5">
+            <td class="">
+                <tr class="text-bold">Loan Details
+                </tr>
+                <hr style="margin: 5px 0px 1rem;">
+                <tbody>
+                    <tr>
+                        <td>Loan ID:</td>
+                        <td></td>
+                        <td><strong>{{loanDetails?.id | uppercase}}</strong></td>
+                    </tr>
+                    <tr>
+                        <td>Loan Type:</td>
+                        <td></td>
+                        <td>{{loanDetails?.loanType}}</td>
+                    </tr>
+                    <tr>
+                        <td>Loan Amount:</td>
+                        <td></td>
+                        <td>{{loanDetails?.loanAmount | currency: 'GHS '}}</td>
+                    </tr>
+                    <tr >
+                        <td >Amount Owings: </td>
+                        <td></td>
+                        <td>//Todo</td>
+                    </tr>
+                    <tr>
+                        <td>Date Requested:</td>
+                        <td></td>
+                        <td>{{loanDetails?.created | date: 'dd/MM/yy - hh:mm:ss'}}</td>
+                    </tr>
+                </tbody>
+            </td>
+
+           <td class="pull-right">
+                <tr class="text-bold">Last Payment
+                </tr>
+                <hr style="margin: 5px 0px 1rem;">
+                <tbody>
+                    <tr>
+                        <td>Payment ID:</td>
+                        <td></td>
+                        <td><strong>//Todo</strong></td>
+                    </tr>
+                    <tr>
+                        <td>Payment Type:</td>
+                        <td></td>
+                        <td>//Todo</td>
+                    </tr>
+                    <tr>
+                        <td>Amount Paid:</td>
+                        <td></td>
+                        <td>//Todo</td>
+                    </tr>
+                    <tr>
+                        <td>Payment Date:</td>
+                        <td></td>
+                        <td>//Todo</td>
+                    </tr>
+                </tbody>
+            </td>
+        </table>
+    </div>
+    <hr style="margin: 5px 0px 1rem;">
+
+    <div class="content" style="margin-top: -30px;">
+        <div class="box-body">
+            <div class="sub-page-title">Payment document ( Card Paymnet, Bank Payment, PayPal )
+            </div>
+            <form [formGroup]="paymentForm" (ngSubmit)="onSubmit()">
+                <div class="row">
+                    <!-- <div class="col-md-6">
+                        <mat-form-field>
+                            <mat-label>Transaction Type</mat-label>
+                            <mat-select formControlName="transaction"
+                                [ngClass]="{ 'is-invalid': submitted && f.transaction.errors }">
+                                <mat-option *ngFor="let transaction of transactions" [value]="transaction">{{transaction}}</mat-option>
+                            </mat-select>
+                            <mat-error *ngIf="submitted && f.transaction.errors">
+                                <div *ngIf="f.transaction.errors.required">Transaction Type is required</div>
+                            </mat-error>
+                        </mat-form-field>
+                    </div> -->
+                    <div class="col-md-6">
+                        <mat-form-field>
+                            <mat-label>Transaction Type</mat-label>
+                            <input matInput formControlName="transaction"
+                                [ngClass]="{ 'is-invalid': submitted && f.transaction.errors }">
+                            <mat-error *ngIf="submitted && f.transaction.errors">
+                                <div *ngIf="f.transaction.errors.required">Transaction Type is required</div>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-6">
+                        <mat-form-field>
+                            <mat-label>Payment Type</mat-label>
+                            <input matInput formControlName="paymentType"
+                                [ngClass]="{ 'is-invalid': submitted && f.paymentType.errors }">
+                            <mat-error *ngIf="submitted && f.paymentType.errors">
+                                <div *ngIf="f.paymentType.errors.required">Payment Type is required</div>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <mat-form-field>
+                            <mat-label>Payment Account</mat-label>
+                            <input matInput formControlName="paymentAccount"
+                                [ngClass]="{ 'is-invalid': submitted && f.paymentAccount.errors }">
+                            <mat-error *ngIf="submitted && f.paymentAccount.errors">
+                                <div *ngIf="f.paymentAccount.errors.required">Payment Account Type is required</div>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-6">
+                        <mat-form-field>
+                            <mat-label>Amount</mat-label>
+                            <input matInput formControlName="amountPaid"
+                                [ngClass]="{ 'is-invalid': submitted && f.amountPaid.errors }">
+                            <mat-error *ngIf="submitted && f.amountPaid.errors">
+                                <div *ngIf="f.amountPaid.errors.required">Amount is required</div>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="form-group mt-3 pull-right mb-4">
+                    <button [disabled]="loading" class="btn btn-primary">
+                        <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                        Proceed
+                    </button>
+                    <a routerLink="/loans/view/{{loanDetails?.id}}" href="" class="btn btn-link">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

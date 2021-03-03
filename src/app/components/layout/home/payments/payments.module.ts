@@ -2,18 +2,24 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { PaymentsRoutingModule } from './payments-routing.module';
-import { ListComponent } from './list/list.component';
-import { MakeComponent } from './make/make.component';
+import { ListPaymentsComponent } from './list-payments/list-payments.component';
+import { MakePaymentComponent } from './make-payment/make-payment.component';
+import { ViewPaymentComponent } from './view-payment/view-payment.component';
+import { MaterialModule } from 'src/app/components/modules';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [
-    ListComponent, 
-    MakeComponent
+    ListPaymentsComponent, 
+    MakePaymentComponent, 
+    ViewPaymentComponent
   ],
   imports: [
     CommonModule,
-    PaymentsRoutingModule
+    PaymentsRoutingModule,
+    MaterialModule,
+    ReactiveFormsModule
   ]
 })
 export class PaymentsModule { }

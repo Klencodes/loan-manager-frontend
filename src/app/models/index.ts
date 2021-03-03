@@ -2,3 +2,4 @@
 export * from './alert';
 export * from './loan';
 export * from './document'
+export * from './payment'

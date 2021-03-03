@@ -1,8 +1,9 @@
 export const environment = {
   production: false,
-  BASE_URL: 'http://localhost:4000',
-  ACCOUNTS_ENDPOINT: 'http://localhost:4000/accounts/',
+  BASE_URL: 'https://loan-backend-api.herokuapp.com',
+  ACCOUNTS_ENDPOINT: 'https://loan-backend-api.herokuapp.com/',
   LOANS_ENDPOINT: 'loans',
+  PAYMENTS_ENDPOINT: 'payments',
 
   ACCOUNTS: {
     USERS_ONLY: 'users',
@@ -26,4 +27,10 @@ export const environment = {
     LOAN_DOCUMENTS: 'documents',
     REQUEST_LOAN: 'request',
   },
+  PAYMENTS: {
+    GET_ALL_PAYMENTS: 'find-all',
+    CONFIRM_PAYMENT: 'confirm-payment',
+    GET_PAYMENT: 'payment'
+
+  }
 };

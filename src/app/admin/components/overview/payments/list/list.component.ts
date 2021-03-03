@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-@Component({
-  templateUrl: './make.component.html'
-})
-export class MakeComponent implements OnInit {
+@Component({ templateUrl: './list.component.html' })
+export class ListComponent implements OnInit {
 
   constructor() { }
 

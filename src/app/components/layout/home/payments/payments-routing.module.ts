@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ListComponent } from './list/list.component';
-import { MakeComponent } from './make/make.component';
-
+import { ListPaymentsComponent } from './list-payments/list-payments.component';
+import { MakePaymentComponent } from './make-payment/make-payment.component';
+import { ViewPaymentComponent } from './view-payment/view-payment.component';
 
 const routes: Routes = [
-  { path: '', component: ListComponent },
-  { path: 'make', component: MakeComponent }
+  { path: '', component: ListPaymentsComponent },
+  { path: ':loanId/payment', component: MakePaymentComponent },
+  { path: 'view/:id', component: ViewPaymentComponent },
 ];
 
 @NgModule({

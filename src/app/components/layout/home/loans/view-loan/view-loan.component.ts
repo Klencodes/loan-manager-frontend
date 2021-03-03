@@ -14,7 +14,7 @@ export class ViewLoanComponent implements OnInit {
   loans: Loan[];
   docs: any;
   loanId: string = '';
-  loanDetails: any;
+  loanDetails: Loan;
 
   constructor(
     private route: ActivatedRoute,
@@ -32,7 +32,7 @@ export class ViewLoanComponent implements OnInit {
   //This contains All information available on a particular user
   getLoanInfo() {
     this.loanService.getLoan(this.loanId).subscribe((res: Loan[]) => {
-      this.loanDetails = res['loans'];
+      this.loanDetails = res['loan'];
       if (this.loanId) {
         //this is all documents submitted with a loan by User
         this.loanService.getAllDocuments(this.loanId).subscribe((doc: any) => {

@@ -8,26 +8,21 @@ import { ToastrService } from 'ngx-toastr'
 })
 export class OverviewComponent implements OnInit {
 
-  modalTitle = 'Request New Loan'
   loanObj: any;
   loans: Loan[];
-  isDeleting: Boolean;
 
   constructor(
     private loanService: LoanService,
-    private toastr: ToastrService,
-  ) { }
+    private toastr: ToastrService
+  ) {}
 
   ngOnInit(): void {
-    this.getLoans()
-  }
-
-  getLoans(){
     this.loanService.getLoans().subscribe((res) => {
       this.loanObj = res;
-      this.loans =this.loanObj.loans;
-      this.toastr.success('Overview returned successfully', 'Successful');
-    })
+      this.loans = this.loanObj.loans;
+      console.log(this.loans)
+      
+      this.toastr.success('Request was successful', 'Successful');
+    });
   }
-
 }

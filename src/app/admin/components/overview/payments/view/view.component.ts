@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-@Component({
-  templateUrl: './list.component.html'
-})
-export class ListComponent implements OnInit {
+@Component({ templateUrl: './view.component.html' })
+export class ViewComponent implements OnInit {
 
   constructor() { }
 
