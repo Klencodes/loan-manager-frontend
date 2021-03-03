@@ -1,5 +1,5 @@
 export const environment = {
-  production: false,
+  production: true,
   BASE_URL: 'https://loan-backend-api.herokuapp.com',
   ACCOUNTS_ENDPOINT: 'https://loan-backend-api.herokuapp.com/',
   LOANS_ENDPOINT: 'loans',
