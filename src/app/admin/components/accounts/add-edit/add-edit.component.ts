@@ -101,7 +101,7 @@ export class AddEditComponent implements OnInit {
             .pipe(first())
             .subscribe({
                 next: () => {
-                    this.toastr.success('Account created successfully', 'Successful'), { keepAfterRouteChange: true };
+                    this.toastr.success('Account updated successfully', 'Successful'), { keepAfterRouteChange: true };
                     this.router.navigate(['../../'], { relativeTo: this.route });
                 },
                 error: error => {

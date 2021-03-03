@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { Loan } from 'src/app/models';
+import { Loan, Payment } from 'src/app/models';
 import { LoanService, PaymentService } from 'src/app/services/_index';
 
 @Component({ templateUrl: './make-payment.component.html' })
@@ -12,6 +12,8 @@ export class MakePaymentComponent implements OnInit {
   loanId: string= '';
   loanDetails: Loan;
   loading: Boolean = false;
+  loanPayments: Payment[];
+  lastPayment: Payment;
 
   constructor(
     private loanService: LoanService,
@@ -37,6 +39,8 @@ export class MakePaymentComponent implements OnInit {
       paymentAccount: ['', [Validators.required]],
       amountPaid: ['', [Validators.required,]],
     });
+
+    this.getLoanPayments();
   }
 
   makePayment() {
@@ -44,6 +48,13 @@ export class MakePaymentComponent implements OnInit {
       this.toastr.success(res['message'], 'Successful'), { keepAfterRouteChange: true };
       this.router.navigate(['../../../'], { relativeTo: this.route });
     })
+  }
+
+  getLoanPayments() {
+    this.paymentService.getLoanPayments(this.loanId).subscribe((res) =>{
+      this.loanPayments = res['payments'];
+      this.lastPayment = this.loanPayments[this.loanPayments.length -1];
+    });
   }
 
   onSubmit() {

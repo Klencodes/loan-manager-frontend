@@ -24,19 +24,10 @@ export class ListPaymentsComponent implements OnInit {
 
   getPayments(){
     this.paymentService.getPayments().subscribe((res) => {
-
       this.payments = res['payments']
-      console.log(this.payments, 'PAYMENTS')
-
-      // this.loanDetails = res['payments'].loanId;
-      // console.log(this.loanDetails, 'LOAN INFO')
-
       this.loanDetails = res['payments'][0].loanId;
-      console.log(this.loanDetails, 'LOAN INFO')
-      this.totalLoan = this.loanDetails['loanAmount'] ;
-      console.log(this.totalLoan);
-      
-
+      this.totalLoan = this.loanDetails['loanAmount']; 
+      this.toastr.success(res['message'], 'Successful')  
     });
   }
 

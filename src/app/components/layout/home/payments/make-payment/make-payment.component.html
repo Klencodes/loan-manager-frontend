@@ -1,4 +1,4 @@
-<div class="bg-white">
+<div class="bg-white pb-4">
     <!-- Content Header (Page header) -->
     <div class="d-flex align-items-center bg-white">
         <!-- Left side dashboard -->
@@ -29,9 +29,9 @@
                         <td>{{loanDetails?.loanAmount | currency: 'GHS '}}</td>
                     </tr>
                     <tr >
-                        <td >Amount Owings: </td>
+                        <td >Amount Owing: </td>
                         <td></td>
-                        <td>//Todo</td>
+                        <td>{{loanDetails?.loanAmount - lastPayment?.amountPaid | currency: 'GHS '}}</td>
                     </tr>
                     <tr>
                         <td>Date Requested:</td>
@@ -45,26 +45,39 @@
                 <tr class="text-bold">Last Payment
                 </tr>
                 <hr style="margin: 5px 0px 1rem;">
-                <tbody>
+                <tbody *ngIf="loanPayments">
                     <tr>
                         <td>Payment ID:</td>
                         <td></td>
-                        <td><strong>//Todo</strong></td>
+                        <td><strong>{{lastPayment?.id | uppercase}}</strong></td>
                     </tr>
                     <tr>
-                        <td>Payment Type:</td>
+                        <td>Transaction Type:</td>
                         <td></td>
-                        <td>//Todo</td>
+                        <td>{{lastPayment?.transaction}}</td>
                     </tr>
                     <tr>
                         <td>Amount Paid:</td>
                         <td></td>
-                        <td>//Todo</td>
+                        <td>{{lastPayment?.amountPaid}}</td>
                     </tr>
+                    
+                    <tr>
+                        <td>Status:</td>
+                        <td></td>
+                        <td *ngIf="lastPayment?.paymentStatus === 'Pending'"> <span class="badge badge-warning">{{
+                            lastPayment?.paymentStatus }}</span>
+                        <td *ngIf="lastPayment?.paymentStatus === 'Recovered'"> <span class="badge badge-info">{{
+                            lastPayment?.paymentStatus }}</span>
+                        <td *ngIf="lastPayment?.paymentStatus === 'Success'"> <span class="badge badge-success">{{
+                            lastPayment?.paymentStatus }}</span>
+                        </td>
+                    </tr>
+
                     <tr>
                         <td>Payment Date:</td>
                         <td></td>
-                        <td>//Todo</td>
+                        <td>{{lastPayment?.paymentDate | date: 'dd/MM/yyyy - hh:mm:ss a'}}</td>
                     </tr>
                 </tbody>
             </td>
@@ -133,9 +146,9 @@
                         </mat-form-field>
                     </div>
                 </div>
-                <div class="form-group mt-3 pull-right mb-4">
-                    <button [disabled]="loading" class="btn btn-primary">
-                        <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                <div class="form-group mt-3 pull-right">
+                    <button [disabled]="loading" class="btn btn-primary mr-2">
+                        <span *ngIf="loading" class="spinner-border spinner-border-sm "></span>
                         Proceed
                     </button>
                     <a routerLink="/loans/view/{{loanDetails?.id}}" href="" class="btn btn-link">Cancel</a>

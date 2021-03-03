@@ -50,7 +50,7 @@ export class LoginComponent implements OnInit {
                     // get return url from query parameters or default to home page
                     const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
                     this.router.navigateByUrl(returnUrl);
-                    this.toastr.warning('You have to login!', 'Not Successful')
+                    this.toastr.success('Login successful!', 'Successful')
                 },
                 error: error => {
                     this.toastr.error(error);

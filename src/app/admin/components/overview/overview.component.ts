@@ -1,23 +1,31 @@
-﻿import { AccountService } from 'src/app/services/account.service';
+﻿import { Loan } from './../../../models/loan';
+import { AccountService } from 'src/app/services/account.service';
 import { Component, OnInit } from '@angular/core';
 import { first } from 'rxjs/operators';
-import { LoanService } from 'src/app/services/_index';
+import { LoanService, PaymentService } from 'src/app/services/_index';
 import { ToastrService } from 'ngx-toastr';
+import { Account, Payment } from 'src/app/models';
 
 @Component({ templateUrl: 'overview.component.html' })
 export class OverviewComponent implements OnInit{
-    accounts: any;
-    countAccounts: number;
-    users: any;
-    countUsers: number;
+
+    countAllAccounts: number;
+    countAllPayments: Number;
+    countAllLoans: Number;
+
+    accounts: Account[];
     $loansObj: any;
-    totalLoans: Number
+    payments: Payment[];
+    loanDetails: Loan;
+    accountDetails: Account;
+    loans: Loan[];
   
 
     constructor(
         private accountService: AccountService,
         private loanService: LoanService,
-        private toastr: ToastrService
+        private toastr: ToastrService,
+        private paymentService: PaymentService
         ) {}
 
     ngOnInit() {
@@ -26,33 +34,27 @@ export class OverviewComponent implements OnInit{
 
     onLoadFunctions(){
         this.getAllAccounts();
-        this.getAllDbLoans();
+        this.getAllLoans();
+        this.getAllPayments();
     }
 
     getAllAccounts(){
         this.accountService.getAll().pipe(first())
         .subscribe((result:any) =>{
             this.accounts = result.accounts;
-            this.countAccounts = result.count;
+            this.countAllAccounts = result.count;
             // console.log(result, 'Result Object')
         });
     }
-    getAllDbLoans(){
-        this.loanService.getAllLoans().subscribe((res) => {
-          this.$loansObj = res;
-          this.toastr.success('Overview returned successfully', 'Success')
-          this.totalLoans =this.$loansObj.totalLoans
-          console.log(this.totalLoans)
-        })
-      }
-    getUsersOnly(){
-        this.accountService.getUsersOnly().pipe(first())
-        .subscribe((result:any) =>{
-            this.users = result.users;
-            this.countUsers = result.count;
-            // console.log(result, 'Result Object')
-        });
-    }
+  //Get all loans from Db
+  getAllLoans() {
+    this.loanService.getAllLoans().subscribe((res) => {
+      this.$loansObj = res;
+      this.countAllLoans = this.$loansObj.totalLoans
+      this.loans = this.$loansObj.loans;
+    });
+  }
+
     deleteAccount(id: string) {
         const account = this.accounts.find(x => x.id === id);
         account.isDeleting = true;
@@ -62,4 +64,20 @@ export class OverviewComponent implements OnInit{
                 this.toastr.success('Account Deleted Successfully' , 'Success')
             });
     }
+    
+    getAllPayments(){
+        this.paymentService.getAllPayments().subscribe((res) => {
+          this.payments = res['payments']
+          this.countAllPayments = res['totalPayments']
+          this.loanDetails = res['payments'][0].loanId;
+          this.accountDetails = res['payments'][0].accountId;
+
+          console.log(this.payments, 'THIS ALL PAYMENTS')
+          console.log(this.loanDetails, 'LOAN DETAIL')
+          console.log(this.accountDetails, 'THIS ACCOUNT')
+         
+          // this.totalLoan = this.loanDetails['loanAmount']; 
+          // this.toastr.success(res['message'], 'Successful')  
+        });
+      }
  }

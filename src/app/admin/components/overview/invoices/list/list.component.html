@@ -2,10 +2,18 @@
 <div class="d-flex align-items-center bg-white">
     <!-- Left side dashboard -->
     <div class="mr-auto">
-        <div class="page-title mx-3 py-4">All Payments</div>
+        <div class="page-title mx-3 py-4">Invoices</div>
     </div>
-  </div>
-  <section class="content">
+    <div class="right-title">
+        <div class="d-flex justify-content-end mr-4">
+            <a class="font-weight-600 mb-5">
+                <i class="si si-plus mr-2"></i>Request Invoice
+            </a>
+        </div>
+    </div>
+</div>
+
+<section class="content">
     <!-- Table list view -->
     <div class="box pt-3">
         <div class="box-body p-15">
@@ -13,7 +21,7 @@
                 <div id="tickets_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4 no-footer">
                     <!-- Filters Panel -->
                     <div class="">
-                        <h4 class="box-title">//TODOs: FILTER TYPES <b>DATEPICKER</b></h4>
+                        <h4 class="box-title">//TODO: FILTER TYPES <b>DATEPICKER</b></h4>
                         <!-- Filter Right Side -->
                         <div class="box-controls pull-right">
                             <div class="lookup lookup-circle lookup-right">
@@ -21,29 +29,29 @@
                             </div>
                         </div>
                     </div>
-  
+
                     <div class="row">
                         <div class="col-sm-12">
                             <table id="customers" class="table mt-0 table-hover no-wrap">
                                 <thead>
                                     <tr role="row">
-                                        <th>Payment ID</th>
-                                        <th>Transaction Type</th>
-                                        <th>Payment Type</th>
-                                        <th>Amount Paid</th>
-                                        <th>Payment Date</th>
+                                        <th>Invoice ID</th>
+                                        <th>Period</th>
+                                        <th>Issued To</th>
                                         <th>Status</th>
-                                        <th>Loan Amount</th>
-                                        <th>Owings</th>
+                                        <th>Issued Date</th>
+                                        <th>Date Due</th>
+                                        <th>Amount </th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody style="width: 100%;">
-                                    <div class="mb-3" *ngIf="payments?.length === 0">
+                                    <div class="mb-3">
                                         <div class="text-center empty-record">
                                             No Records Found!.
                                         </div>
                                     </div>
-                                    <tr class="tr-border" *ngFor="let payment of payments; let i = index">
+                                    <!-- <tr class="tr-border" *ngFor="let payment of payments; let i = index">
                                         <td><a [routerLink]="['view', payment.id]">
                                             {{payment.id | slice: 0:10 | uppercase}}
                                             </a>
@@ -63,14 +71,14 @@
                                         </td>
                                         <td>{{totalLoan | currency: 'GHS '}}</td>
                                         <td>{{totalLoan - payment.amountPaid | currency: 'GHS '}}</td>   
-                                    </tr>
+                                    </tr> -->
                                     <!-- Spinner isLoading -->
-                                    <tr *ngIf="!payments">
+                                    <!-- <tr *ngIf="!payments">
                                         <td colspan="12" class="text-center">
                                             <span
                                                 class="text-success spinner-border spinner-border-lg align-center"></span>
                                         </td>
-                                    </tr>
+                                    </tr> -->
                                 </tbody>
                             </table>
                         </div>

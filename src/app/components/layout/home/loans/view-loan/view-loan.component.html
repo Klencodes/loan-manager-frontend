@@ -36,7 +36,7 @@
                         </tr>
                         <tr role="row" class="odd shown">
                             <td class="text-bold">Date Requested: </td>
-                            <td> {{loanDetails?.created | date:'dd/MM/yyyy - hh:mm:ss'}}</td>
+                            <td> {{loanDetails?.created | date:'dd/MM/yyyy - hh:mm:ss a'}}</td>
                         </tr>
                         <td class="text-bold">Loan Status:</td>
                         <td *ngIf="loanDetails?.loanStatus === 'Pending'">
@@ -51,7 +51,7 @@
                         </td>
                         <tr role="row" class="odd shown">
                             <td class="text-bold">Date Approved: </td>
-                            <td>{{loanDetails?.statusDate | date:'dd/MM/yyyy - hh:mm:ss'}}</td>
+                            <td>{{loanDetails?.statusDate | date:'dd/MM/yyyy - hh:mm:ss a'}}</td>
                         </tr>
                     </table>
                 </div>
@@ -83,11 +83,11 @@
                                 </tr>
                                 <tr>
                                     <td>Date Created:</td>
-                                    <td>{{document.created | date: 'dd/MM/yy - hh:mm:ss'}}</td>
+                                    <td>{{document.created | date: 'dd/MM/yy - hh:mm:ss a'}}</td>
                                 </tr>
                                 <tr>
                                     <td>Date Updated:</td>
-                                    <td>{{document.updated | date: 'dd/MM/yy - hh:mm:ss'}}</td>
+                                    <td>{{document.updated | date: 'dd/MM/yy - hh:mm:ss a'}}</td>
                                 </tr>
                                 <tr>
                                     <td>Action:</td>

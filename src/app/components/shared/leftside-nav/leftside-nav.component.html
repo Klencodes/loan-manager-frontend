@@ -11,37 +11,37 @@
 		  </a>
 		</li>
 		<li>
-		  <a routerLinkActive="active" routerLink="/customers">
-			<i class="si si-people"></i>
+		  <a *ngIf="account && Role.Admin" routerLinkActive="active" routerLink="/admin/customers">
+			<i class="mdi mdi-cash-usd"></i>
 			<span>Customers</span>
 		  </a>
 		</li>
 		<li>
-		  <a routerLinkActive="active" routerLink="/employees">
+		  <a routerLinkActive="active" routerLink="loans">
 			<i class="mdi mdi-cash-usd"></i>
-			<span>Employees</span>
+			<span>Loans</span>
 		  </a>
 		</li>
 		<li>
-		  <a routerLink="/payments">
+		  <a routerLink="payments">
 			<i class="mdi mdi-cash-multiple"></i>
 			<span>Payments</span>
 		  </a>
 		</li>
 		<li>
-		  <a routerLink="/invoices">
+		  <a routerLink="invoices">
 			<i class="mdi mdi-export"></i>
 			<span>Invoices</span>
 		  </a>
 		</li>
 		<li>
-		  <a routerLink="/reports">
+		  <a routerLink="reports">
 			<i class="si si-book-open"></i>
 			<span>Reports</span>
 		  </a>
 		</li>
 		<li>
-		  <a routerLink="/settings">
+		  <a routerLink="settings">
 			<i class="ti ti-settings"></i>
 			<span>Settings</span>
 		  </a>

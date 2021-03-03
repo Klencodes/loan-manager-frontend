@@ -8,5 +8,7 @@ export class Payment {
   paymentAccount: string;
   paymentStatus: string;
   paymentStatusDate: string;
+  length?: number ;
+  loanId?: any;
 
 }

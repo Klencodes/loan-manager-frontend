@@ -142,7 +142,7 @@
                                         </td>
                                         <td>{{loan.statusDate | date: 'dd/MM/yyyy' }}</td>
                                         <td>
-                                            <a [routerLink]="['view', loan.id]" class="btn btn-sm btn-rounded btn-info font-size-18 mr-2">
+                                            <a routerLink="/loans/view/{{loan.id}}" class="btn btn-sm btn-rounded btn-info font-size-18 mr-2">
                                                 <i class="text-white ti-eye"></i>
                                             </a>
                                         </td>

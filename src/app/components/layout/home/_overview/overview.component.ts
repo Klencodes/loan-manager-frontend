@@ -24,15 +24,11 @@ export class OverviewComponent implements OnInit {
     this.getLoans();
     this.getPayments();
   }
+
   getPayments() {
     this.paymentService.getPayments().subscribe((res) =>{
-      console.log(res)
       this.payments = res['payments'];
       this.paymentCount = res['count']
-      console.log(this.payments);
-      this.loan = this.payments[0]['loanId'];
-      console.log(this.loan);
-
     });
   }
 
@@ -40,9 +36,8 @@ export class OverviewComponent implements OnInit {
     this.loanService.getLoans().subscribe((res) => {
       this.loanObj = res;
       this.loans = this.loanObj.loans;
-      console.log(this.loans)
-      
       this.toastr.success('Request was successful', 'Successful');
     });
   }
+
 }

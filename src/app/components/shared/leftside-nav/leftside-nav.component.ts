@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Role, Account } from 'src/app/models';
+import { AccountService } from 'src/app/services/_index';
 
 @Component({
   selector: 'leftside-nav',
@@ -6,7 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LeftsideNavComponent implements OnInit {
 
-  constructor() { }
+  Role = Role;
+  account: Account;
+
+  constructor(
+      private accountService: AccountService,
+      ) {
+      this.accountService.account.subscribe(x => this.account = x);
+  }
 
   ngOnInit(): void {
   }

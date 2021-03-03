@@ -2,75 +2,80 @@
 <div class="d-flex align-items-center bg-white">
     <!-- Left side dashboard -->
     <div class="mr-auto">
-        <div class="page-title mx-3 py-4">All Payments</div>
+        <div class="page-title mx-3 py-4">Reports</div>
     </div>
-  </div>
-  <section class="content">
+    <div class="right-title">
+        <!-- <div class="d-flex justify-content-end mr-4">
+            <a routerLink="add" class="font-weight-600 mb-5"><i class="si si-plus mr-2"></i>Add Loan</a>
+        </div> -->
+    </div>
+</div>
+<section class="content">
     <!-- Table list view -->
-    <div class="box pt-3">
+    <div class="box mt-3">
         <div class="box-body p-15">
             <div class="table-responsive">
                 <div id="tickets_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4 no-footer">
                     <!-- Filters Panel -->
                     <div class="">
-                        <h4 class="box-title">//TODOs: FILTER TYPES <b>DATEPICKER</b></h4>
+                        <h4 class="box-title">//TODO: FILTER TYPES <b>DATEPICKER</b></h4>
                         <!-- Filter Right Side -->
                         <div class="box-controls pull-right">
                             <div class="lookup lookup-circle lookup-right">
-                                <input type="text" placeholder="Find Account">
+                                <input type="text" placeholder="Find Loan">
                             </div>
                         </div>
                     </div>
-  
+
                     <div class="row">
                         <div class="col-sm-12">
                             <table id="customers" class="table mt-0 table-hover no-wrap">
                                 <thead>
                                     <tr role="row">
-                                        <th>Payment ID</th>
-                                        <th>Transaction Type</th>
-                                        <th>Payment Type</th>
-                                        <th>Amount Paid</th>
-                                        <th>Payment Date</th>
+                                        <th>Report ID</th>
+                                        <th>Report Type</th>
+                                        <th>Account Name</th>
+                                        <th>Reason</th>
+                                        <th>Date Generated</th>
                                         <th>Status</th>
-                                        <th>Loan Amount</th>
-                                        <th>Owings</th>
+                                        <th>Actions</th>
                                     </tr>
                                 </thead>
-                                <tbody style="width: 100%;">
-                                    <div class="mb-3" *ngIf="payments?.length === 0">
-                                        <div class="text-center empty-record">
-                                            No Records Found!.
-                                        </div>
-                                    </div>
-                                    <tr class="tr-border" *ngFor="let payment of payments; let i = index">
-                                        <td><a [routerLink]="['view', payment.id]">
-                                            {{payment.id | slice: 0:10 | uppercase}}
+                                <tbody>
+
+                                    <!-- <tr class="tr-border" *ngFor="let loan of loans; let i = index">
+                                        <td>{{loan.id | uppercase | slice: 0:9}}</td>
+                                        <td>{{loan.loanType}}</td>
+                                        <td>{{loan.accountId.firstName}} {{loan.accountId.lastName}}</td>
+                                        <td>{{loan.loanAmount | currency: 'GHS '}}</td>
+                                        <td>{{loan.created | date: 'dd/MM/yyyy'}}</td>
+                                        <td *ngIf="loan.loanStatus === 'Pending'"> <span class="badge badge-warning">{{
+                                                loan.loanStatus }}</span>
+                                        <td *ngIf="loan.loanStatus === 'Approved'"> <span class="badge badge-success">{{
+                                                loan.loanStatus }}</span>
+                                        <td *ngIf="loan.loanStatus === 'Recovered'"> <span class="badge badge-info">{{
+                                                loan.loanStatus }}</span>
+                                        <td *ngIf="loan.loanStatus === 'Canceled'"> <span class="badge badge-danger">{{
+                                                loan.loanStatus }}</span>
+                                        </td>
+                                        <td>PAID AMOUNT</td>
+                                        <td>PAYMENT STAUS</td>
+                                        <td>
+                                            <a [routerLink]="['view', loan.id]" class="font-size-18 text-success mr-2">
+                                                <i class="ti-eye"></i>
+                                            </a>
+                                            <a routerLink="approve/{{loan.id}}" class="font-size-16 text-info mr-2">
+                                                <strong><i class="si si-pencil"></i></strong>
                                             </a>
                                         </td>
-                                        <td>{{payment.transaction}}</td>
-                                        <td>{{payment.paymentType }}</td>
-                                        <td>{{payment.amountPaid | currency: 'GHS '}}</td>
-                                        <td>{{payment.paymentDate | date: 'dd/MM/yyyy'}}</td>
-                                        <td *ngIf="payment.paymentStatus === 'Pending'"> <span class="badge badge-warning">{{
-                                                payment.paymentStatus }}</span>
-                                        <td *ngIf="payment.paymentStatus === 'Recovered'"> <span class="badge badge-info">{{
-                                                payment.paymentStatus }}</span>
-                                        <td *ngIf="payment.paymentStatus === 'Success'"> <span class="badge badge-success">{{
-                                                payment.paymentStatus }}</span>
-                                        <td *ngIf="payment.paymentStatus === 'Canceled'"> <span class="badge badge-danger">{{
-                                                payment.paymentStatus }}</span>
-                                        </td>
-                                        <td>{{totalLoan | currency: 'GHS '}}</td>
-                                        <td>{{totalLoan - payment.amountPaid | currency: 'GHS '}}</td>   
-                                    </tr>
+                                    </tr> -->
                                     <!-- Spinner isLoading -->
-                                    <tr *ngIf="!payments">
+                                    <!-- <tr *ngIf="!loans">
                                         <td colspan="12" class="text-center">
                                             <span
                                                 class="text-success spinner-border spinner-border-lg align-center"></span>
                                         </td>
-                                    </tr>
+                                    </tr> -->
                                 </tbody>
                             </table>
                         </div>

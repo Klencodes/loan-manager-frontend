@@ -1,7 +1,9 @@
 export const environment = {
   production: true,
-  BASE_URL: 'https://loan-backend-api.herokuapp.com',
-  ACCOUNTS_ENDPOINT: 'https://loan-backend-api.herokuapp.com/',
+  BASE_URL: 'http://localhost:4000',
+  // BASE_URL: 'http://loan-backend-api.herokuapp.com',
+  ACCOUNTS_ENDPOINT: 'http://localhost:4000/accounts/',
+  // ACCOUNTS_ENDPOINT: 'https://loan-backend-api.herokuapp.com/accounts/',
   LOANS_ENDPOINT: 'loans',
   PAYMENTS_ENDPOINT: 'payments',
 
@@ -30,7 +32,7 @@ export const environment = {
   PAYMENTS: {
     GET_ALL_PAYMENTS: 'find-all',
     CONFIRM_PAYMENT: 'confirm-payment',
-    GET_PAYMENT: 'payment'
+    GET_LOAN_PAYMENTS: 'loan-payments'
 
   }
 };

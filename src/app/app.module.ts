@@ -30,9 +30,10 @@ import { HomeModule } from './components/layout/home/home.module';
         HomeModule,
 
         ToastrModule.forRoot( 
-            ({  timeOut: 4000,
-                positionClass: 'toast-top-right',
-                preventDuplicates: true,
+            ({  timeOut: 2000,
+                progressBar: true,
+                progressAnimation: 'increasing',
+                positionClass: 'toast-top-right'
             })
         )
     ],

@@ -54,7 +54,7 @@
                                         <td>{{loan.id | slice: 0:10 | uppercase}}</td>
                                         <td>{{loan.loanType}}</td>
                                         <td>{{loan.loanAmount | currency: 'GHS '}}</td>
-                                        <td>{{loan.created | date: 'dd/MM/yyyy - hh:mm'}}</td>
+                                        <td>{{loan.created | date: 'dd/MM/yyyy - hh:mm:ss a'}}</td>
                                         <!-- <td><span class="badge badge-warning">{{loan.loanStatus}}</span> </td> -->
                                         <td *ngIf="loan.loanStatus === 'Pending'"> <span class="badge badge-warning">{{
                                                 loan.loanStatus }}</span>
@@ -67,7 +67,7 @@
                                         </td>
                                         <td>{{loan.statusDate | date: 'dd/MM/yyyy' }}</td>
                                         <td>
-                                            <a [routerLink]="['view', loan.id]"
+                                            <a routerLink="/loans/view/{{loan.id}}"
                                                 class="btn btn-sm btn-rounded btn-info font-size-18 mr-2">
                                                 <i class="text-white ti-eye"></i>
                                             </a>
