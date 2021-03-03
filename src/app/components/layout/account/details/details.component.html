@@ -79,3 +79,18 @@
         </div>
         <!-- /.box-body -->
     </div>
+
+    <div class="card">
+        <div class="row">
+            <div class="col-md-12 text-center my-4">
+                <div >
+                    <span class="text-bold">Deleting Account</span> means you can no longer have accesss to this Account, 
+                    Please not that all personal information attached to this account will permanently be deleted !!!  
+                </div>
+                <button (click)="onDelete()" [disabled]="deleting" class="btn btn-danger">
+                    <span *ngIf="deleting" class="spinner-border spinner-border-sm mr-1"></span>
+                    Delete Account
+                </button>
+            </div>
+        </div>
+    </div>
