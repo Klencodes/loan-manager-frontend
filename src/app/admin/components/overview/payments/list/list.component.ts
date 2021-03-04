@@ -31,10 +31,10 @@ export class ListComponent implements OnInit {
       this.accountDetails = res['payments'][0].accountId;
       this.toastr.success(this.message, 'Successful');
 
-      console.log(res, 'THIS RES')
-      console.log(this.payments, 'THIS ALL PAYMENTS');
-      console.log(this.loanDetails, 'LOAN DETAIL')
-      console.log(this.accountDetails, 'THIS ACCOUNT')
+      // console.log(res, 'THIS RES')
+      // console.log(this.payments, 'THIS ALL PAYMENTS');
+      // console.log(this.loanDetails, 'LOAN DETAIL')
+      // console.log(this.accountDetails, 'THIS ACCOUNT')
       // this.totalLoan = this.loanDetails['loanAmount']; 
       // this.toastr.success(res['message'], 'Successful')  
     });

@@ -37,7 +37,6 @@ export class ViewComponent implements OnInit {
     this.loanService.getById(this.loanId).subscribe((res: Loan[]) => {
       this.loanDetails = res['loans'];
       this.userDetails = res['loans'].accountId;
-      console.log(this.userDetails)
       if (this.loanId) {
         //this is all documents submitted with a loan by User
         this.loanService.getAllDocuments(this.loanId).subscribe((res: Doc[]) => {
