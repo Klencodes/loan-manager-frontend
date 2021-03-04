@@ -1,8 +1,8 @@
 export const environment = {
   production: false,
  
-  // BASE_URL: 'http://localhost:4000',
-  BASE_URL: 'https://test-loan-api.herokuapp.com',
+  BASE_URL: 'http://localhost:4000',
+  // BASE_URL: 'https://test-loan-api.herokuapp.com',
   ACCOUNTS_ROUTE: '/accounts',
   LOANS_ROUTE: '/loans',
   PAYMENTS_ROUTE: '/payments',
