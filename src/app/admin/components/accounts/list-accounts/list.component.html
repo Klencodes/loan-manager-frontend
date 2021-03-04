@@ -12,17 +12,13 @@
 </div>
 <section class="content">
     <!-- Table list view -->
-    <div class="box">
-        <div class="box-header with-border table-bg">
-            <h4 class="box-title">Accounts</h4>
-            <h6 class="box-subtitle">List of Account</h6>
-        </div>
+    <div class="box pt-3">
         <div class="box-body p-15">
             <div class="table-responsive">
                 <div id="tickets_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4 no-footer">
                     <!-- Filters Panel -->
                     <div class="">
-                        <h4 class="box-title">FILTER TYPES <b>DATEPICKER</b></h4>
+                        <h4 class="box-title">//TODO: FILTER TYPES <b>DATEPICKER</b></h4>
                         <!-- Filter Right Side -->
                         <div class="box-controls pull-right">
                             <div class="lookup lookup-circle lookup-right">
@@ -30,6 +26,7 @@
                             </div>
                         </div>
                     </div>
+  
 
                     <div class="row">
                         <div class="col-sm-12">
@@ -53,7 +50,7 @@
                                         <td>{{account.email}}</td>
                                         <td>{{account.phoneNumber}}</td>
                                         <td>{{account.role}}</td>
-                                        <td>{{account.created | date: 'dd/MM/yyyy - hh:mm:ss'}}</td>
+                                        <td>{{account.created | date: 'dd/MM/yyyy - hh:mm a'}}</td>
                                         <td>
                                             <a routerLink="user/{{account.id}}" class="font-size-18 text-success mr-2">
                                                 <i class="ti-eye"></i>

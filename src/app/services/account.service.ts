@@ -7,7 +7,7 @@ import { map, finalize } from 'rxjs/operators';
 import { environment } from 'src/environments/environmentApi';
 import { Account } from 'src/app/models';
 
-const BaseURL = environment.ACCOUNTS_ENDPOINT
+const ACCOUNTS_ENDPOINT = environment.BASE_URL + environment.ACCOUNTS_ROUTE
 
 @Injectable({ providedIn: 'root' })
 export class AccountService {
@@ -27,7 +27,7 @@ export class AccountService {
     }
 
     login(email: string, password: string) {
-        let url = BaseURL+environment.ACCOUNTS.LOGIN
+        let url = ACCOUNTS_ENDPOINT+environment.ACCOUNTS.LOGIN;
         return this.http.post<any>(url, { email, password }, { withCredentials: true })
             .pipe(map(account => {
                 this.accountSubject.next(account);
@@ -37,7 +37,7 @@ export class AccountService {
     }
 
     logout() {
-        let url = BaseURL+environment.ACCOUNTS.REVOKE_TOKEN
+        let url = ACCOUNTS_ENDPOINT+environment.ACCOUNTS.REVOKE_TOKEN
         this.http.post<any>(url, {}, { withCredentials: true }).subscribe();
         this.stopRefreshTokenTimer();
         this.accountSubject.next(null);
@@ -45,7 +45,7 @@ export class AccountService {
     }
 
     refreshToken() {
-        let url = BaseURL+environment.ACCOUNTS.REFRESH_TOKEN
+        let url = ACCOUNTS_ENDPOINT+environment.ACCOUNTS.REFRESH_TOKEN
         return this.http.post<any>(url, {}, { withCredentials: true })
             .pipe(map((account) => {
                 this.accountSubject.next(account);
@@ -55,49 +55,49 @@ export class AccountService {
     }
 
     register(account: Account) {
-        let url = BaseURL+environment.ACCOUNTS.REGISTER
+        let url = ACCOUNTS_ENDPOINT+environment.ACCOUNTS.REGISTER
         return this.http.post(url, account);
     }
 
     verifyEmail(token: string) {
-        let url = BaseURL+environment.ACCOUNTS.VERIFY_EMAIL
+        let url = ACCOUNTS_ENDPOINT+environment.ACCOUNTS.VERIFY_EMAIL
         return this.http.post(url, { token });
     }
     
     forgotPassword(email: string) {
-        let url = BaseURL+environment.ACCOUNTS.FORGOT_PASSWORD
+        let url = ACCOUNTS_ENDPOINT+environment.ACCOUNTS.FORGOT_PASSWORD
         return this.http.post(url, { email });
     }
     
     validateResetToken(token: string) {
-        let url = BaseURL+environment.ACCOUNTS.VALIDATE_RESET_TOKEN
+        let url = ACCOUNTS_ENDPOINT+environment.ACCOUNTS.VALIDATE_RESET_TOKEN
         return this.http.post(url, { token });
     }
     
     resetPassword(token: string, password: string, confirmPassword: string) {
-        let url = BaseURL+environment.ACCOUNTS.RESET_PASSWORD
+        let url = ACCOUNTS_ENDPOINT+environment.ACCOUNTS.RESET_PASSWORD
         return this.http.post(url, { token, password, confirmPassword });
     }
 
     getAll() {
-        return this.http.get<Account[]>(BaseURL);
+        return this.http.get<Account[]>(ACCOUNTS_ENDPOINT);
     }
 
     getUsersOnly() {
-        let url = BaseURL+ environment.ACCOUNTS.USERS_ONLY
+        let url = ACCOUNTS_ENDPOINT+ environment.ACCOUNTS.USERS_ONLY
         return this.http.get<Account[]>(url);
     }
 
     getById(id: string) {
-        return this.http.get<Account>(`${BaseURL}/${id}`);
+        return this.http.get<Account>(`${ACCOUNTS_ENDPOINT}/${id}`);
     }
     
     create(params) {
-        return this.http.post(BaseURL, params);
+        return this.http.post(ACCOUNTS_ENDPOINT, params);
     }
     
     update(id, params) {
-        return this.http.put(`${BaseURL}/${id}`, params)
+        return this.http.put(`${ACCOUNTS_ENDPOINT}/${id}`, params)
             .pipe(map((account: any) => {
                 // update the current account if it was updated
                 if (account.id === this.accountValue.id) {
@@ -110,7 +110,7 @@ export class AccountService {
     }
     
     delete(id: string) {
-        return this.http.delete(`${BaseURL}/${id}`)
+        return this.http.delete(`${ACCOUNTS_ENDPOINT}/${id}`)
             .pipe(finalize(() => {
                 // auto logout if the logged in account was deleted
                 if (id === this.accountValue.id)

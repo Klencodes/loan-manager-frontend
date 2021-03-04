@@ -7,7 +7,7 @@ import { ConstantService } from './constant.service';
 })
 export class PaymentService {
 
-  private PAYMENT_ENDPOINT = environment.PAYMENTS_ENDPOINT;
+  private PAYMENT_ENDPOINT = environment.PAYMENTS_ROUTE;
 
   constructor(
     private constantService: ConstantService

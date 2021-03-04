@@ -8,7 +8,7 @@ import { ConstantService } from './constant.service';
 })
 export class LoanService {
 
-  private LOANS_ENDPOINT = environment.LOANS_ENDPOINT;
+  private LOANS_ENDPOINT = environment.LOANS_ROUTE;
 
   constructor(
     private constantService: ConstantService

@@ -72,9 +72,9 @@ export class OverviewComponent implements OnInit{
           this.loanDetails = res['payments'][0].loanId;
           this.accountDetails = res['payments'][0].accountId;
 
-          console.log(this.payments, 'THIS ALL PAYMENTS')
-          console.log(this.loanDetails, 'LOAN DETAIL')
-          console.log(this.accountDetails, 'THIS ACCOUNT')
+          // console.log(this.payments, 'THIS ALL PAYMENTS')
+          // console.log(this.loanDetails, 'LOAN DETAIL')
+          // console.log(this.accountDetails, 'THIS ACCOUNT')
          
           // this.totalLoan = this.loanDetails['loanAmount']; 
           // this.toastr.success(res['message'], 'Successful')  
