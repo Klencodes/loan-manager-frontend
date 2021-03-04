@@ -6,6 +6,9 @@ export const environment = {
   ACCOUNTS_ROUTE: '/accounts',
   LOANS_ROUTE: '/loans',
   PAYMENTS_ROUTE: '/payments',
+  INVOICES_ROUTE: '/invoices',
+  REPORTS_ROUTE: '/reports',
+  SETTINGS_ROUTE: '/settings',
 
   ACCOUNTS: {
     USERS_ONLY: '/users',
@@ -33,6 +36,12 @@ export const environment = {
     GET_ALL_PAYMENTS: '/find-all',
     CONFIRM_PAYMENT: '/confirm-payment',
     GET_LOAN_PAYMENTS: '/loan-payments'
+
+  },
+  INVOICES: {
+
+  },
+  REPORTS: {
 
   }
 };
