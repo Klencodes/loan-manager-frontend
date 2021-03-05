@@ -1,4 +1,4 @@
-import { environment } from 'src/environments/environmentApi';
+import { environment } from 'src/environments/environment';
 import { Injectable } from '@angular/core';
 import { ConstantService } from './constant.service';
 
@@ -18,13 +18,24 @@ export class PaymentService {
     return this.constantService.getAll(`${this.PAYMENT_ENDPOINT}${environment.PAYMENTS.GET_ALL_PAYMENTS}`)
   }
 
-  confirmPayment(loanId: string, payload: string){
+  confirmPayment(id: string, payload: string){
     //confirm any payments by all users
-    return this.constantService.post(`${this.PAYMENT_ENDPOINT}/${loanId}${environment.PAYMENTS.CONFIRM_PAYMENT}`, payload)
+    return this.constantService.post(`${this.PAYMENT_ENDPOINT}${environment.PAYMENTS.CONFIRM_PAYMENT}${id}`, payload)
+  }
+
+  getPaymentsByLoanId(loanId: string){
+    //get all payments by loanId, any userId
+    return this.constantService.get(`${this.PAYMENT_ENDPOINT}/${loanId}${environment.PAYMENTS.ADMIN_GET_PAYMENTS}`)
+  }
+
+  getPaymentById(id:string){
+    //get a particular payment by paymentId, loanId and any userId
+    return this.constantService.get(`${this.PAYMENT_ENDPOINT}${environment.PAYMENTS.ADMIN_GET_PAYMENTS}/${id}`)
   }
 
 
 
+  
   getPayments(){
     //get all payments by User Id
     return this.constantService.getAll(this.PAYMENT_ENDPOINT)

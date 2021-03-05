@@ -1,7 +1,7 @@
 ﻿import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first, finalize } from 'rxjs/operators';
-import { AccountService, AlertService } from 'src/app/services/_index';
+import { AccountService } from 'src/app/services/_index';
 import { ToastrService } from 'ngx-toastr';
 
 
@@ -14,7 +14,6 @@ export class ForgotPasswordComponent implements OnInit {
     constructor(
         private formBuilder: FormBuilder,
         private accountService: AccountService,
-        private alertService: AlertService,
         private toastr: ToastrService
     ) { }
 

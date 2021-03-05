@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { LoanService } from 'src/app/services/_index';
 import { ToastrService } from 'ngx-toastr'
+import { MatDialog } from '@angular/material/dialog';
+import { RequestLoanComponent } from './request-loan/request-loan.component';
+
 
 @Component({
   selector: 'list-loans',
@@ -13,7 +16,9 @@ export class ListLoansComponent implements OnInit {
 
   constructor(
     private loanService: LoanService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    public dialog: MatDialog
+
   ) {}
 
   ngOnInit(): void {
@@ -23,5 +28,11 @@ export class ListLoansComponent implements OnInit {
       this.toastr.success(res['message'], 'Successful');
     });
   }
-  
+
+  requstDialog(): void {
+    this.dialog.open(RequestLoanComponent, {
+      minWidth: '320px'
+    })
+  }
+
 }

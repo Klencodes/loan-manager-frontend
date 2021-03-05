@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import { first } from 'rxjs/operators';
 import { Doc } from 'src/app/models';
-import { LoanService, AlertService } from 'src/app/services/_index';
+import { LoanService } from 'src/app/services/_index';
 import { ToastrService } from 'ngx-toastr';
 
 
@@ -29,7 +28,6 @@ export class ApproveComponent implements OnInit {
   constructor(
     private loanService: LoanService,
     private formBuilder: FormBuilder,
-    private alertService: AlertService,
     private router: Router,
     private route: ActivatedRoute,
     private toastr: ToastrService,

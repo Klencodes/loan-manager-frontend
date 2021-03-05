@@ -2,7 +2,7 @@
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
-import { AccountService, AlertService } from 'src/app/services/_index';
+import { AccountService } from 'src/app/services/_index';
 import { MustMatch } from 'src/app/validators';
 import { ToastrService } from 'ngx-toastr';
 
@@ -18,7 +18,6 @@ export class UpdateComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private accountService: AccountService,
-    private alertService: AlertService,
     private toastr: ToastrService
   ) {}
 
@@ -55,7 +54,7 @@ export class UpdateComponent implements OnInit {
     this.submitted = true;
 
     // reset alerts on submit
-    this.alertService.clear();
+    this.toastr.clear();
 
     // stop here if form is invalid
     if (this.form.invalid) {
@@ -69,10 +68,7 @@ export class UpdateComponent implements OnInit {
     this.accountService.update(this.account.id, this.form.value)
       .pipe(first()).subscribe({
         next: () => {
-          this.toastr.success('Profile update successful', 'Succssful'),
-            {
-              keepAfterRouteChange: true,
-            };
+          this.toastr.success('Profile update successful', 'Succssful'), { keepAfterRouteChange: true };
           this.router.navigate(['../'], { relativeTo: this.route });
         },
         error: (error) => {

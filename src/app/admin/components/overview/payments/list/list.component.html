@@ -4,8 +4,8 @@
     <div class="mr-auto">
         <div class="page-title mx-3 py-4">Payments</div>
     </div>
-  </div>
-  <section class="content">
+</div>
+<section class="content">
     <!-- Table list view -->
     <div class="box pt-3">
         <div class="box-body p-15">
@@ -21,20 +21,21 @@
                             </div>
                         </div>
                     </div>
-  
+
                     <div class="row">
                         <div class="col-sm-12">
                             <table id="customers" class="table mt-0 table-hover no-wrap">
                                 <thead>
                                     <tr role="row">
                                         <th>Payment ID</th>
+                                        <th>Payment By</th>
                                         <th>Transaction Type</th>
-                                        <th>Payment Type</th>
                                         <th>Amount Paid</th>
                                         <th>Payment Date</th>
                                         <th>Status</th>
                                         <th>Loan Amount</th>
                                         <th>Owings</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody style="width: 100%;">
@@ -45,24 +46,33 @@
                                     </div>
                                     <tr class="tr-border" *ngFor="let payment of payments; let i = index">
                                         <td><a [routerLink]="['view', payment.id]">
-                                            {{payment.id | slice: 0:10 | uppercase}}
+                                                {{payment.id | slice: 0:10 | uppercase}}
                                             </a>
                                         </td>
+                                        <th>{{payment.accountId['firstName']}} {{payment.accountId['lastName']}}</th>
                                         <td>{{payment.transaction}}</td>
-                                        <td>{{payment.paymentType }}</td>
                                         <td>{{payment.amountPaid | currency: 'GHS '}}</td>
                                         <td>{{payment.paymentDate | date: 'dd/MM/yyyy'}}</td>
-                                        <td *ngIf="payment.paymentStatus === 'Pending'"> <span class="badge badge-warning">{{
+                                        <td *ngIf="payment.paymentStatus === 'Pending'"> <span
+                                                class="badge badge-warning">{{
                                                 payment.paymentStatus }}</span>
-                                        <td *ngIf="payment.paymentStatus === 'Recovered'"> <span class="badge badge-info">{{
+                                        <td *ngIf="payment.paymentStatus === 'Recovered'"> <span
+                                                class="badge badge-info">{{
                                                 payment.paymentStatus }}</span>
-                                        <td *ngIf="payment.paymentStatus === 'Success'"> <span class="badge badge-success">{{
+                                        <td *ngIf="payment.paymentStatus === 'Success'"> <span
+                                                class="badge badge-success">{{
                                                 payment.paymentStatus }}</span>
-                                        <td *ngIf="payment.paymentStatus === 'Canceled'"> <span class="badge badge-danger">{{
+                                        <td *ngIf="payment.paymentStatus === 'Canceled'"> <span
+                                                class="badge badge-danger">{{
                                                 payment.paymentStatus }}</span>
                                         </td>
-                                        <td>{{totalLoan | currency: 'GHS '}}</td>
-                                        <td>{{totalLoan - payment.amountPaid | currency: 'GHS '}}</td>   
+                                        <td>{{payment.loanId['loanAmount'] | currency: 'GHS '}}</td>
+                                        <td>{{payment.loanId['loanAmount'] - payment.amountPaid | currency: 'GHS '}}
+                                        </td>
+                                        <td>
+                                            <a routerLink="confirm/{{payment.id}}"><i
+                                                    class="ti ti-pencil"></i></a>
+                                        </td>
                                     </tr>
                                     <!-- Spinner isLoading -->
                                     <tr *ngIf="!payments">
@@ -75,29 +85,11 @@
                             </table>
                         </div>
                     </div>
-
-
                     <!-- Paginqtion area -->
                     <div class="row">
-                        <div class="col-sm-12 col-md-5">
-                            <div class="dataTables_info" id="tickets_info" role="status" aria-live="polite">
-                                Showing 1 to 10 of 20 entries</div>
-                        </div>
-                        <div class="col-sm-12 col-md-7">
-                            <div class="dataTables_paginate paging_simple_numbers" id="tickets_paginate">
-                                <ul class="pagination">
-                                    <li class="paginate_button page-item previous disabled" id="tickets_previous"><a
-                                            href="#" aria-controls="tickets" data-dt-idx="0" tabindex="0"
-                                            class="page-link">Previous</a>
-                                    </li>
-                                    <li class="paginate_button page-item active"><a href="#" aria-controls="tickets"
-                                            data-dt-idx="1" tabindex="0" class="page-link">1</a></li>
-                                    <li class="paginate_button page-item "><a href="#" aria-controls="tickets"
-                                            data-dt-idx="2" tabindex="0" class="page-link">2</a></li>
-                                    <li class="paginate_button page-item next" id="tickets_next"><a href="#"
-                                            aria-controls="tickets" data-dt-idx="3" tabindex="0"
-                                            class="page-link">Next</a></li>
-                                </ul>
+                        <div class="col-sm-12 my-4">
+                            <div class="text-center">
+                                //TODO Infinite scroll
                             </div>
                         </div>
                     </div>

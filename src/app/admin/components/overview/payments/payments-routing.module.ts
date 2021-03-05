@@ -8,7 +8,7 @@ import { ViewComponent } from './view/view.component';
 const routes: Routes = [
   { path: '', component: ListComponent },
   { path: 'view/:id', component: ViewComponent },
-  { path: ':loanId/confirm/:id', component: ConfirmComponent },
+  { path: 'confirm/:id', component: ConfirmComponent },
 
 ];
 

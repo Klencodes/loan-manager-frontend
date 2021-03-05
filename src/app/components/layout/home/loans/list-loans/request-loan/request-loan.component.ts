@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { LoanService} from 'src/app/services/_index';
 import { ToastrService } from 'ngx-toastr';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 
 @Component({
@@ -23,8 +24,10 @@ export class RequestLoanComponent implements OnInit {
     private formBuilder: FormBuilder,
     private toastr: ToastrService,
     private router: Router,
-    private route: ActivatedRoute,
+    public dialogRef: MatDialogRef<RequestLoanComponent>,
   ) {}
+  onNoClick(): void {
+  }
 
   ngOnInit(): void {
     this.requestForm = this.formBuilder.group({
@@ -43,6 +46,8 @@ export class RequestLoanComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
+    //close dialog after form submit
+    this.dialogRef.close()
     // reset alerts on submit
     this.toastr.clear();
     // stop here if form is invalid
@@ -51,7 +56,9 @@ export class RequestLoanComponent implements OnInit {
     }
     this.requestLoan();
   }
-
+  onClose(){
+    this.dialogRef.close()
+  }
   // convenience getter for easy access to form fields
   get f() {
     return this.requestForm.controls;

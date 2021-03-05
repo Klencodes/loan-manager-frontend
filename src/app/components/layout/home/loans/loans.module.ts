@@ -6,7 +6,7 @@ import { MaterialModule } from 'src/app/components/modules';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ViewLoanComponent } from './view-loan/view-loan.component';
 import { ListLoansComponent } from './list-loans/list-loans.component';
-import { RequestLoanComponent } from './request-loan/request-loan.component';
+import { RequestLoanComponent } from './list-loans/request-loan/request-loan.component';
 import { AddEditDocComponent } from './add-edit-doc/add-edit-doc.component';
 
 

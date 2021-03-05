@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { environment } from 'src/environments/environmentApi';
+import { environment } from 'src/environments/environment';
 import { Loan } from '../models';
 import { ConstantService } from './constant.service';
 

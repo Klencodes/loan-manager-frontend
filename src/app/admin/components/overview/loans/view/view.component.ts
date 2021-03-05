@@ -28,6 +28,10 @@ export class ViewComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => {
       this.loanId = params.id;
+      if(this.loanId){
+
+      }
+      console.log(this.loanId, 'LOAD ID')
     });
     this.getLoanInfo();
   }
@@ -36,7 +40,7 @@ export class ViewComponent implements OnInit {
   getLoanInfo() {
     this.loanService.getById(this.loanId).subscribe((res: Loan[]) => {
       this.loanDetails = res['loans'];
-      this.userDetails = res['loans'].accountId;
+      this.userDetails = this.loanDetails['accountId'];
       if (this.loanId) {
         //this is all documents submitted with a loan by User
         this.loanService.getAllDocuments(this.loanId).subscribe((res: Doc[]) => {

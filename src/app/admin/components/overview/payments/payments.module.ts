@@ -5,6 +5,8 @@ import { PaymentsRoutingModule } from './payments-routing.module';
 import { ListComponent } from './list/list.component';
 import { ConfirmComponent } from './confirm/confirm.component';
 import { ViewComponent } from './view/view.component';
+import { MaterialModule } from 'src/app/components/modules';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -15,7 +17,9 @@ import { ViewComponent } from './view/view.component';
   ],
   imports: [
     CommonModule,
-    PaymentsRoutingModule
+    PaymentsRoutingModule,
+    MaterialModule,
+    ReactiveFormsModule
   ]
 })
 export class PaymentsModule { }

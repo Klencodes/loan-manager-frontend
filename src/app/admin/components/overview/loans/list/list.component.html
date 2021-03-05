@@ -36,17 +36,16 @@
                                         <th>Loan Type</th>
                                         <th>Account Name</th>
                                         <th>Amount</th>
-                                        <th>Request Dated</th>
+                                        <th>Request Date</th>
                                         <th>Status</th>
-                                        <th>Paid Amount</th>
-                                        <th>Payment Status</th>
+                                        <th>Status Date</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
 
                                     <tr class="tr-border" *ngFor="let loan of loans; let i = index">
-                                        <td>{{loan.id | uppercase | slice: 0:9}}</td>
+                                        <td>{{loan.id | uppercase | slice: 0:10}}</td>
                                         <td>{{loan.loanType}}</td>
                                         <td>{{loan.accountId.firstName}} {{loan.accountId.lastName}}</td>
                                         <td>{{loan.loanAmount | currency: 'GHS '}}</td>
@@ -60,8 +59,7 @@
                                         <td *ngIf="loan.loanStatus === 'Canceled'"> <span class="badge badge-danger">{{
                                                 loan.loanStatus }}</span>
                                         </td>
-                                        <td>PAID AMOUNT</td>
-                                        <td>PAYMENT STAUS</td>
+                                        <td>{{loan.statusDate | date: 'dd/MM/yyy'}}</td>
                                         <td>
                                             <a [routerLink]="['view', loan.id]" class="font-size-18 text-success mr-2">
                                                 <i class="ti-eye"></i>
@@ -84,26 +82,10 @@
                     </div>
                     <!-- Paginqtion area -->
                     <div class="row">
-                        <div class="col-sm-12 col-md-5">
-                            <div class="dataTables_info" id="tickets_info" role="status" aria-live="polite">
-                                Showing 1 to 10 of 20 entries</div>
-                        </div>
-                        <div class="col-sm-12 col-md-7">
-                            <div class="dataTables_paginate paging_simple_numbers" id="tickets_paginate">
-                                <ul class="pagination">
-                                    <li class="paginate_button page-item previous disabled" id="tickets_previous"><a
-                                            href="#" aria-controls="tickets" data-dt-idx="0" tabindex="0"
-                                            class="page-link">Previous</a>
-                                    </li>
-                                    <li class="paginate_button page-item active"><a href="#" aria-controls="tickets"
-                                            data-dt-idx="1" tabindex="0" class="page-link">1</a></li>
-                                    <li class="paginate_button page-item "><a href="#" aria-controls="tickets"
-                                            data-dt-idx="2" tabindex="0" class="page-link">2</a></li>
-                                    <li class="paginate_button page-item next" id="tickets_next"><a href="#"
-                                            aria-controls="tickets" data-dt-idx="3" tabindex="0"
-                                            class="page-link">Next</a></li>
-                                </ul>
-                            </div>
+                        <div class="col-sm-12 my-4">
+                          <div class="text-center">
+                              //TODO Infinite scroll
+                          </div>
                         </div>
                     </div>
                 </div>

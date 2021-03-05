@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map, finalize } from 'rxjs/operators';
 
-import { environment } from 'src/environments/environmentApi';
+import { environment } from 'src/environments/environment';
 import { Account } from 'src/app/models';
 
 const ACCOUNTS_ENDPOINT = environment.BASE_URL + environment.ACCOUNTS_ROUTE

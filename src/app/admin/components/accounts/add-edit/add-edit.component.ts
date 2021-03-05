@@ -2,7 +2,7 @@
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
-import { AccountService, AlertService } from 'src/app/services/_index';
+import { AccountService } from 'src/app/services/_index';
 import { MustMatch } from 'src/app/validators';
 import { Role } from 'src/app/models';
 import { ToastrService } from 'ngx-toastr';
@@ -24,7 +24,6 @@ export class AddEditComponent implements OnInit {
         private route: ActivatedRoute,
         private router: Router,
         private accountService: AccountService,
-        private alertService: AlertService,
         private toastr: ToastrService
     ) {}
 
@@ -90,7 +89,7 @@ export class AddEditComponent implements OnInit {
                     this.router.navigate(['../'], { relativeTo: this.route });
                 },
                 error: error => {
-                    this.alertService.error(error);
+                    this.toastr.error(error);
                     this.loading = false;
                 }
             });
@@ -105,7 +104,7 @@ export class AddEditComponent implements OnInit {
                     this.router.navigate(['../../'], { relativeTo: this.route });
                 },
                 error: error => {
-                    this.alertService.error(error);
+                    this.toastr.error(error);
                     this.loading = false;
                 }
             });

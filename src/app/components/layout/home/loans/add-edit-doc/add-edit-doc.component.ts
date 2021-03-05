@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router, Params } from '@angular/router';
 import { Doc, Loan } from 'src/app/models';
-import { LoanService, AlertService } from 'src/app/services/_index';
+import { LoanService } from 'src/app/services/_index';
 import { ToastrService } from 'ngx-toastr';
 
 
@@ -13,7 +13,7 @@ export class AddEditDocComponent implements OnInit {
   loading: Boolean;
   submitted: Boolean = false;
   isAddMode: Boolean;
-  idCards = [ 'Ghana Card', 'Voter Card', 'Ecowas Card', 'Health Insurance','Visa Card', 'Passport Card', ];
+  idCards = [ 'Ghana Card', "Voter's Card", 'Health Insurance', 'Passport Card', ];
   loanId: string;
   docId: string;
   loanDetails: Loan;

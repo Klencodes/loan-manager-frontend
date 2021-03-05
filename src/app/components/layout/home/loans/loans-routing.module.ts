@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AddEditDocComponent } from './add-edit-doc/add-edit-doc.component';
 import { ListLoansComponent } from './list-loans/list-loans.component';
-import { RequestLoanComponent } from './request-loan/request-loan.component';
+import { RequestLoanComponent } from './list-loans/request-loan/request-loan.component';
 import { ViewLoanComponent } from './view-loan/view-loan.component';
 
 const routes: Routes = [

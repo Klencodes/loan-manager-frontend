@@ -27,16 +27,8 @@ export class ListComponent implements OnInit {
     this.paymentService.getAllPayments().subscribe((res) => {
       this.payments = res['payments'];
       this.message = res['message'];
-      this.loanDetails = this.payments[0].loanId;
-      this.accountDetails = res['payments'][0].accountId;
       this.toastr.success(this.message, 'Successful');
-
       // console.log(res, 'THIS RES')
-      // console.log(this.payments, 'THIS ALL PAYMENTS');
-      // console.log(this.loanDetails, 'LOAN DETAIL')
-      // console.log(this.accountDetails, 'THIS ACCOUNT')
-      // this.totalLoan = this.loanDetails['loanAmount']; 
-      // this.toastr.success(res['message'], 'Successful')  
     });
   }
 

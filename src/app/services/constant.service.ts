@@ -1,3 +1,4 @@
+import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
@@ -5,8 +6,8 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class ConstantService {
-//  readonly BASE_URL = 'http://localhost:4000';
- readonly BASE_URL = 'https://test-loan-api.herokuapp.com';
+ readonly BASE_URL = environment.BASE_URL;   // Environment
+//  readonly BASE_URL = environment.BASE_URL; //Production Enviroment
 
   constructor( private httpClient: HttpClient) { this.BASE_URL }
 

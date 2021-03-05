@@ -6,10 +6,7 @@
     </div>
     <div class="right-title">
         <div class="d-flex justify-content-end mr-4">
-            <a type="button" class="btn btn-rounded btn-info" data-toggle="modal" data-target="#modal-center"
-                class="font-weight-600 mb-5">
-                <i class="si si-plus mr-2"></i>Request Loan
-            </a>
+            <button mat-button (click)="requstDialog()"> <i class="ti ti-plus"></i> Request Loan</button>
         </div>
     </div>
 </div>
@@ -85,27 +82,11 @@
                         </div>
                     </div>
                     <!-- Paginqtion area -->
-                    <div class="row">
-                        <div class="col-sm-12 col-md-5">
-                            <div class="dataTables_info" id="tickets_info" role="status" aria-live="polite">
-                                Showing 1 to 10 of 20 entries</div>
-                        </div>
-                        <div class="col-sm-12 col-md-7">
-                            <div class="dataTables_paginate paging_simple_numbers" id="tickets_paginate">
-                                <ul class="pagination">
-                                    <li class="paginate_button page-item previous disabled" id="tickets_previous"><a
-                                            href="#" aria-controls="tickets" data-dt-idx="0" tabindex="0"
-                                            class="page-link">Previous</a>
-                                    </li>
-                                    <li class="paginate_button page-item active"><a href="#" aria-controls="tickets"
-                                            data-dt-idx="1" tabindex="0" class="page-link">1</a></li>
-                                    <li class="paginate_button page-item "><a href="#" aria-controls="tickets"
-                                            data-dt-idx="2" tabindex="0" class="page-link">2</a></li>
-                                    <li class="paginate_button page-item next" id="tickets_next"><a href="#"
-                                            aria-controls="tickets" data-dt-idx="3" tabindex="0"
-                                            class="page-link">Next</a></li>
-                                </ul>
-                            </div>
+                     <div class="row">
+                        <div class="col-sm-12 my-4">
+                          <div class="text-center">
+                              //TODO Infinite scroll
+                          </div>
                         </div>
                     </div>
                 </div>
@@ -115,24 +96,3 @@
 </section>
 
 
-<!-- Modal -->
-<div class="modal center-modal" id="modal-center">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <div class="page-title">{{modalTitle}}</div>
-                <button type="button" class="close" data-dismiss="modal">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <request-loan></request-loan>
-
-            </div>
-            <div class="modal-footer modal-footer-uniform">
-                <button type="button" class="btn btn-rounded btn-info float-right" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- /.modal -->

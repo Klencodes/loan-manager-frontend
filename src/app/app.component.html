@@ -3,18 +3,14 @@
     <header-nav *ngIf="account"></header-nav>
     <!-- Left panel -->
     <!-- <leftside-nav *ngIf="account"></leftside-nav> -->
-    <!-- pagr wrapper -->
-    <div class="">
-        <div class="container">
-            <!-- subnav router outlet -->
-            <router-outlet name="subnav"></router-outlet>
-            <!-- global alert -->
-            <alert></alert>
-            <!-- main router outlet -->
-            <router-outlet></router-outlet>
-        </div>
+    <div class="container">
+        <!-- subnav router outlet -->
+        <router-outlet name="subnav"></router-outlet>
+        <!-- main router outlet -->
+        <router-outlet></router-outlet>
     </div>
+    <div class="push"></div>
 </div>
-<footer-nav></footer-nav>
+<footer-nav class="footer"></footer-nav>
 <!-- right panel -->
 <rightside-nav class="control-sidebar"></rightside-nav>

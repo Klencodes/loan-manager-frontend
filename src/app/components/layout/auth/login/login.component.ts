@@ -5,7 +5,7 @@ import { first } from 'rxjs/operators';
 import { ToastrService } from 'ngx-toastr';
 
 
-import { AccountService, AlertService } from 'src/app/services/_index';
+import { AccountService } from 'src/app/services/_index';
 
 @Component({ templateUrl: 'login.component.html' })
 export class LoginComponent implements OnInit {
