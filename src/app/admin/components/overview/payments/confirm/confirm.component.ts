@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { Account, Payment } from 'src/app/models';
+import { Account, Payment, Loan } from 'src/app/models';
 import { PaymentService } from 'src/app/services/_index';
 
 @Component({ templateUrl: './confirm.component.html' })
@@ -16,8 +16,9 @@ export class ConfirmComponent implements OnInit {
   loading: Boolean;
   paymentDetails: Payment;
   user: Account;
+  loanDetails : Loan
   message: string;
-  paymentDate: any;
+
 
   constructor(
     private paymentService: PaymentService,
@@ -34,6 +35,8 @@ export class ConfirmComponent implements OnInit {
       if(this.id){
        this.paymentService.getPaymentById(this.id).subscribe((res) => {
          this.paymentDetails = res['payment'];
+         this.user = this.paymentDetails.accountId
+         this.loanDetails = this.paymentDetails.loanId
          this.confirmPaymentForm.patchValue({
            transaction: this.paymentDetails.transaction,
            paymentType: this.paymentDetails.paymentType,

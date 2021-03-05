@@ -20,7 +20,7 @@ export class PaymentService {
 
   confirmPayment(id: string, payload: string){
     //confirm any payments by all users
-    return this.constantService.post(`${this.PAYMENT_ENDPOINT}${environment.PAYMENTS.CONFIRM_PAYMENT}${id}`, payload)
+    return this.constantService.patch(`${this.PAYMENT_ENDPOINT}/${id}`, payload)
   }
 
   getPaymentsByLoanId(loanId: string){
