@@ -36,6 +36,8 @@ export class RegisterComponent implements OnInit {
             city: ['', Validators.required],
             state: ['', Validators.required],
             country: ['', Validators.required],
+            facebook: [''],
+            linkedin: [''],
             password: ['', [Validators.minLength(6),  Validators.required ]],
             confirmPassword: [''],
             acceptTerms: ['', Validators.required],
