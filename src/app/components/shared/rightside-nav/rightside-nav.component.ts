@@ -39,8 +39,6 @@ export class RightsideNavComponent implements OnInit {
   //Get all payments from Db
   getAllPayments() {
     this.paymentService.getAllPayments().subscribe((res: any) => {
-      console.log(res)
-
       this.payments = res.payments.slice(-5);
     });
   }

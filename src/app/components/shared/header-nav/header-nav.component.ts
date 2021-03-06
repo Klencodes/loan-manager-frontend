@@ -20,7 +20,7 @@ export class HeaderNavComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getPayments();
+    // this.getPayments();
   }
 
   logout() {
@@ -29,7 +29,7 @@ export class HeaderNavComponent implements OnInit {
 
   getPayments() {
     if (this.account) {
-      this.paymentService.getPayments().subscribe((res) => {
+      this.paymentService.getPayments().subscribe((res:any[]) => {
         this.payments = res['payments'].slice(-5);
       });
     } else {
