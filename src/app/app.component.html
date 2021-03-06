@@ -12,4 +12,4 @@
 </div>
 <footer-nav class="footer"></footer-nav>
 <!-- right panel -->
-<rightside-nav class="control-sidebar"></rightside-nav>
+<rightside-nav *ngIf="account.role === Role.Admin"></rightside-nav>
