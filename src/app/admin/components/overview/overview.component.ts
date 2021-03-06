@@ -1,10 +1,9 @@
-﻿import { Loan } from './../../../models/loan';
-import { AccountService } from 'src/app/services/account.service';
+﻿import { AccountService } from 'src/app/services/account.service';
 import { Component, OnInit } from '@angular/core';
 import { first } from 'rxjs/operators';
 import { LoanService, PaymentService } from 'src/app/services/_index';
 import { ToastrService } from 'ngx-toastr';
-import { Account, Payment } from 'src/app/models';
+import { Account, Payment, Loan } from 'src/app/models';
 
 @Component({ templateUrl: 'overview.component.html' })
 export class OverviewComponent implements OnInit {
