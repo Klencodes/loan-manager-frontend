@@ -10,6 +10,9 @@ export class AppUtilsService {
     private httpClient: HttpClient,
 
   ) { }
+  allStatus = ['Pending', 'Success', 'Recovered', 'Canceled'];
+
+  loanTypes = ['Personal Loan', 'Agriculture Loan', 'Business Loan', 'Property Loan', ];
 
   transactions = [
     {

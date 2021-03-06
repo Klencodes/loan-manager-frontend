@@ -17,8 +17,6 @@ export class MakePaymentComponent implements OnInit {
   loading: Boolean = false;
   loanPayments: Payment[];
   lastPayment: Payment;
-
-
   transactions = this.appUtils.transactions;
 
 

@@ -3,12 +3,13 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Account, Payment, Loan } from 'src/app/models';
+import { AppUtilsService } from 'src/app/services/app-utils.service';
 import { PaymentService } from 'src/app/services/_index';
 
 @Component({ templateUrl: './confirm.component.html' })
 export class ConfirmComponent implements OnInit {
 
-  allStatus = ['Pending', 'Success', 'Recovered', 'Canceled'];
+  allStatus = this.appUtils.allStatus;
   submitted: Boolean = false;
   loanId: string = '';
   id: string = '';
@@ -25,7 +26,8 @@ export class ConfirmComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private toastr: ToastrService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private appUtils: AppUtilsService
   ) {}
 
   ngOnInit(): void {

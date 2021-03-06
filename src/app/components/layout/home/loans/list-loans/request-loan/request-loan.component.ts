@@ -1,9 +1,10 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoanService} from 'src/app/services/_index';
 import { ToastrService } from 'ngx-toastr';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef } from '@angular/material/dialog';
+import { AppUtilsService } from 'src/app/services/app-utils.service';
 
 
 @Component({
@@ -12,7 +13,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 })
 export class RequestLoanComponent implements OnInit {
 
-  loanTypes = ['Personal Loan', 'Agriculture Loan', 'Business Loan', 'Property Loan', ];
+  loanTypes = this.appUtils.loanTypes;
   submitted: Boolean = false;
   isAddMode: Boolean;
   requestForm: FormGroup;
@@ -25,6 +26,7 @@ export class RequestLoanComponent implements OnInit {
     private toastr: ToastrService,
     private router: Router,
     public dialogRef: MatDialogRef<RequestLoanComponent>,
+    private appUtils: AppUtilsService
   ) {}
   onNoClick(): void {
   }
