@@ -3,11 +3,14 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Loan, Payment } from 'src/app/models';
+import { AppUtilsService } from 'src/app/services/app-utils.service';
 import { LoanService, PaymentService } from 'src/app/services/_index';
 
 @Component({ templateUrl: './make-payment.component.html' })
+
 export class MakePaymentComponent implements OnInit {
   paymentForm: FormGroup;
+  paymentTypes: any[];
   submitted: Boolean = false;
   loanId: string = '';
   loanDetails: Loan;
@@ -15,13 +18,18 @@ export class MakePaymentComponent implements OnInit {
   loanPayments: Payment[];
   lastPayment: Payment;
 
+
+  transactions = this.appUtils.transactions;
+
+
   constructor(
     private loanService: LoanService,
     private paymentService: PaymentService,
     private toastr: ToastrService,
     private router: Router,
     private formBuilder: FormBuilder,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private appUtils: AppUtilsService,
   ) {}
 
   ngOnInit(): void {
@@ -38,6 +46,9 @@ export class MakePaymentComponent implements OnInit {
       paymentType: ['', [Validators.required]],
       paymentAccount: ['', [Validators.required]],
       amountPaid: ['', [Validators.required]],
+    });
+    this.paymentForm.get('transaction').valueChanges.subscribe((paymentType) => {
+      this.paymentTypes = paymentType.paymentTypes;
     });
 
     this.getLoanPayments();
@@ -62,46 +73,16 @@ export class MakePaymentComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
-    //reset alert service on submit
     this.toastr.clear();
     // stop here if form is invalid
     if (this.paymentForm.invalid) {
       return;
     }
-
     this.makePayment();
-    this.paymentTypes = this.transactions.filter(x => x.id == 'Bank Payment')[0].paymentTypes;
-
-  
   }
 
   // convenience getter for easy access to form fields
   get f() {
     return this.paymentForm.controls;
-  }
-
-  paymentTypes = [];
-
-  transactions = [
-    {
-      id: 'Bank Payment',
-      name: 'Bank Payment',
-      paymentTypes: ['Doposit', 'Credit Payment', 'Debit Payment'],
-    },
-    {
-      id: 'Online Payment',
-      name: 'Online Payment',
-      paymentTypes: ['Credit Card', 'Debit Card', 'Express Card', 'Visa Card', 'Discover Card'],
-    },
-    {
-      id: 'Other Payments',
-      name: 'Other Payments',
-      paymentTypes: ['Paypal', 'MoneyGram', ],
-    },
-  ];
-  onChange(id) {
-    this.paymentTypes = this.transactions.filter(
-      (x) => x.id === id
-    )[0].paymentTypes;
   }
 }

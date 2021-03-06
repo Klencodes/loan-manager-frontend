@@ -23,7 +23,7 @@
 					<!-- account text -->
 					<span class="text-line">{{payment.amountPaid | currency:'GHS ': 'symbol': '1.0'}}
 						<span class="mx-1 text-bold">by:</span>
-						{{payment.accountId.firstName}} {{payment?.accountId.lastName}}
+						{{payment.accountId.firstName}} {{payment.accountId.lastName}}
 					</span>
 					<small class="badge bg-warning"><i class="fa fa-clock-o"></i> {{payment.paymentDate | date:'dd-MM-yyyy  hh:mm:ss a'}}</small>
 					<div class="tools font-size-16">

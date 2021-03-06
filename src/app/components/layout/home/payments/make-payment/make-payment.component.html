@@ -90,28 +90,28 @@
             <div class="sub-page-title">Payment document ( Card Payment, Bank Payment, etc )
             </div>
             <form [formGroup]="paymentForm" (ngSubmit)="onSubmit()">
-               <div class="row">
+                <div class="row">
                     <div class="col-md-6">
-                        <mat-form-field>
-                            <mat-label>Transaction Type</mat-label>
-                            <input matInput formControlName="transaction"
-                                [ngClass]="{ 'is-invalid': submitted && f.transaction.errors }">
-                            <mat-error *ngIf="submitted && f.transaction.errors">
-                                <div *ngIf="f.transaction.errors.required">Transaction Type is required</div>
-                            </mat-error>
-                        </mat-form-field>
+                      <mat-form-field>
+                        <mat-label>Transaction Type </mat-label>
+                        <mat-select formControlName="transaction" required>
+                          <mat-option>-- Select Transaction --</mat-option>
+                          <mat-option *ngFor="let transactionVal of transactions" [value]="transactionVal">{{transactionVal.transaction}}</mat-option>
+                        </mat-select>
+                      </mat-form-field>
                     </div>
+                
                     <div class="col-md-6">
-                        <mat-form-field>
-                            <mat-label>Payment Type</mat-label>
-                            <input matInput formControlName="paymentType"
-                                [ngClass]="{ 'is-invalid': submitted && f.paymentType.errors }">
-                            <mat-error *ngIf="submitted && f.paymentType.errors">
-                                <div *ngIf="f.paymentType.errors.required">Payment Type is required</div>
-                            </mat-error>
-                        </mat-form-field>
+                      <mat-form-field>
+                        <mat-label>Payment Type </mat-label>
+                        <mat-select formControlName="paymentType" required>
+                          <mat-option [value]="null">-- Select Payment Type --</mat-option>
+                          <mat-option *ngFor="let item of paymentTypes" [value]="item">{{item}}</mat-option>
+                        </mat-select>
+                      </mat-form-field>
                     </div>
                 </div>
+                
                 <div class="row">
                     <div class="col-md-6">
                         <mat-form-field>
