@@ -90,19 +90,7 @@
             <div class="sub-page-title">Payment document ( Card Payment, Bank Payment, etc )
             </div>
             <form [formGroup]="paymentForm" (ngSubmit)="onSubmit()">
-                <div class="row">
-                    <!-- <div class="col-md-6">
-                        <mat-form-field>
-                            <mat-label>Transaction Type</mat-label>
-                            <mat-select formControlName="transaction"
-                                [ngClass]="{ 'is-invalid': submitted && f.transaction.errors }">
-                                <mat-option *ngFor="let transaction of transactions" [value]="transaction">{{transaction}}</mat-option>
-                            </mat-select>
-                            <mat-error *ngIf="submitted && f.transaction.errors">
-                                <div *ngIf="f.transaction.errors.required">Transaction Type is required</div>
-                            </mat-error>
-                        </mat-form-field>
-                    </div> -->
+               <div class="row">
                     <div class="col-md-6">
                         <mat-form-field>
                             <mat-label>Transaction Type</mat-label>

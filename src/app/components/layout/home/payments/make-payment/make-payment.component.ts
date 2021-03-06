@@ -7,10 +7,9 @@ import { LoanService, PaymentService } from 'src/app/services/_index';
 
 @Component({ templateUrl: './make-payment.component.html' })
 export class MakePaymentComponent implements OnInit {
-  
   paymentForm: FormGroup;
   submitted: Boolean = false;
-  loanId: string= '';
+  loanId: string = '';
   loanDetails: Loan;
   loading: Boolean = false;
   loanPayments: Payment[];
@@ -22,39 +21,42 @@ export class MakePaymentComponent implements OnInit {
     private toastr: ToastrService,
     private router: Router,
     private formBuilder: FormBuilder,
-    private route: ActivatedRoute,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
-    this.route.params.subscribe((params: Params)=>{
-      this.loanId = params.loanId
-        if(this.loanId){
-          this.loanService.getLoan(this.loanId).subscribe((res) =>{
-            this.loanDetails = res['loan']
-          })
-        }
-    })
+    this.route.params.subscribe((params: Params) => {
+      this.loanId = params.loanId;
+      if (this.loanId) {
+        this.loanService.getLoan(this.loanId).subscribe((res) => {
+          this.loanDetails = res['loan'];
+        });
+      }
+    });
     this.paymentForm = this.formBuilder.group({
       transaction: ['', [Validators.required]],
       paymentType: ['', [Validators.required]],
       paymentAccount: ['', [Validators.required]],
-      amountPaid: ['', [Validators.required,]],
+      amountPaid: ['', [Validators.required]],
     });
 
     this.getLoanPayments();
   }
 
   makePayment() {
-    this.paymentService.makePayment(this.loanId, this.paymentForm.value).subscribe((res) =>{
-      this.toastr.success(res['message'], 'Successful'), { keepAfterRouteChange: true };
-      this.router.navigate(['../../../'], { relativeTo: this.route });
-    })
+    this.paymentService
+      .makePayment(this.loanId, this.paymentForm.value)
+      .subscribe((res) => {
+        this.toastr.success(res['message'], 'Successful'),
+          { keepAfterRouteChange: true };
+        this.router.navigate(['../../../'], { relativeTo: this.route });
+      });
   }
 
   getLoanPayments() {
-    this.paymentService.getLoanPayments(this.loanId).subscribe((res) =>{
+    this.paymentService.getLoanPayments(this.loanId).subscribe((res: any) => {
       this.loanPayments = res['payments'];
-      this.lastPayment = this.loanPayments[this.loanPayments.length -1];
+      this.lastPayment = this.loanPayments[this.loanPayments.length - 1];
     });
   }
 
@@ -65,13 +67,41 @@ export class MakePaymentComponent implements OnInit {
     // stop here if form is invalid
     if (this.paymentForm.invalid) {
       return;
-    };
-   
+    }
+
     this.makePayment();
+    this.paymentTypes = this.transactions.filter(x => x.id == 'Bank Payment')[0].paymentTypes;
+
+  
   }
 
   // convenience getter for easy access to form fields
   get f() {
     return this.paymentForm.controls;
+  }
+
+  paymentTypes = [];
+
+  transactions = [
+    {
+      id: 'Bank Payment',
+      name: 'Bank Payment',
+      paymentTypes: ['Doposit', 'Credit Payment', 'Debit Payment'],
+    },
+    {
+      id: 'Online Payment',
+      name: 'Online Payment',
+      paymentTypes: ['Credit Card', 'Debit Card', 'Express Card', 'Visa Card', 'Discover Card'],
+    },
+    {
+      id: 'Other Payments',
+      name: 'Other Payments',
+      paymentTypes: ['Paypal', 'MoneyGram', ],
+    },
+  ];
+  onChange(id) {
+    this.paymentTypes = this.transactions.filter(
+      (x) => x.id === id
+    )[0].paymentTypes;
   }
 }

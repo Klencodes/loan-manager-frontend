@@ -39,7 +39,6 @@ export class OverviewComponent implements OnInit {
     this.accountService.getAll().subscribe((result: any) => {
         this.accounts = result.accounts;
         this.countAllAccounts = result.count;
-        // console.log(result, 'Result Object')
       });
   }
   //Get all loans from Db

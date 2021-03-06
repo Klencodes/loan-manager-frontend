@@ -29,9 +29,7 @@ export class ViewComponent implements OnInit {
     this.route.params.subscribe((params: Params) => {
       this.loanId = params.id;
       if(this.loanId){
-
       }
-      console.log(this.loanId, 'LOAD ID')
     });
     this.getLoanInfo();
   }
