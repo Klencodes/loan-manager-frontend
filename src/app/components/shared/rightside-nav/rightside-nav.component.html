@@ -27,7 +27,7 @@
 					</span>
 					<small class="badge bg-warning"><i class="fa fa-clock-o"></i> {{payment.paymentDate | date:'dd-MM-yyyy  hh:mm:ss a'}}</small>
 					<div class="tools font-size-16">
-						<i class="ti ti-pencil"></i>
+						<a routerLink="/admin/payments/confirm/{{payment.id}}"><i class="ti ti-pencil"></i></a>
 					</div>
 				</li>
 				<li class="text-center"> <a routerLink="/admin/payments">View All</a></li>
@@ -54,7 +54,7 @@
 					<small class="badge bg-warning"><i class="fa fa-clock-o"></i> {{loan.created | date:'dd-MM-yyyy  hh:mm:ss a'}}</small>
 					<!-- General tools such as edit or delete-->
 					<div class="tools font-size-16">
-						<i class="ti ti-pencil"></i>
+						<a routerLink="/admin/loans/approve/{{loan.id}}"><i class="ti ti-pencil"></i></a>
 					</div>
 				</li>
 				<li class="text-center"> <a routerLink="/admin/loans">View All</a></li>
