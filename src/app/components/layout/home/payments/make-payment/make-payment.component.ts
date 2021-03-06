@@ -34,8 +34,8 @@ export class MakePaymentComponent implements OnInit {
     this.route.params.subscribe((params: Params) => {
       this.loanId = params.loanId;
       if (this.loanId) {
-        this.loanService.getLoan(this.loanId).subscribe((res) => {
-          this.loanDetails = res['loan'];
+        this.loanService.getLoan(this.loanId).subscribe((res:any) => {
+          this.loanDetails = res.loan;
         });
       }
     });
@@ -45,16 +45,15 @@ export class MakePaymentComponent implements OnInit {
       paymentAccount: ['', [Validators.required]],
       amountPaid: ['', [Validators.required]],
     });
-    this.paymentForm.get('transaction').valueChanges.subscribe((paymentType) => {
-      this.paymentTypes = paymentType.paymentTypes;
-    });
+    // this.paymentForm.get('transaction').valueChanges.subscribe((paymentType) => {
+    //   this.paymentTypes = paymentType.paymentTypes;
+    // });
 
     this.getLoanPayments();
   }
 
   makePayment() {
-    this.paymentService
-      .makePayment(this.loanId, this.paymentForm.value)
+    this.paymentService.makePayment(this.loanId, this.paymentForm.value)
       .subscribe((res) => {
         this.toastr.success(res['message'], 'Successful'),
           { keepAfterRouteChange: true };

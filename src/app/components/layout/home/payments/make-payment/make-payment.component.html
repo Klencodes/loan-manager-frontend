@@ -94,20 +94,24 @@
                     <div class="col-md-6">
                       <mat-form-field>
                         <mat-label>Transaction Type </mat-label>
-                        <mat-select formControlName="transaction" required>
-                          <mat-option>-- Select Transaction --</mat-option>
-                          <mat-option *ngFor="let transactionVal of transactions" [value]="transactionVal">{{transactionVal.transaction}}</mat-option>
+                        <mat-select formControlName="transaction" [ngClass]="{ 'is-invalid': submitted && f.transaction.errors }" required>
+                          <mat-option [value]="null">-- Select Transaction --</mat-option>
+                          <mat-option value="Bank Transaction">Bank Transaction </mat-option>
+                          <mat-option value="Online Transaction">Online Transaction </mat-option>
                         </mat-select>
+                        <mat-error *ngIf="submitted && f.transaction.errors">
+                            <div *ngIf="f.transaction.errors.required">Transaction Type is required</div>
+                        </mat-error>
                       </mat-form-field>
                     </div>
                 
                     <div class="col-md-6">
                       <mat-form-field>
                         <mat-label>Payment Type </mat-label>
-                        <mat-select formControlName="paymentType" required>
-                          <mat-option [value]="null">-- Select Payment Type --</mat-option>
-                          <mat-option *ngFor="let item of paymentTypes" [value]="item">{{item}}</mat-option>
-                        </mat-select>
+                        <input matInput formControlName="paymentType" [ngClass]="{ 'is-invalid': submitted && f.paymentType.errors }"required>
+                        <mat-error *ngIf="submitted && f.paymentType.errors">
+                            <div *ngIf="f.paymentType.errors.required">Payment Type is required</div>
+                        </mat-error>
                       </mat-form-field>
                     </div>
                 </div>
@@ -117,9 +121,9 @@
                         <mat-form-field>
                             <mat-label>Payment Account</mat-label>
                             <input matInput formControlName="paymentAccount"
-                                [ngClass]="{ 'is-invalid': submitted && f.paymentAccount.errors }">
+                                [ngClass]="{ 'is-invalid': submitted && f.paymentAccount.errors }"required>
                             <mat-error *ngIf="submitted && f.paymentAccount.errors">
-                                <div *ngIf="f.paymentAccount.errors.required">Payment Account Type is required</div>
+                                <div *ngIf="f.paymentAccount.errors.required">Payment Account is required</div>
                             </mat-error>
                         </mat-form-field>
                     </div>
@@ -127,7 +131,7 @@
                         <mat-form-field>
                             <mat-label>Amount</mat-label>
                             <input matInput formControlName="amountPaid"
-                                [ngClass]="{ 'is-invalid': submitted && f.amountPaid.errors }">
+                                [ngClass]="{ 'is-invalid': submitted && f.amountPaid.errors }"required>
                             <mat-error *ngIf="submitted && f.amountPaid.errors">
                                 <div *ngIf="f.amountPaid.errors.required">Amount is required</div>
                             </mat-error>
