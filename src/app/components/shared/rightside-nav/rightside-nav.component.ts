@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Loan, Payment } from 'src/app/models';
+import { AccountService, LoanService, PaymentService } from 'src/app/services/_index';
 
 @Component({
   selector: 'rightside-nav',
@@ -6,9 +8,42 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RightsideNavComponent implements OnInit {
 
-  constructor() { }
+  accounts: Account[];
+  payments: Payment[];
+  loans: Loan[];
+
+  constructor(
+    private accountService: AccountService,
+    private paymentService: PaymentService,
+    private loanService: LoanService
+  ) { }
 
   ngOnInit(): void {
+    this.getAllAccounts();
+    this.getAllPayments();
+    this.getAllLoans()
   }
+
+  //Get all verified accounts from Db
+   getAllAccounts() {
+    this.accountService.getAll().subscribe((result: any) => {
+        this.accounts = result.accounts.slice(-3);
+      });
+  }
+  //Get all loans from Db
+  getAllLoans() {
+    this.loanService.getAllLoans().subscribe((res: any) => {
+      this.loans = res.loans.slice(-5);
+    });
+  }
+  //Get all payments from Db
+  getAllPayments() {
+    this.paymentService.getAllPayments().subscribe((res: any) => {
+      console.log(res)
+
+      this.payments = res.payments.slice(-5);
+    });
+  }
+
 
 }

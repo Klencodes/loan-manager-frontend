@@ -3,6 +3,7 @@ import { LoanService } from 'src/app/services/_index';
 import { ToastrService } from 'ngx-toastr'
 import { MatDialog } from '@angular/material/dialog';
 import { RequestLoanComponent } from './request-loan/request-loan.component';
+import { Loan } from 'src/app/models';
 
 
 @Component({
@@ -10,9 +11,8 @@ import { RequestLoanComponent } from './request-loan/request-loan.component';
   templateUrl: './list-loans.component.html',
 })
 export class ListLoansComponent implements OnInit {
-  modalTitle = 'Request New Loan';
   loanObj: any;
-  loans: any;
+  loans: Loan[];
 
   constructor(
     private loanService: LoanService,

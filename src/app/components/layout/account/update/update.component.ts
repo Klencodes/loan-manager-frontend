@@ -36,6 +36,8 @@ export class UpdateComponent implements OnInit {
         city: [this.account.city, Validators.required],
         state: [this.account.state, Validators.required],
         country: [this.account.country, Validators.required],
+        facebook: [this.account.facebook],
+        linkedin: [this.account.linkedin],
         password: ['', [Validators.minLength(6)]],
         confirmPassword: [''],
       },

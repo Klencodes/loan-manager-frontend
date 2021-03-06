@@ -31,7 +31,6 @@ export class ConfirmComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => {
       this.id = params.id
-      console.log(params)
       if(this.id){
        this.paymentService.getPaymentById(this.id).subscribe((res) => {
          this.paymentDetails = res['payment'];
@@ -41,7 +40,8 @@ export class ConfirmComponent implements OnInit {
            transaction: this.paymentDetails.transaction,
            paymentType: this.paymentDetails.paymentType,
            paymentStatus: this.paymentDetails.paymentStatus,
-           paymentDate: this.paymentDetails.paymentDate,
+           amountPaid: this.paymentDetails.amountPaid,
+           paymentDate: this.paymentDetails.paymentDate
          })
        });
       }else{
@@ -53,7 +53,8 @@ export class ConfirmComponent implements OnInit {
       transaction: [''],
       paymentType: [''],
       paymentStatus: [''],
-      paymentDate: ['']
+      paymentDate: [''],
+      amountPaid: ['']
     })
   }
 

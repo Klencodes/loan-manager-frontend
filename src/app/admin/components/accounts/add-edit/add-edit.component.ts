@@ -38,6 +38,8 @@ export class AddEditComponent implements OnInit {
             email: ['', [Validators.required, Validators.email]],
             phoneNumber: ['', Validators.required],
             jobTitle: ['', Validators.required],
+            facebook: [''],
+            linkedin: [''],
             department: ['', Validators.required],
             dob: ['', Validators.required],
             address: ['', Validators.required],

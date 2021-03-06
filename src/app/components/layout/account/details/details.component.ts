@@ -19,6 +19,7 @@ export class DetailsComponent implements OnInit{
         ) { }
 
     ngOnInit(){
+        console.log(this.account)
     }
 
     onDelete() {

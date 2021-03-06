@@ -3,13 +3,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
-
 import { AppRoutingModule } from './app-routing.module';
 import { JwtInterceptor, ErrorInterceptor, AppInitializer } from './_helpers';
 import { AccountService } from './services/_index';
 import { AppComponent } from './app.component';
 import { SharedModule } from './components/shared/shared.module';
-import { HomeComponent, LayoutComponent } from './components/layout/home';
 import { ErrorPagesModule } from './components/errors/errors.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './components/modules/material.module';

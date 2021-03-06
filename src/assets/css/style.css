@@ -19576,7 +19576,7 @@ ul.flexbox {
   overflow: auto; }
   .todo-list > li {
     border-radius: 2px;
-    padding: 1.5rem 2.2rem;
+    padding: 1rem ;
     margin-bottom: 2px;
     color: #0e1319; }
     .todo-list > li:last-of-type {

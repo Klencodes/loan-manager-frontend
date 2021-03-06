@@ -9,8 +9,6 @@ import { Loan, Payment } from 'src/app/models';
 export class ListPaymentsComponent implements OnInit {
 
   payments: Payment[];
-  loanDetails: Loan;
-  totalLoan: Number;
 
   constructor(
     private paymentService: PaymentService,

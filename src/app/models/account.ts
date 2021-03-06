@@ -8,6 +8,8 @@ export class Account {
     firstName: string;
     lastName: string;
     email: string;
+    facebook: string;
+    linkedin: string;
     phoneNumber: string;
     jobTitle: string;
     department: string;

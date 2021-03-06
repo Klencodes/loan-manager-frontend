@@ -7,6 +7,7 @@ import { LoanService, PaymentService } from 'src/app/services/_index';
 
 @Component({ templateUrl: './make-payment.component.html' })
 export class MakePaymentComponent implements OnInit {
+  
   paymentForm: FormGroup;
   submitted: Boolean = false;
   loanId: string= '';

@@ -13,7 +13,7 @@ import { ReactiveFormsModule } from '@angular/forms';
   declarations: [
     ListComponent, 
     ConfirmComponent, 
-    ViewComponent
+    ViewComponent, 
   ],
   imports: [
     CommonModule,

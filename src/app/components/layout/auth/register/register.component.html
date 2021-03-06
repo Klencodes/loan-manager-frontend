@@ -16,8 +16,7 @@
                 <div class="col-md-2">
                     <mat-form-field>
                         <mat-label>Title</mat-label>
-                        <mat-select formControlName="title"
-                            [ngClass]="{ 'is-invalid': submitted && f.title.errors }">
+                        <mat-select formControlName="title" [ngClass]="{ 'is-invalid': submitted && f.title.errors }">
                             <mat-option value="Mr">Mr</mat-option>
                             <mat-option value="Mrs">Mrs</mat-option>
                             <mat-option value="Miss">Miss</mat-option>
@@ -134,8 +133,26 @@
                         <mat-label>Country</mat-label>
                         <input matInput formControlName="country" [ngClass]="{ 'is-invalid': submitted && f.country.errors }">
                         <mat-error *ngIf="submitted && f.country.errors">
-                            <div *ngIf="f.country.errors.required">Date of Birth is required</div>
+                            <div *ngIf="f.country.errors.required">Country is required</div>
                         </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <p>Social Profile Link (Optional)</p>
+
+                </div>
+                <div class="col-md-6">
+                    <mat-form-field>
+                        <mat-label>Facebook</mat-label>
+                        <input matInput formControlName="facebook">
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                    <mat-form-field>
+                        <mat-label>LinkedIn</mat-label>
+                        <input matInput formControlName="linkedin">
                     </mat-form-field>
                 </div>
             </div>
@@ -158,7 +175,8 @@
                         <input [type]="hidePassword? 'password' : 'text'" matInput formControlName="password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
                         <mat-icon matSuffix (click)="hidePassword = !hidePassword"><i class="pnt"
                             aria-hidden="true">{{hidePassword ? 'visibility_off' : 'visibility'}}</i>
-                        </mat-icon>                        <mat-error *ngIf="submitted && f.confirmPassword.errors">
+                        </mat-icon>                        
+                        <mat-error *ngIf="submitted && f.confirmPassword.errors">
                             <div *ngIf="f.confirmPassword.errors.required">Confirm Password is required</div>
                             <div *ngIf="f.confirmPassword.errors.mustMatch">Passwords must match</div>
                         </mat-error>
@@ -178,7 +196,7 @@
                 </div>
            </div>
             <div class="form-group mt-3">
-                <button [disabled]="loading" class="btn btn-primary">
+                <button type="submit" [disabled]="loading" class="btn btn-primary">
                     <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
                     Register
                 </button>
