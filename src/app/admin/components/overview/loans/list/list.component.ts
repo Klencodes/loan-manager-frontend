@@ -10,7 +10,6 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class ListComponent implements OnInit {
   id: string = '';
-  $loansObj: any;
   loans: Loan[];
   docs: Document[];
   isDeleting: Boolean;
@@ -27,12 +26,10 @@ export class ListComponent implements OnInit {
 
   //Get all loans from Db
   getAllLoans() {
-    this.loanService.getAllLoans().subscribe((res) => {
-      this.$loansObj = res;
-      this.message = res['message']
-      this.loans = this.$loansObj.loans;
-      this.toastr.success(this.message , 'Success')
-
+    this.loanService.getAllLoans().subscribe((res: any) => {
+      this.message = res.message;
+      this.loans = res.loans;
+      this.toastr.success(this.message , 'Success');
     });
   }
 

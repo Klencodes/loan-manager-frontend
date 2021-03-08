@@ -7,5 +7,4 @@ export class Loan {
     created: Date;
     loanStatus: string;
     statusDate?: Date;
-    isDeleting: Boolean
 }

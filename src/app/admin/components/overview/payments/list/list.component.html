@@ -44,7 +44,7 @@
                                                 {{payment.id | slice: 0:10 | uppercase}}
                                             </a>
                                         </td>
-                                        <th>{{payment.accountId['firstName']}} {{payment.accountId['lastName']}}</th>
+                                        <th>{{payment.accountId?.firstName}} {{payment.accountId?.lastName}}</th>
                                         <td>{{payment.transaction}}</td>
                                         <td>{{payment.amountPaid | currency: 'GHS '}}</td>
                                         <td>{{payment.paymentDate | date: 'dd/MM/yyyy'}}</td>
@@ -61,8 +61,8 @@
                                                 class="badge badge-danger">{{
                                                 payment.paymentStatus }}</span>
                                         </td>
-                                        <td>{{payment.loanId['loanAmount'] | currency: 'GHS '}}</td>
-                                        <td>{{payment.loanId['loanAmount'] - payment.amountPaid | currency: 'GHS '}}
+                                        <td>{{payment.loanId?.loanAmount | currency: 'GHS '}}</td>
+                                        <td>{{payment.loanId?.loanAmount - payment.amountPaid | currency: 'GHS '}}
                                         </td>
                                         <td>
                                             <a routerLink="confirm/{{payment.id}}"><i

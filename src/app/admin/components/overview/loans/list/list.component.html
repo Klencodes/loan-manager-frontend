@@ -42,7 +42,7 @@
                                     <tr class="tr-border" *ngFor="let loan of loans; let i = index">
                                         <td>{{loan.id | uppercase | slice: 0:10}}</td>
                                         <td>{{loan.loanType}}</td>
-                                        <td>{{loan.accountId.firstName}} {{loan.accountId.lastName}}</td>
+                                        <td>{{loan.accountId?.firstName}} {{loan.accountId?.lastName}}</td>
                                         <td>{{loan.loanAmount | currency: 'GHS '}}</td>
                                         <td>{{loan.created | date: 'dd/MM/yyyy'}}</td>
                                         <td *ngIf="loan.loanStatus === 'Pending'"> <span class="badge badge-warning">{{
