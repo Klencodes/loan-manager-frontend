@@ -31,8 +31,11 @@ export class VerifyEmailComponent implements OnInit {
             .pipe(first())
             .subscribe({
                 next: () => {
-                    this.toastr.success('Verification successful, you can now login', 'Successful');
-                    this.router.navigate(['../login'], { relativeTo: this.route });
+                    this.toastr.success('Verification successful, Redirecting to login', 'Successful');
+                    setTimeout(()=>{
+                        this.router.navigate(['../login'], { relativeTo: this.route }),
+                        3000
+                    })
                 },
                 error: () => {
                     this.emailStatus = EmailStatus.Failed;

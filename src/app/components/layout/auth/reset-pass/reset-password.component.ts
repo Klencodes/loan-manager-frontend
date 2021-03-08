@@ -49,6 +49,10 @@ export class ResetPasswordComponent implements OnInit {
                 next: () => {
                     this.token = token;
                     this.tokenStatus = TokenStatus.Valid;
+                    setTimeout(()=>{
+                        this.router.navigate(['../login'], { relativeTo: this.route }),
+                        3000
+                    });
                 },
                 error: () => {
                     this.tokenStatus = TokenStatus.Invalid;

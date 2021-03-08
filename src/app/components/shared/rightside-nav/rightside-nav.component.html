@@ -1,4 +1,4 @@
-<aside class="control-sidebar bg-white">
+<aside class="control-sidebar mb-0 bg-white">
 
 	<div class="rpanel-title">
 		<span class="pull-right btn btn-sm btn-circle btn-danger" data-toggle="control-sidebar">
@@ -27,7 +27,7 @@
 					</span> <br>
 					<small ><span class="badge badge-warning font-size-10"><i class="fa fa-clock-o"></i></span> {{payment.paymentDate | date:'dd-MM-yyyy  hh:mm:ss a'}}</small>
 					<div class="tools font-size-16">
-						<a routerLink="/admin/payments/confirm/{{payment.id}}"><i class="ti ti-pencil"></i></a>
+						<a routerLink="/admin/payments/confirm/{{payment.id}}" title="Confirm Payment"><i class="ti ti-pencil"></i></a>
 					</div>
 				</li>
 				<li class="text-center"> <a routerLink="/admin/payments">View All</a></li>
@@ -51,13 +51,15 @@
 						{{loan.accountId?.firstName}} {{loan.accountId?.lastName}}
 					</span> <br>
 					<!-- Emphasis label -->
-					<small ><span class="badge badge-warning font-size-10"><i class="fa fa-clock-o"></i></span> {{loan.created | date:'dd-MM-yyyy  hh:mm:ss a'}}</small>
+					<small ><span class="badge badge-warning font-size-10">
+						<i class="fa fa-clock-o"></i></span> {{loan.created | date:'dd-MM-yyyy  hh:mm:ss a'}}
+					</small>
 					<!-- General tools such as edit or delete-->
 					<div class="tools font-size-16">
-						<a routerLink="/admin/loans/approve/{{loan.id}}"><i class="ti ti-pencil"></i></a>
+						<a routerLink="/admin/loans/approve/{{loan.id}}" title="Approve Loan"><i class="ti ti-pencil"></i></a>
 					</div>
 				</li>
-				<li class="text-center"> <a routerLink="/admin/loans">View All</a></li>
+				<li class="text-center" > <a routerLink="/admin/loans">View All</a></li>
 			</ul>
 		</div>
 		<!-- /.tab-pane -->
@@ -67,24 +69,25 @@
 		<div class="tab-pane" id="users-tab">
 			<div class="flexbox bb-2">
 				<p>Recent Users</p>
-				<a routerLink="/admin/accounts/add" class="text-right text-grey"><i class="ti-plus"></i></a>
+				<a routerLink="/admin/accounts/add" class="text-right text-grey" title="Add User"><i class="ti-plus"></i></a>
 			</div>
-			<div class="media-list media-list-hover mt-20" *ngFor="let account of accounts">
+			<div class="media-list media-list-hover mt-10" *ngFor="let account of accounts">
 				<div class="media px-0">
 					<a class="avatar avatar-lg status-success" href="#">
 						<img src="assets/img/account/avatar.png" alt="...">
 					</a>
 					<div class="media-body">
 						<p class="font-size-16">
-							<a routerLink="/admin/accounts/user/{{account.id}}"
-								class="hover-primary"><strong>{{account.firstName}} {{account.lastName}}</strong></a>
+							<a routerLink="/admin/accounts/user/{{account.id}}" class="hover-primary">
+								<strong>{{account.firstName}} {{account.lastName}}</strong>
+							</a>
 						</p>
 						<p>{{account.jobTitle}}</p>
 						<span>{{account.created | date:'dd-MM-yyyy hh:mm:ss a'}}</span>
 					</div>
 				</div>
 			</div>
-			<div class="mt-3 text-center"> <a routerLink="/admin/accounts">View All</a></div>
+			<div class="mt-3 text-center" > <a routerLink="/admin/accounts">View All</a></div>
 
 		</div>
 		<!-- /.tab-pane -->

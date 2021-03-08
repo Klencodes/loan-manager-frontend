@@ -33,7 +33,7 @@ export class RightsideNavComponent implements OnInit {
   //Get all loans from Db
   getAllLoans() {
     this.loanService.getAllLoans().subscribe((res: any) => {
-      this.loans = res.loans.slice(-5);
+      this.loans = res.loans;
     });
   }
   //Get all payments from Db

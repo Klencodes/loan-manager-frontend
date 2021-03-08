@@ -28,12 +28,10 @@ export class HeaderNavComponent implements OnInit {
   }
 
   getPayments() {
-    if (this.account) {
-      this.paymentService.getPayments().subscribe((res:any[]) => {
-        this.payments = res['payments'].slice(-5);
+      this.paymentService.getPayments().subscribe((res: any) => {
+      console.log(res)
+        this.payments = res.payments.slice(-5);
+        console.log(this.payments)
       });
-    } else {
-      this.account = undefined;
-    }
   }
 }

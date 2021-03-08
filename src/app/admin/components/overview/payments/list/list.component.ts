@@ -19,9 +19,9 @@ export class ListComponent implements OnInit {
   }
 
   getAllPayments(){
-    this.paymentService.getAllPayments().subscribe((res) => {
-      this.payments = res['payments'];
-      this.message = res['message'];
+    this.paymentService.getAllPayments().subscribe((res: any) => {
+      this.payments = res.payments;
+      this.message = res.message;
       this.toastr.success(this.message, 'Successful');
     });
   }
