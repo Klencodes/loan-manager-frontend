@@ -28,23 +28,18 @@ export class RightsideNavComponent implements OnInit {
    getAllAccounts() {
     this.accountService.getAll().subscribe((res: any) => {
         this.accounts = res.accounts.slice(-3);
-        console.log(this.accounts)
-
       });
   }
   //Get all loans from Db
   getAllLoans() {
     this.loanService.getAllLoans().subscribe((res: any) => {
       this.loans = res.loans.slice(-5);
-      console.log(this.loans)
-
     });
   }
   //Get all payments from Db
   getAllPayments() {
     this.paymentService.getAllPayments().subscribe((res: any) => {
       this.payments = res.payments.slice(-5);
-      console.log(this.payments)
     });
   }
 
